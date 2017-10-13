@@ -3,7 +3,7 @@
 @section('content')
 
   <div class=heftymargins>
-    <h2>{{$client->name . ': '}}Editar</h2>
+    <h2>Editar Produto: {{$client->name}}</h2>
     <hr>
     <br>
 
@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="name">Nome do Cliente</label>
         <input type="text" class="form-control" id="name" placeholder="Nome"
-         name="name" required>
+        name="name" required>
       </div>
 
       <div class="form-group">
@@ -43,12 +43,15 @@
 
       <div class="form-group">
         <label for="phone_number">Telefone</label>
-        <input type="number" class="form-control" id="phone_number" name="phone_number">
+        <input type="number" class="form-control" id="phone_number" name="phone_number"
+        placeholder"DDD + DDI + Número do telefone">
       </div>
 
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Adicionar</button>
       </div>
+
+      @include('layouts.errors')
     </form>
-</div>
+  </div>
 @endsection

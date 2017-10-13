@@ -12,7 +12,7 @@
       <div class="form-group">
         <label for="name">Nome do Produto</label>
         <input type="text" class="form-control" id="name" placeholder="{{$product->name}}"
-         name="name" required>
+        name="name" required>
       </div>
 
       <div class="form-group">
@@ -25,5 +25,5 @@
         <button type="submit" class="btn btn-primary">Editar</button>
       </div>
     </form>
-</div>
+  </div>
 @endsection

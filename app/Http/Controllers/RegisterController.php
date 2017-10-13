@@ -9,47 +9,47 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Controller de Cadastros.
-    |--------------------------------------------------------------------------
-    |
-    */
+  /*
+  |--------------------------------------------------------------------------
+  | Controller de Cadastros.
+  |--------------------------------------------------------------------------
+  |
+  */
 
-    use RegistersUsers;
+  use RegistersUsers;
 
-    public function __construct()
-    {
-      //Apenas visitantes podem ver este cadastro. Sujeito a modificações.
-        $this->middleware('guest') ;
-    }
+  public function __construct()
+  {
+    //Apenas visitantes podem ver este cadastro. Sujeito a modificações.
+    $this->middleware('guest') ;
+  }
 
-    protected function store()
-    {
+  protected function store()
+  {
 
-      //autenticação dos dados do formulário. se suceder, o cadastro é completo.
-      //caso contrário, o usuário será reenviado para o cadastro, e receberá
-      //o feedback dos erros. (em inglês, sujeito a alteração).
+    //autenticação dos dados do formulário. se suceder, o cadastro é completo.
+    //caso contrário, o usuário será reenviado para o cadastro, e receberá
+    //o feedback dos erros. (em inglês, sujeito a alteração).
 
-      $rules = [
-        'username' => 'required|string|max:60',
-        'password' => 'required|min:6|confirmed',
-      ];
+    $rules = [
+      'username' => 'required|string|max:60',
+      'password' => 'required|min:6|confirmed',
+    ];
 
-      $this->validate(request(), $rules);
+    $this->validate(request(), $rules);
 
-        $user = User::create([
-          'username' => request('username'),
-          'password' => bcrypt(request('password'))
-        ]);
+    $user = User::create([
+      'username' => request('username'),
+      'password' => bcrypt(request('password'))
+    ]);
 
-        auth()->login($user);
-        return redirect('/');
-    }
+    auth()->login($user);
+    return redirect('/');
+  }
 
-    protected function create()
-    {
-      //encaminha o usuário para a tela de cadastro.
-      return view('register.create');
-    }
+  protected function create()
+  {
+    //encaminha o usuário para a tela de cadastro.
+    return view('register.create');
+  }
 }

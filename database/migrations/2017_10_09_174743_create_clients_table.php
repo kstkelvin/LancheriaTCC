@@ -8,22 +8,22 @@ class CreateClientsTable extends Migration
 {
 
 
-    public function up()
-    {
-      //função do Eloquent usada para enviar os dados para o banco de dados.
-        Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('surname');
-            $table->string('setor');
-            $table->string('phone_number');
-        });
-    }
+  public function up()
+  {
+    //função do Eloquent usada para enviar os dados para o banco de dados.
+    Schema::create('clients', function (Blueprint $table) {
+      $table->increments('id');
+      $table->string('name');
+      $table->string('surname')->nullable();
+      $table->string('setor');
+      $table->string('phone_number')->nullable();
+    });
+  }
 
 
-    public function down()
-    {
-      //Table drop, no caso de não existir, a função não é evocada.
-        Schema::dropIfExists('clients');
-    }
+  public function down()
+  {
+    //Table drop, no caso de não existir, a função não é evocada.
+    Schema::dropIfExists('clients');
+  }
 }

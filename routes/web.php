@@ -42,5 +42,5 @@ Route::get('/clients/create', 'clientsController@create');
 Route::post('/clients', 'clientsController@store');
 Route::get('/client/{client}/edit', 'clientsController@edit');
 Route::get('/client/{client}', 'clientsController@show');//Wildcard/Joker
-Route::patch('/client/{client}', 'clientsController@update');
+Route::post('/client/{client}', 'clientsController@update');
 Route::delete('/client/{client}', 'clientsController@delete');

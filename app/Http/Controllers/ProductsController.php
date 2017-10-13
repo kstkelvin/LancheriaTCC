@@ -43,15 +43,15 @@ class ProductsController extends Controller
   {
 
     $rules = array(
-        'name'       => 'required',
-        'value' => 'required|numeric'
+      'name'       => 'required',
+      'value' => 'required|numeric'
     );
     $validator = Validator::make(request()->all(), $rules);
 
     // process the login
     if ($validator->fails()) {
-        return Redirect::to('products')
-            ->withErrors($validator);
+      return Redirect::to('products')
+      ->withErrors($validator);
     } else {
 
       Product::create([
@@ -59,8 +59,8 @@ class ProductsController extends Controller
         'value' => request('value')
       ]);
 
-        return redirect('products');
-      }
+      return redirect('products');
+    }
   }
 
   public function edit($id)
@@ -71,27 +71,31 @@ class ProductsController extends Controller
 
   public function update($id)
   {
-   $rules = array(
-       'name'       => 'required',
-       'value' => 'required|numeric'
-   );
-   $validator = Validator::make(request()->all(), $rules);
+    $rules = array(
+      'name'       => 'required',
+      'value' => 'required|numeric'
+    );
+    $validator = Validator::make(request()->all(), $rules);
 
-   // process the login
-   if ($validator->fails()) {
-       return Redirect::to('products/' . $id . '/edit')
-           ->withErrors($validator);
-   } else {
-       // store
-       $products = Product::find($id);
-       $products->name       = request()->get('name');
-       $products->value      = request()->get('value');
-       $products->save();
+    // process the login
+    if ($validator->fails()) {
+      return redirect('product/' . $id . '/edit')
+      ->withErrors($validator);
+    } else {
+      // store
+      $product = Product::find($id);
+      $product->name       = request()->get('name');
+      $product->value      = request()->get('value');
+      $product->save();
 
-       return redirect('products');
-   }
+      return redirect('products');
+    }
 
-        //return redirect('products', compact('products'));
-     }
+    //return redirect('products', compact('products'));
+  }
 
+    public function delete($id){
+      $product = Product::findOrFail($id);
+      Product::delete($product);
+    }
 }
