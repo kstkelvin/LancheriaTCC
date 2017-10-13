@@ -1,0 +1,97 @@
+<?php
+
+namespace App\Http\Controllers;
+
+//use Illuminate\Http\Request;
+use App\Product;
+use Illuminate\Support\Facades\Validator;
+
+class ProductsController extends Controller
+{
+
+  public function __construct(){
+    $this->middleware('auth');
+  }
+
+  public function index()
+
+  {
+
+    $products = Product::orderBy('name')->get();
+    return view('products.index', compact('products'));
+
+  }
+
+  public function show($id) //Product::find(Joker/Wildcard);
+
+  {
+    $product = Product::findOrFail($id);
+    return view('products.show', compact('product'));
+
+  }
+
+  public function create()
+
+  {
+
+    return view('products.create');
+
+  }
+
+  public function store()
+
+  {
+
+    $rules = array(
+        'name'       => 'required',
+        'value' => 'required|numeric'
+    );
+    $validator = Validator::make(request()->all(), $rules);
+
+    // process the login
+    if ($validator->fails()) {
+        return Redirect::to('products')
+            ->withErrors($validator);
+    } else {
+
+      Product::create([
+        'name' => request('name'),
+        'value' => request('value')
+      ]);
+
+        return redirect('products');
+      }
+  }
+
+  public function edit($id)
+  {
+    $product = Product::findOrFail($id);
+    return view('products.edit')->with('product', $product);
+  }
+
+  public function update($id)
+  {
+   $rules = array(
+       'name'       => 'required',
+       'value' => 'required|numeric'
+   );
+   $validator = Validator::make(request()->all(), $rules);
+
+   // process the login
+   if ($validator->fails()) {
+       return Redirect::to('products/' . $id . '/edit')
+           ->withErrors($validator);
+   } else {
+       // store
+       $products = Product::find($id);
+       $products->name       = request()->get('name');
+       $products->value      = request()->get('value');
+       $products->save();
+
+       return redirect('products');
+   }
+
+        //return redirect('products', compact('products'));
+     }
+
+}
