@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('client_id')->references('id')->on('clients');
             $table->integer('amount');
-            $table->boolean('item_pago?');
+            $table->boolean('paid?');
             $table->timestamps();
         });
     }
