@@ -6,13 +6,22 @@
   </div>
   <form method="post" action="/venda">
     {{ csrf_field() }}
+
     <div class="form-group">
-      <label for="client_id">Id do Cliente</label>
-      <input class="form-control" type="number" id="client_id" name="client_id">
+      <label for="setor">Cliente</label>
+      <select name="client_id" class="form-control" id="client_id" required>
+        @foreach ($clients as $client)
+          <option value="{{$client->id}}">{{$client->name}}</option>
+        @endforeach
+      </select>
     </div>
     <div class="form-group">
-      <label for="product_id">Id do Produto</label>
-      <input class="form-control" type="number" id="product_id" name="product_id">
+      <label for="setor">Produto</label>
+      <select name="product_id" class="form-control" id="product_id" required>
+        @foreach ($products as $product)
+          <option value="{{$product->id}}">{{$product->name}}</option>
+        @endforeach
+      </select>
     </div>
     <div class="form-group">
       <label for="amount">Quantia</label>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Client;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ItemsController extends Controller
@@ -19,7 +21,9 @@ class ItemsController extends Controller
 
   public function create()
   {
-    return view('vendas.create');
+    $clients = Client::orderBy('name')->get();
+    $products = Product::orderBy('name')->get();
+    return view('vendas.create', compact('clients', 'products'));
   }
 
   public function store()
