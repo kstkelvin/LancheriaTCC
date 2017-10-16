@@ -15,10 +15,10 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('client_id')->references('id')->on('clients');
+            $table->integer('client_id');
+            $table->integer('product_id');
             $table->integer('amount');
-            $table->boolean('paid?');
+            $table->boolean('is_paid')->default('0');
             $table->timestamps();
         });
     }

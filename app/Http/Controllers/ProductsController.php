@@ -29,6 +29,16 @@ class ProductsController extends Controller
 
   }
 
+  public function showName($id)
+  {
+    return Product::findOrFail($id)->get('name');
+  }
+
+  public function showValue($id)
+  {
+    return Product::findOrFail($id)->get('value');
+  }
+
   public function create()
 
   {
@@ -97,4 +107,7 @@ class ProductsController extends Controller
       $product = Product::findOrFail($id);
       Product::delete($product);
     }
+
+
+
 }

@@ -17,6 +17,7 @@ class CreateClientsTable extends Migration
       $table->string('surname')->nullable();
       $table->string('setor');
       $table->string('phone_number')->nullable();
+      $table->double('total')->default('0.00');
     });
   }
 

@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    protected $fillable = ['product_id', 'client_id', 'amount', 'paid?'];
+    protected $fillable = ['client_id', 'product_id', 'amount', 'is_paid'];
+
+    public function product(){
+      return $this->belongsTo(Client::class, 'foreign_key');
+    }
+    public function client(){
+      return $this->belongsTo(Client::class, 'foreign_key');
+    }
 }

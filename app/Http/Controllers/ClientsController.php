@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Client;
+use App\Item;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Schema;
 
 class ClientsController extends Controller
 {
@@ -47,11 +49,12 @@ class ClientsController extends Controller
       if($numero_formatado == "0"){
         $numero_formatado = "Não Consta";
       }
-      Client::create([
+      $client = Client::create([
         'name' => request('name'),
         'surname' => request('surname'),
         'setor' => request('setor'),
-        'phone_number' => $numero_formatado
+        'phone_number' => $numero_formatado,
+        'total' => '0.0'
       ]);
       return redirect('clients');
     }
@@ -62,9 +65,25 @@ class ClientsController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show(Client $client)
+  public function show($id)
   {
-    return view('clients.show', compact('client'));
+    $client = Client::findOrFail($id);
+    //$items = Item::where('client_id', '=', $id, 'AND', 'is_pago', '=', '0')
+    //->orderBy('updated_at')
+    //->get();
+
+    $items = Item::join('products', 'products.id', '=', 'items.product_id')
+    ->select('products.name as name',
+    'products.value as value',
+    'items.amount as amount',
+    'items.created_at as time')
+    ->where('client_id', '=', $id, 'AND', 'is_pago', '=', '0')
+    ->orderBy('updated_at')
+    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+    ->get();
+    return view('clients.show', compact('client', 'items'));
+
+
   }
 
   /**

@@ -7,7 +7,7 @@
       <p class="lead text-muted">Gerenciamento da Lancheria do Hospital São Jerônimo</p>
       @if(Auth::check())
         <p>
-          <a href="#" class="btn btn-primary">Nova Venda</a>
+          <a href="/venda/create" class="btn btn-primary">Nova Venda</a>
           <a href="#" class="btn btn-success">Estatísticas</a>
         </p>
       @endif

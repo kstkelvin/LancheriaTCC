@@ -13,4 +13,8 @@ class Product extends Model
   //não consta pois ele é automaticamente incrementado pelo Eloquent do Laravel.
      public $timestamps = false;
      protected $fillable = ['name', 'value'];
+
+     public function item(){
+       return $this->hasMany(Item::class);
+     }
 }

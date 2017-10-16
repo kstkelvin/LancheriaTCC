@@ -42,5 +42,12 @@ Route::get('/clients/create', 'clientsController@create');
 Route::post('/clients', 'clientsController@store');
 Route::get('/client/{client}/edit', 'clientsController@edit');
 Route::get('/client/{client}', 'clientsController@show');//Wildcard/Joker
+//Route::get('/venda/{item}', 'itemsController@show');//debugging
 Route::post('/client/{client}', 'clientsController@update');
 Route::delete('/client/{client}', 'clientsController@delete');
+
+
+//--------------------------Operação de Venda-(fase de testes)-------------//
+
+Route::get('/venda/create', 'itemsController@create');
+Route::post('/venda', 'itemsController@store');
