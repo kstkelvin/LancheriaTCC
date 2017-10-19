@@ -51,3 +51,4 @@ Route::delete('/client/{client}', 'clientsController@delete');
 
 Route::get('/venda/create', 'itemsController@create');
 Route::post('/venda', 'itemsController@store');
+Route::get('/client/{client}/payment', 'itemsController@edit');

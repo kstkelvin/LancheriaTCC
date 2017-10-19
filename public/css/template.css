@@ -9,6 +9,19 @@
   background-color: #fff;
 }
 
+.startingpad {
+  padding-right: 0.5rem;
+}
+
+.pad {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.endpad {
+  padding-left: 0.5rem;
+}
+
 .heftymargins {
   padding-top: 3rem;
   padding-bottom: 1rem;

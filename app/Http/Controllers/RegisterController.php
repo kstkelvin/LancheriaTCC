@@ -32,7 +32,7 @@ class RegisterController extends Controller
     //o feedback dos erros. (em inglês, sujeito a alteração).
 
     $rules = [
-      'username' => 'required|string|max:60',
+      'username' => 'required|string|max:60|unique:users',
       'password' => 'required|min:6|confirmed',
     ];
 

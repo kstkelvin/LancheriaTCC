@@ -7,6 +7,7 @@ use App\Client;
 use App\Item;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class ClientsController extends Controller
 {
@@ -37,11 +38,16 @@ class ClientsController extends Controller
       'phone_number' => 'nullable|numeric'
     );
 
-    $validator = Validator::make(request()->all(), $rules);
+    $messages = [
+    'required'    => 'O campo :attribute é necessário.',
+    'numeric'    => 'O campo :attribute só aceita números'
+    ];
+
+    $validator = Validator::make(request()->all(), $rules, $messages);
 
 
     if ($validator->fails()) {
-      return Redirect::to('clients/' . $id . '/edit')
+      return redirect('clients/' . $id . '/edit')
       ->withErrors($validator);
     }
     else{
@@ -59,30 +65,24 @@ class ClientsController extends Controller
       return redirect('clients');
     }
   }
-  /**
-  * Display the specified resource.
-  *
-  * @param  int  $id
-  * @return \Illuminate\Http\Response
-  */
+
   public function show($id)
+
   {
     $client = Client::findOrFail($id);
-    //$items = Item::where('client_id', '=', $id, 'AND', 'is_pago', '=', '0')
-    //->orderBy('updated_at')
-    //->get();
 
-    $items = Item::join('products', 'products.id', '=', 'items.product_id')
-    ->select('products.name as name',
-    'products.value as value',
-    'items.amount as amount',
-    'items.created_at as time')
-    ->where('client_id', '=', $id, 'AND', 'is_pago', '=', '0')
-    ->orderBy('updated_at')
-    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-    ->get();
-    return view('clients.show', compact('client', 'items'));
-
+      $items = Item::join('products', 'products.id', '=', 'items.product_id')
+      ->select('products.name as name',
+      'products.value as value',
+      'items.amount as amount',
+      'items.created_at')
+      ->where('client_id', '=', $id)
+      ->where('is_paid', '=', '0')
+      ->orderBy('updated_at')
+      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+      ->get();
+      $total = $this->total($client->id);
+      return view('clients.show', compact('client', 'items', 'total'));
 
   }
 
@@ -113,7 +113,13 @@ class ClientsController extends Controller
       'setor'      => 'required',
       'phone_number' => 'nullable|numeric'
     );
-    $validator = Validator::make(request()->all(), $rules);
+
+    $messages = [
+    'required'    => 'O campo :attribute é necessário.',
+    'numeric'    => 'O campo :attribute só aceita números'
+    ];
+
+    $validator = Validator::make(request()->all(), $rules, $messages);
 
     // process the login
     if ($validator->fails()) {
@@ -127,7 +133,7 @@ class ClientsController extends Controller
       $client->setor        = request()->get('setor');
       $numero_formatado = $this->formatar_telefone_br(request()->get('phone_number'));
       if($numero_formatado == "0"){
-        $numero_formatado = "Não Consta";
+        $numero_formatado = "-";
       }
       $client->phone_number = $numero_formatado;
       $client->save();
@@ -147,6 +153,16 @@ class ClientsController extends Controller
     //}
   }
 
+  function total($id){
+    $total = Item::join('products', 'products.id', '=', 'items.product_id')
+    ->select(DB::raw('sum(products.value * items.amount) AS total'))
+    ->where('items.client_id', '=', $id)
+    ->where('items.is_paid', '=', '0')
+    ->getQuery()
+    ->get()
+    ->first();
+    return $total;
+  }
 
   function formatar_telefone_br($phone_number) {
 

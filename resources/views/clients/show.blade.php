@@ -8,9 +8,13 @@
     <hr>
     {{ 'Setor: ' . $client->setor }}
     <br>
-    {{ 'Telefone:' . $client->phone_number}}
+    {{ 'Telefone: ' . $client->phone_number}}
+    <br>
+    {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
+    <br>
+    <a href="/client/{{$client->id}}/edit" class="startingpad">Editar</a>
+    <a href="/client/{{$client->id}}/payment" class="endingpad">Pagamento</a>
     <hr>
-    <a href="/client/{{$client->id}}/edit" class="btn btn-success">Editar</a>
   </div>
   <table class="table table-striped">
     <thead>
@@ -27,7 +31,8 @@
           <td>{{ $item->name }}</td>
           <td>{{ 'R$ ' . number_format($item->value, 2, ',', '.') }}</td>
           <td>{{ $item->amount }}</td>
-          <td>{{ $item->time }}</td>
+          <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y m:i:s')}}</td>
+
         </tr>
       @endforeach
     </tbody>

@@ -51,7 +51,7 @@ class LoginController extends Controller
     if (!auth()->attempt(request(['username', 'password'])))
     {
       return back()->withErrors([
-        'message' => 'Deu pau, véi, deu pau, deu pau, deu pau!'
+        'message' => 'O nome de usuário e/ou a senha foram digitados incorretamente.'
       ]);
 
     }

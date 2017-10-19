@@ -55,11 +55,17 @@ class ProductsController extends Controller
       'name'       => 'required',
       'value' => 'required|numeric'
     );
-    $validator = Validator::make(request()->all(), $rules);
+
+    $messages = [
+    'required'    => 'O campo :attribute é necessário.',
+    'numeric'    => 'O campo :attribute só aceita números'
+    ];
+
+    $validator = Validator::make(request()->all(), $rules, $messages);
 
     // process the login
     if ($validator->fails()) {
-      return Redirect::to('products')
+      return redirect('products/create')
       ->withErrors($validator);
     } else {
 
@@ -84,7 +90,13 @@ class ProductsController extends Controller
       'name'       => 'required',
       'value' => 'required|numeric'
     );
-    $validator = Validator::make(request()->all(), $rules);
+
+    $messages = [
+    'required'    => 'O campo :attribute é necessário.',
+    'numeric'    => 'O campo :attribute só aceita números'
+    ];
+
+    $validator = Validator::make(request()->all(), $rules, $messages);
 
     // process the login
     if ($validator->fails()) {
