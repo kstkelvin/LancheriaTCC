@@ -5,7 +5,7 @@
     <h1>Cadastro de Produtos</h1>
     <hr>
   </section>
-  <form method="POST" action="/products">
+  <form method="POST" action="/produtos">
     {{ csrf_field() }}
 
     <div class="form-group">

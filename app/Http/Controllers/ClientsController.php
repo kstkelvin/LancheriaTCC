@@ -23,6 +23,16 @@ class ClientsController extends Controller
     return view('clients.index', compact('clients'));
   }
 
+
+
+  public function search()
+  {
+    $clients = Client::where('name', 'like', '%'. request()->search .'%')
+      ->orderBy('name')->get();
+
+    return view('clients.index', compact('clients'));
+  }
+
   public function create()
   {
     return view('clients.create');
@@ -47,7 +57,7 @@ class ClientsController extends Controller
 
 
     if ($validator->fails()) {
-      return redirect('clients/' . $id . '/edit')
+      return redirect('clientes')
       ->withErrors($validator);
     }
     else{
@@ -62,7 +72,7 @@ class ClientsController extends Controller
         'phone_number' => $numero_formatado,
         'total' => '0.0'
       ]);
-      return redirect('clients');
+      return redirect('clientes');
     }
   }
 
@@ -123,7 +133,7 @@ class ClientsController extends Controller
 
     // process the login
     if ($validator->fails()) {
-      return redirect('client/' . $id . '/edit')
+      return redirect('clientes/' . $id . '/editar')
       ->withErrors($validator);
     } else {
       // store
@@ -138,7 +148,7 @@ class ClientsController extends Controller
       $client->phone_number = $numero_formatado;
       $client->save();
 
-      return redirect('clients');
+      return redirect('clientes');
     }
 
     /**

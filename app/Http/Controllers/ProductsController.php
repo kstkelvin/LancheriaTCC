@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use App\Product;
 use Illuminate\Support\Facades\Validator;
 
@@ -65,16 +64,17 @@ class ProductsController extends Controller
 
     // process the login
     if ($validator->fails()) {
-      return redirect('products/create')
+      return redirect('produtos/adicionar')
       ->withErrors($validator);
     } else {
 
       Product::create([
         'name' => request('name'),
-        'value' => request('value')
+        'value' => request('value'),
+        'stock' => '0'
       ]);
 
-      return redirect('products');
+      return redirect('produtos');
     }
   }
 
@@ -100,7 +100,7 @@ class ProductsController extends Controller
 
     // process the login
     if ($validator->fails()) {
-      return redirect('product/' . $id . '/edit')
+      return redirect('produto/' . $id . '/editar')
       ->withErrors($validator);
     } else {
       // store
@@ -109,11 +109,11 @@ class ProductsController extends Controller
       $product->value      = request()->get('value');
       $product->save();
 
-      return redirect('products');
+      return redirect('produtos');
     }
 
-    //return redirect('products', compact('products'));
   }
+
 
     public function delete($id){
       $product = Product::findOrFail($id);

@@ -5,7 +5,7 @@
     <h1>Cadastro</h1>
     <hr>
   </section>
-  <form method="POST" action="/register">
+  <form method="POST" action="/registrar">
     {{ csrf_field() }}
 
     <div class="form-group">
@@ -17,13 +17,13 @@
     <div class="form-group">
       <label for="password">Senha</label>
       <input type="password" class="form-control" id="password"
-      name="password" required>
+      name="password" minlength="8" required>
     </div>
 
     <div class="form-group">
       <label for="password_confirmation">Confirmar Senha</label>
       <input type="password" class="form-control" id="password_confirmation"
-      name="password_confirmation" required>
+      name="password_confirmation" maxlenght="40" required>
     </div>
 
     <div class="form-group">

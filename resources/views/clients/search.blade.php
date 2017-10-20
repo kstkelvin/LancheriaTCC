@@ -7,15 +7,6 @@
   <hr>
   <a href="/clientes/adicionar" class="btn btn-success">Novo Cliente</a>
   <hr>
-
-  <form method="GET" action="/clientes/pesquisar">
-    <div class="form-group">
-      <input id="search" name="search" class="form-control"
-       type="text" placeholder="Digite aqui o nome do cliente">
-      <input type="submit" value="Pesquisar">
-    </div>
-  </form>
-
   <hr>
   <table class="table table-striped">
     <thead>
@@ -28,7 +19,7 @@
     <tbody>
       @foreach ($clients as $client)
         <tr>
-          <td><a href="/cliente/{{$client->id}}">{{ $client->name . " " .
+          <td><a href="cliente/{{$client->id}}">{{ $client->name . " " .
             $client->surname }}</a></td>
             <td>{{ $client->setor }}</td>
             <td>{{ $client->phone_number }}</td>

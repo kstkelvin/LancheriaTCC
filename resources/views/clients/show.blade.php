@@ -12,8 +12,8 @@
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
     <br>
-    <a href="/client/{{$client->id}}/edit" class="startingpad">Editar</a>
-    <a href="/client/{{$client->id}}/payment" class="endingpad">Pagamento</a>
+    <a href="/cliente/{{$client->id}}/editar" class="startingpad">Editar</a>
+    <a href="/cliente/{{$client->id}}/pagamento" class="endingpad">Pagamento</a>
     <hr>
   </div>
   <table class="table table-striped">
@@ -31,10 +31,11 @@
           <td>{{ $item->name }}</td>
           <td>{{ 'R$ ' . number_format($item->value, 2, ',', '.') }}</td>
           <td>{{ $item->amount }}</td>
-          <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y m:i:s')}}</td>
-
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
-@endsection
+          <td>{{ \Carbon\Carbon::parse($item->created_at)
+            ->timezone(Config::get('app.timezone'))
+            ->format('d/m/Y m:i:s') }}</td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  @endsection

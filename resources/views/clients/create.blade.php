@@ -5,7 +5,7 @@
     <h1>Cadastro de Clientes</h1>
     <hr>
   </section>
-  <form method="POST" action="/clients">
+  <form method="POST" action="/clientes">
     {{ csrf_field() }}
     <div class="form-group">
       <label for="name">Nome do Cliente</label>

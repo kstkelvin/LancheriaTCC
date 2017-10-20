@@ -7,7 +7,7 @@
     <hr>
     <br>
 
-    <form method="post" action="/client/{{$client->id}}">
+    <form method="post" action="/cliente/{{$client->id}}">
       {{csrf_field()}}
       <div class="form-group">
         <label for="name">Nome do Cliente</label>

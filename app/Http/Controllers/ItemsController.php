@@ -15,11 +15,6 @@ class ItemsController extends Controller
     $this->middleware('auth');
   }
 
-  //public function index()
-  //{
-  //
-  //}
-
   public function create()
   {
     $clients = Client::orderBy('name')->get();
@@ -34,13 +29,12 @@ class ItemsController extends Controller
     (
       'client_id'       => 'required',
       'product_id'    => 'required',
-      'amount'      => 'numeric|required|min:1'
+      'amount'      => 'numeric|required'
     );
 
     $messages = [
       'required'    => 'O campo :attribute é necessário.',
-      'numeric'    => 'O campo :attribute só aceita números',
-      'min' => 'O campo :attribute requer no mínimo 1'
+      'numeric'    => 'O campo :attribute só aceita números'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);

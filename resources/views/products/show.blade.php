@@ -8,8 +8,13 @@
     <hr>
     {{'Preço: R$ ' . number_format($product->value, 2, ',', '.')}}
     <br>
+    <p>Estoque: {{$product->stock}}</p>
+    <br>
+    <a href="/produto/{{$product->id}}/editar" class="startingpad">Editar</a>
+    <a href="/produto/{{$product->id}}/estoque" class="endingpad">Estoque</a>
     <hr>
-    <a href="/product/{{$product->id}}/edit" class="btn btn-success">Editar</a>
+
+    @include('layouts.errors')
 
   </div>
 @endsection

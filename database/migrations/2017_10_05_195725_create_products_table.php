@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->double('value');
+            $table->integer('stock')->default('0');
         });
     }
 

@@ -11,7 +11,7 @@ class RegisterController extends Controller
 {
   /*
   |--------------------------------------------------------------------------
-  | Controller de Cadastros.
+  | Controller de Cadastro de Usuários
   |--------------------------------------------------------------------------
   |
   */
@@ -32,11 +32,19 @@ class RegisterController extends Controller
     //o feedback dos erros. (em inglês, sujeito a alteração).
 
     $rules = [
-      'username' => 'required|string|max:60|unique:users',
-      'password' => 'required|min:6|confirmed',
+      'username' => 'required|string|min:6|max:40|unique:users',
+      'password' => 'required|min:8|confirmed',
     ];
 
-    $this->validate(request(), $rules);
+    $messages = [
+      'required'    => 'O campo :attribute é necessário.',
+      'min' => 'O campo :attribute requer no mínimo :min dígitos',
+      'max' => 'O nome de usuário não pode ter mais de :max dígitos.',
+      'confirmed' => 'Você deve confirmar a sua senha.',
+      'unique' => 'O nome de usuário já foi utilizado.'
+    ];
+
+    $this->validate(request(), $rules, $messages);
 
     $user = User::create([
       'username' => request('username'),

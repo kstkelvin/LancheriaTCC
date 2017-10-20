@@ -7,7 +7,7 @@
     <hr>
     <br>
 
-    <form method="post" action="/product/{{$product->id}}">
+    <form method="post" action="/produto/{{$product->id}}">
       {{csrf_field()}}
       <div class="form-group">
         <label for="name">Nome do Produto</label>
