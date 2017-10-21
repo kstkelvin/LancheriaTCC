@@ -9,11 +9,13 @@
   <hr>
 
   <form method="GET" action="/clientes/pesquisar">
-    <div class="form-group">
-      <input id="search" name="search" class="form-control"
-       type="text" placeholder="Digite aqui o nome do cliente">
-      <input type="submit" value="Pesquisar">
-    </div>
+      <nav class="navbar navbar-light bg-faded">
+        <form class="form-inline">
+          <input id="search" name="search" class="form-control mr-sm-2" type="text"
+          placeholder="Nome do cliente">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
   </form>
 
   <hr>

@@ -1,18 +1,31 @@
-
-<div class="navbar navbar-dark bg-dark">
-  <div class="container d-flex justify-content-between">
-    <a href="/" class="navbar-brand">LH</a>
-    @if(Auth::check())
-      <a href="/clientes" class="navbar-brand small-font">Clientes</a>
-      <a href="/produtos" class="navbar-brand small-font">Produtos</a>
-      <a href="/venda" class="navbar-brand small-font">Nova Venda</a>
-      <span class="navbar-brand ml-auto small-font">{{'Bem vindo(a), ' . Auth::user()->username}}</span>
-      <span class="navbar-brand small-font">{{'|'}}</span>
-      <a href="/logout" class="navbar-brand small-font">Sair</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+  @if(Auth::check())
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand mr-auto ml-3" href="#">LHManager</a>
+    <a href="/logout" class="nav-link ml-auto whitecolor">Logout</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/clientes">Clientes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/produtos">Produtos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/venda">Nova Venda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sobre</a>
+        </li>
+      </ul>
     @else
-      <a href="/login" class="navbar-brand ml-auto small-font">Login</a>
-      <a href="/registrar" class="navbar-brand small-font">Cadastre-se</a>
+      <a href="/login" class="nav-link ml-auto whitecolor">Login</a>
+      <a href="/registrar" class="navbar-link whitecolor">Cadastre-se</a>
     @endif
-
   </div>
-</div>
+</nav>
