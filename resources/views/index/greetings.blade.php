@@ -8,7 +8,6 @@
       @if(Auth::check())
         <p>
           <a href="/venda/create" class="btn btn-primary">Nova Venda</a>
-          <a href="#" class="btn btn-success">Estatísticas</a>
         </p>
       @endif
     </div>

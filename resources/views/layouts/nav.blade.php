@@ -1,5 +1,9 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+
+
+
   @if(Auth::check())
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,8 +28,15 @@
         </li>
       </ul>
     @else
-      <a href="/login" class="nav-link ml-auto whitecolor">Login</a>
-      <a href="/registrar" class="navbar-link whitecolor">Cadastre-se</a>
+      <a class="navbar-brand mr-auto ml-3" href="#">LHManager</a>
+      <div class="navbar-nav navbar-right">
+        <div class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </div>
+        <div class="nav-item">
+          <a class="nav-link" href="/registrar">Cadastre-se</a>
+        </div>
+      </ul>
     @endif
   </div>
 </nav>

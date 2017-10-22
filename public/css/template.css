@@ -5,27 +5,26 @@
 }
 
 .jumbotron {
-  padding-top: 10rem;
-  padding-bottom: 6rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
   margin-bottom: 0;
-  background-color: #fff;
+  background: white;
+  width: 100%;
 }
 
-.startingpad {
-  padding-top: 1rem;
-  padding-right: 0.5rem;
-  padding-bottom: 1rem;
-}
+
 
 .pad {
   padding-right: 0.5rem;
   padding-left: 0.5rem;
 }
 
-.endingpad {
-  padding-bottom: 1rem;
-  padding-left: 0.5rem;
-  padding-top: 1rem;
+.left-padding {
+  padding-left: 1rem;
+}
+
+.right-padding {
+  padding-right: 0.5rem;
 }
 
 .heftymargins {
@@ -54,7 +53,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  padding-bottom: 10rem;
+  padding-bottom: 15rem;
+  background: white;
 }
 .footer {
   position: absolute;
@@ -74,4 +74,9 @@ body {
 
 .smallest-font-possible{
   font-size: 12px;
+}
+
+.search-tab-padding{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
