@@ -40,9 +40,17 @@ class ItemsController extends Controller
     $validator = Validator::make(request()->all(), $rules, $messages);
 
     if ($validator->fails()) {
-      return redirect('/venda/create')
+      return redirect('/venda')
       ->withErrors($validator);
     } else {
+
+      $product = Product::findOrFail(request('product_id'));
+      if($product->stock < request('amount')){
+
+        return redirect('/venda')
+        ->withErrors('O estoque é incapaz de suprir tal quantia.');
+
+      } else {
 
       Item::create([
         'client_id' => request('client_id'),
@@ -51,7 +59,12 @@ class ItemsController extends Controller
         'is_paid' => 0
       ]);
 
+      $product->stock -= request('amount');
+      $product->save();
+
       return redirect('/');
+
+    }
 
     }
 
@@ -62,7 +75,7 @@ class ItemsController extends Controller
     ->where('is_paid', '=', '0')
     ->update(['is_paid' => '1']);
 
-    return redirect('client/' . $id);
+    return redirect('cliente/' . $id);
   }
 
 }

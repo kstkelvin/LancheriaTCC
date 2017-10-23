@@ -1,12 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-
-  <div class=heftymargins>
-    <h2>Editar Produto: {{$client->name}}</h2>
+  <div class="marging-padding">
+    <div>
+      <h3>{{$client->name . " " . $client->surname}}: Editar</h3>
+    </div>
     <hr>
-    <br>
-
     <form method="post" action="/cliente/{{$client->id}}">
       {{csrf_field()}}
       <div class="form-group">
@@ -24,6 +23,7 @@
       <div class="form-group">
         <label for="setor">Setor</label>
         <select name="setor" class="form-control" id="setor" required>
+          <option value=""></option>
           <option value="Cozinha">Cozinha</option>
           <option value="Copa">Copa</option>
           <option value="Lavanderia">Lavanderia</option>
@@ -47,11 +47,9 @@
         placeholder"DDD + DDI + Número do telefone">
       </div>
 
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Adicionar</button>
+      <div class="form-group d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Editar</button>
       </div>
-
-      @include('layouts.errors')
     </form>
   </div>
 @endsection

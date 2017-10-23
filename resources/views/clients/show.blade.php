@@ -3,18 +3,16 @@
 
 @section('content')
 
-  <div class=heftymargins>
-    <h2>{{ $client->name . ' ' . $client->surname }}</h2>
-    <hr>
+  <div class="marging-padding">
+    <h3>{{ $client->name . ' ' . $client->surname }}</h3>
     {{ 'Setor: ' . $client->setor }}
     <br>
     {{ 'Telefone: ' . $client->phone_number}}
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-    <br>
-    <a href="/cliente/{{$client->id}}/editar" class="startingpad">Editar</a>
-    <a href="/cliente/{{$client->id}}/pagamento" class="endingpad">Pagamento</a>
     <hr>
+    <a href="/cliente/{{$client->id}}/editar" class="btn btn-primary mr-1">Editar</a>
+    <a href="/cliente/{{$client->id}}/pagamento" class="btn btn-success">Pagamento</a>
   </div>
   <table class="table table-striped">
     <thead>
@@ -32,8 +30,7 @@
           <td>{{ 'R$ ' . number_format($item->value, 2, ',', '.') }}</td>
           <td>{{ $item->amount }}</td>
           <td>{{ \Carbon\Carbon::parse($item->created_at)
-            ->timezone(Config::get('app.timezone'))
-            ->format('d/m/Y m:i:s') }}</td>
+            ->format('d/m/Y H:i:s') }}</td>
           </tr>
         @endforeach
       </tbody>

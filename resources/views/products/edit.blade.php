@@ -1,11 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+  <div class="marging-padding">
 
-  <div class=heftymargins>
-    <h2>{{$product->name . ': '}}Editar</h2>
-    <hr>
-    <br>
+    <div>
+      <h3>{{$product->name . ': '}}Editar</h3>
+      <hr>
+    </div>
 
     <form method="post" action="/produto/{{$product->id}}">
       {{csrf_field()}}

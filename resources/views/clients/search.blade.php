@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="heftymargins">
+  <div>
     <h2>Lista de Clientes</h2>
   </div>
   <hr>
-  <a href="/clientes/adicionar" class="btn btn-success">Novo Cliente</a>
+  <a href="/clientes/adicionar" class="btn btn-success d-flex justify-content-end">Novo Cliente</a>
   <hr>
   <hr>
   <table class="table table-striped">
