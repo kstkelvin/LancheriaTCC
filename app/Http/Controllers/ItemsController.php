@@ -33,8 +33,10 @@ class ItemsController extends Controller
     );
 
     $messages = [
-      'required'    => 'O campo :attribute é necessário.',
-      'numeric'    => 'O campo :attribute só aceita números'
+      'client_id.required'    => 'Selecione um cliente.',
+      'product_id.required'    => 'Selecione um produto.',
+      'amount.required'    => 'A quantidade é necessária.',
+      'numeric'    => 'O campo quantidade só aceita números.'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
@@ -52,19 +54,19 @@ class ItemsController extends Controller
 
       } else {
 
-      Item::create([
-        'client_id' => request('client_id'),
-        'product_id' => request('product_id'),
-        'amount' => request('amount'),
-        'is_paid' => 0
-      ]);
+        Item::create([
+          'client_id' => request('client_id'),
+          'product_id' => request('product_id'),
+          'amount' => request('amount'),
+          'is_paid' => 0
+        ]);
 
-      $product->stock -= request('amount');
-      $product->save();
+        $product->stock -= request('amount');
+        $product->save();
 
-      return redirect('/');
+        return redirect('/');
 
-    }
+      }
 
     }
 

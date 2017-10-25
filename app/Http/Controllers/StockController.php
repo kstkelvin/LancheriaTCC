@@ -26,8 +26,8 @@ class StockController extends Controller
       );
 
       $messages = [
-      'required'    => 'O campo :attribute é necessário.',
-      'numeric'    => 'O campo :attribute só aceita números'
+      'required'    => 'O estoque não pode ficar em branco.',
+      'numeric'    => 'O estoque só aceita dígitos numéricos.'
       ];
 
       $validator = Validator::make(request()->all(), $rules, $messages);

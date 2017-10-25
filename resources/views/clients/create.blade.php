@@ -18,8 +18,8 @@
       </div>
       <div class="form-group">
         <label for="setor">Setor</label>
-        <select name="setor" class="form-control" id="setor" required>
-          <option value="" placeholder="Setor"></option>
+        <select name="setor" class="form-control" id="setor">
+          <option value="" placeholder="Setor" required></option>
           <option value="Cozinha">Cozinha</option>
           <option value="Copa">Copa</option>
           <option value="Lavanderia">Lavanderia</option>

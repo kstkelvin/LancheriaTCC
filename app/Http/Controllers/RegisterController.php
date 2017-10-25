@@ -37,9 +37,11 @@ class RegisterController extends Controller
     ];
 
     $messages = [
-      'required'    => 'O campo :attribute é necessário.',
-      'min' => 'O campo :attribute requer no mínimo :min dígitos',
-      'max' => 'O nome de usuário não pode ter mais de :max dígitos.',
+      'username.required'    => 'O nome de usuário é necessário.',
+      'password.required'    => 'A senha é necessária.',
+      'username.min' => 'O nome de usuário requer no mínimo seis dígitos.',
+      'password.min' => 'A senha requer no mínimo oito dígitos.',
+      'max' => 'O nome de usuário não pode ter mais de quarenta dígitos.',
       'confirmed' => 'Você deve confirmar a sua senha.',
       'unique' => 'O nome de usuário já foi utilizado.'
     ];

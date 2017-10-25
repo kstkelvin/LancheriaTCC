@@ -35,8 +35,8 @@
 .marging-padding {
   padding-top: 2rem;
   padding-bottom: 2rem;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin: 1%;
+  padding: 1%;
   margin-bottom: 2%;
   background: white;
   width: 100%;
@@ -81,6 +81,10 @@ body {
 
 .whitecolor{
   color: #ffffff;
+}
+
+.nbc{
+  font-size: 14px;
 }
 
 .smfp{

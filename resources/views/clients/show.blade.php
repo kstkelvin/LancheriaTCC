@@ -41,8 +41,11 @@
             <form action="/venda/{{$item->id}}/excluir" method="POST">
               {{csrf_field()}}
               <input type="hidden" name="id" value="{{$item->id}}" />
-              <button type="submit" class="linkbutton">Deletar</button>
-            </form></td>
+              <button type="submit" class="linkbutton">
+                <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
+              </button>
+            </form>
+          </td>
           </tr>
         @endforeach
       </tbody>

@@ -28,6 +28,7 @@
           <th>Nome</th>
           <th>Setor</th>
           <th>Telefone</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -37,6 +38,24 @@
               $client->surname }}</a></td>
               <td>{{ $client->setor }}</td>
               <td>{{ $client->phone_number }}</td>
+              <td>
+                <div class="form-inline">
+                  <form action="/cliente/{{$client->id}}/editar" method="GET">
+                    {{csrf_field()}}
+                    <button type="submit" class="linkbutton">
+                      <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>
+                    </button>
+                  </form>
+                  <form action="/cliente/{{$client->id}}/excluir" method="POST">
+                    {{csrf_field()}}
+                    <input type="hidden" name="id" value="{{$client->id}}" />
+                    <button type="submit" class="linkbutton">
+                      <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
+                    </button>
+                  </form>
+                </div>
+
+              </td>
             </tr>
           @endforeach
         </tbody>

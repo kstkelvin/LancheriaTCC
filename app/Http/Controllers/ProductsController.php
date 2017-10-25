@@ -56,8 +56,9 @@ class ProductsController extends Controller
     );
 
     $messages = [
-    'required'    => 'O campo :attribute é necessário.',
-    'numeric'    => 'O campo :attribute só aceita números'
+      'name.required'    => 'O nome é necessário.',
+      'value.required'    => 'O preço é necessário.',
+      'numeric'    => 'O preço só aceita digitos numerais.'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
@@ -92,8 +93,9 @@ class ProductsController extends Controller
     );
 
     $messages = [
-    'required'    => 'O campo :attribute é necessário.',
-    'numeric'    => 'O campo :attribute só aceita números'
+      'name.required'    => 'O nome é necessário.',
+      'value.required'    => 'O preço é necessário.',
+      'numeric'    => 'O preço só aceita digitos numerais.'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
@@ -115,10 +117,10 @@ class ProductsController extends Controller
   }
 
 
-    public function destroy($id){
-      Product::destroy($id);
-      return redirect('/produtos');
-    }
+  public function destroy($id){
+    Product::destroy($id);
+    return redirect('/produtos');
+  }
 
 
 

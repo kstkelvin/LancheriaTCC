@@ -50,15 +50,16 @@ class ClientsController extends Controller
     );
 
     $messages = [
-      'required'    => 'O campo :attribute é necessário.',
-      'numeric'    => 'O campo :attribute só aceita números'
+      'name.required'    => 'O nome é um atributo necessário.',
+      'setor.required'    => 'O setor é um atributo necessário.',
+      'numeric'    => 'O número de telefone só aceita digitos numerais.'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
 
 
     if ($validator->fails()) {
-      return redirect('clientes')
+      return redirect('clientes/adicionar')
       ->withErrors($validator);
     }
     else{
@@ -127,8 +128,9 @@ class ClientsController extends Controller
     );
 
     $messages = [
-      'required'    => 'O campo :attribute é necessário.',
-      'numeric'    => 'O campo :attribute só aceita números'
+      'name.required'    => 'O nome é um atributo necessário.',
+      'setor.required'    => 'O setor é um atributo necessário.',
+      'numeric'    => 'O número de telefone só aceita digitos numerais.'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
