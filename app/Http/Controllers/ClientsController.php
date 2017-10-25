@@ -28,7 +28,8 @@ class ClientsController extends Controller
   public function search()
   {
     $clients = Client::where('name', 'like', '%'. request()->search .'%')
-      ->orderBy('name')->get();
+    ->orWhere('surname', 'like', '%'. request()->search .'%')
+    ->orderBy('name')->get();
 
     return view('clients.index', compact('clients'));
   }
@@ -49,8 +50,8 @@ class ClientsController extends Controller
     );
 
     $messages = [
-    'required'    => 'O campo :attribute é necessário.',
-    'numeric'    => 'O campo :attribute só aceita números'
+      'required'    => 'O campo :attribute é necessário.',
+      'numeric'    => 'O campo :attribute só aceita números'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
@@ -81,18 +82,19 @@ class ClientsController extends Controller
   {
     $client = Client::findOrFail($id);
 
-      $items = Item::join('products', 'products.id', '=', 'items.product_id')
-      ->select('products.name as name',
-      'products.value as value',
-      'items.amount as amount',
-      'items.created_at')
-      ->where('client_id', '=', $id)
-      ->where('is_paid', '=', '0')
-      ->orderBy('updated_at')
-      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-      ->get();
-      $total = $this->total($client->id);
-      return view('clients.show', compact('client', 'items', 'total'));
+    $items = Item::join('products', 'products.id', '=', 'items.product_id')
+    ->select('products.name as name',
+    'products.value as value',
+    'items.amount as amount',
+    'items.created_at',
+    'items.id as id')
+    ->where('client_id', '=', $id)
+    ->where('is_paid', '=', '0')
+    ->orderBy('updated_at')
+    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+    ->get();
+    $total = $this->total($client->id);
+    return view('clients.show', compact('client', 'items', 'total'));
 
   }
 
@@ -125,8 +127,8 @@ class ClientsController extends Controller
     );
 
     $messages = [
-    'required'    => 'O campo :attribute é necessário.',
-    'numeric'    => 'O campo :attribute só aceita números'
+      'required'    => 'O campo :attribute é necessário.',
+      'numeric'    => 'O campo :attribute só aceita números'
     ];
 
     $validator = Validator::make(request()->all(), $rules, $messages);
@@ -237,4 +239,11 @@ class ClientsController extends Controller
     }
     return false;
   }
+
+  public function destroy($id)
+  {
+    Client::destroy($id);
+    return redirect('/clientes');
+  }
+
 }

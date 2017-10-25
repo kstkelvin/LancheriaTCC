@@ -1,7 +1,15 @@
 .navbar {
   margin-bottom: 0;
   width: 100%;
-  position: fixed;
+}
+
+.linkbutton {
+  background:none!important;
+  color:inherit;
+  border:none;
+  padding:0!important;
+  font: inherit;
+  cursor: pointer;
 }
 
 .jumbotron {
@@ -25,7 +33,7 @@
 }
 
 .marging-padding {
-  padding-top: 6rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
   margin-left: 2%;
   margin-right: 2%;

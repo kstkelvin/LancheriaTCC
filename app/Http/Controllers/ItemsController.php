@@ -78,4 +78,9 @@ class ItemsController extends Controller
     return redirect('cliente/' . $id);
   }
 
+  public function destroy($id){
+    Item::destroy($id);
+    return redirect('clientes');
+  }
+
 }

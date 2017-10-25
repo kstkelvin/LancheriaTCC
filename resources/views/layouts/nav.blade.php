@@ -1,7 +1,6 @@
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-  <div class="navbar-header">
-    <a href="/" class="navbar-brand mr-auto ml-3">LHManager</a>
-  </div>
+
   <div>
     @if(Auth::check())
       <span class="navbar-link whitecolor ml-auto smfp">{{Auth::user()->username . ", "}}</span>
@@ -22,4 +21,4 @@
       </div>
     @endif
   </div>
-<div>
+</nav>

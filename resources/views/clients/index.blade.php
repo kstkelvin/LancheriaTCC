@@ -6,13 +6,22 @@
       <h2>Lista de Clientes</h2>
     </div>
     <hr>
-    <form method="GET" class="form-group form-inline" action="/clientes/pesquisar">
-      <input id="search" name="search" class="form-control mr-sm-2" type="text"
-      placeholder="Digite o nome do cliente">
-      <button type="submit" class="btn btn-outline-success">
-        Pesquisar
-      </button>
-    </form>
+
+
+    <div class="container">
+      <div class="row">
+        <form method="GET" class="input-group" action="/clientes/pesquisar">
+          <input type="text" id="search" name="search" class="form-control"
+          placeholder="Digite o nome do cliente" />
+          <span class="input-group-btn">
+            <button class="btn btn-success" type="button">
+              <span class="fa fa-search fa-fw" aria-hidden="true"></span>
+            </button>
+          </span>
+        </form>
+      </div>
+    </div>
+    <br>
     <table class="table table-striped">
       <thead>
         <tr>

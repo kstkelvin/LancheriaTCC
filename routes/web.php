@@ -33,7 +33,7 @@ Route::post('/produtos', 'productsController@store');//Create -- novo produto
 Route::get('/produto/{product}/editar','productsController@edit');//editing -- produto selecionado
 Route::get('/produto/{product}', 'productsController@show');//Search -- produto selecionado
 Route::post('/produto/{product}', 'productsController@update');//Update -- produto selecionado
-Route::delete('produto/{product}', 'productsController@delete');//Delete -- produto selecionado
+Route::post('produto/{product}/excluir', 'productsController@destroy');//Delete -- produto selecionado
 
 
 //--------------------------Clientes-(Será modificada após a primeira sprint)-//
@@ -44,7 +44,7 @@ Route::post('/clientes', 'clientsController@store');
 Route::get('/cliente/{client}/editar', 'clientsController@edit');
 Route::get('/cliente/{client}', 'clientsController@show');//Wildcard/Joker
 Route::post('/cliente/{client}', 'clientsController@update');
-Route::delete('/cliente/{client}', 'clientsController@delete');
+Route::post('/cliente/{client}/excluir', 'clientsController@destroy');
 
 
 //--------------------------Operação de Venda-(fase de testes)-------------//
@@ -52,6 +52,7 @@ Route::delete('/cliente/{client}', 'clientsController@delete');
 Route::get('/venda', 'itemsController@create');
 Route::post('/venda', 'itemsController@store');
 Route::get('/cliente/{client}/pagamento', 'itemsController@edit');
+Route::post('/venda/{client}/excluir', 'ItemsController@destroy');
 
 //-------------------------Regras de Negócio-------------------------------//
 

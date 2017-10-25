@@ -7,6 +7,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand mr-auto ml-3" href="#">LHManager</a>
+    <span class="navbar-link whitecolor ml-auto smfp">{{Auth::user()->username . ", "}}</span>
+    <a href="/logout" class=" whitecolor ml-1 mr-2 smfp">Sair</a>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active d-flex justify-content-center">
@@ -26,8 +28,7 @@
         </li>
       </ul>
     </div>
-    <span class="navbar-link whitecolor ml-auto smfp">{{Auth::user()->username . ", "}}</span>
-    <a href="/logout" class=" whitecolor ml-1 mr-2 smfp">Sair</a>
+
   @else
     <div class="navbar-nav mr-auto">
       <a href="/" class="navbar-brand">LHManager</a>
