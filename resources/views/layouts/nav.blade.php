@@ -9,8 +9,9 @@
       </button>
       <span class="navbar-brand">LHManager</span>
     </div>
-    @if(Auth::check())
-      <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+
+    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+      @if(Auth::check())
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
           <li><a href="/clientes">Clientes</a></li>
@@ -36,7 +37,7 @@
           <li><a href="/login">Login</a></li>
           <li><a href="/registrar">Cadastre-se</a></li>
         </ul>
-      </div>
+      </div>            
     @endif
   </div>
 </nav>
