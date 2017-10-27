@@ -1405,11 +1405,11 @@ a.bg-warning:focus {
   background-color: #e45c00;
 }
 .bg-danger {
-  background-color: #ff0039;
+  background-color: #ffffff;
 }
 a.bg-danger:hover,
 a.bg-danger:focus {
-  background-color: #cc002e;
+  background-color: #ffffff;
 }
 .page-header {
   padding-bottom: 9.5px;
@@ -4964,7 +4964,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #e6e6e6;
+  background-color: white;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5093,7 +5093,7 @@ a.thumbnail.active {
   color: #e6e6e6;
 }
 .alert-danger {
-  background-color: #ff0039;
+  background-color: #d70000;
   border-color: #f0005e;
   color: #ffffff;
 }

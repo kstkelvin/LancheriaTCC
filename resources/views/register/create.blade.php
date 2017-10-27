@@ -1,37 +1,46 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="marging-padding">
-    <section>
-      <h3>Cadastro</h3>
-      <hr>
-    </section>
-    <form method="POST" action="/registrar">
-      {{ csrf_field() }}
+  <h1>Cadastro</h1>
+  <hr>
+  <form method="POST" action="/registrar" class="form-horizontal">
+    {{ csrf_field() }}
+    <fieldset>
 
       <div class="form-group">
-        <label for="username">Nome de usuário</label>
-        <input type="text" class="form-control" id="userame"
-        name="username" required>
+        <label for="username" class="col-lg-2 control-label">Nome de usuário</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="userame"
+          name="username" required>
+          <br>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password"
-        name="password" minlength="8" required>
+        <label for="password" class="col-lg-2 control-label">Senha</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="password"
+          name="password" minlength="8" required>
+          <br>
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="password_confirmation">Confirmar Senha</label>
-        <input type="password" class="form-control" id="password_confirmation"
-        name="password_confirmation" maxlenght="40" required>
+        <label for="password_confirmation" class="col-lg-2 control-label">Confirmação da Senha</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="password_confirmation"
+          name="password_confirmation" maxlenght="40" required>
+          <br>
+        </div>
       </div>
 
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Cadastrar</button>
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
       </div>
 
-    </form>
-  </div>
-
+    </fieldset>
+  </form>
 @endsection

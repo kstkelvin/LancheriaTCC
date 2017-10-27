@@ -3,7 +3,7 @@
 @section('content')
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">LH Manager</h1>
+      <h1>LH Manager</h1>
       <p class="lead text-muted">Gerenciamento da Lancheria do Hospital São Jerônimo</p>
       @if(Auth::check())
         <p>

@@ -4,21 +4,26 @@
 @section('content')
 
   <div class="marging-padding">
-    <h3>{{ $client->name . ' ' . $client->surname }}</h3>
+    <h1>Cliente: {{ $client->name . ' ' . $client->surname }}</h1>
+    <hr>
     {{ 'Setor: ' . $client->setor }}
     <br>
     {{ 'Telefone: ' . $client->phone_number}}
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-    <hr>
-
     <form action="/cliente/{{$client->id}}/excluir" method="POST">
       {{csrf_field()}}
-      <a href="/cliente/{{$client->id}}/editar" class="btn btn-primary">Editar</a>
-      <a href="/cliente/{{$client->id}}/pagamento" class="btn btn-success">Pagamento</a>
+      <a href="/cliente/{{$client->id}}/editar" class="btn linkbutton">
+        <i class="fa fa-fw fa-pencil"></i></a>
+      <a href="/cliente/{{$client->id}}/pagamento" class="btn linkbutton">
+        <i class="fa fa-fw fa-money"></i></a>
       <input type="hidden" name="id" value="{{$client->id}}" />
-      <button type="submit" class="btn btn-danger">Deletar</button>
+      <button type="submit" class="btn linkbutton">
+        <i class="fa fa-fw fa-trash"></i>
+      </button>
     </form>
+    <hr>
+
   </div>
   <table class="table table-striped">
     <thead>

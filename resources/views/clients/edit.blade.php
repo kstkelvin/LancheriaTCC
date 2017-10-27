@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <h1>Editar Cliente: {{$client->name . " " . $client->surname}}</h1>
+  <h1>Cliente: {{$client->name . " " . $client->surname}} - Editar</h1>
   <hr>
   <form method="post" action="/cliente/{{$client->id}}">
     {{csrf_field()}}
@@ -48,7 +48,7 @@
       </div>
 
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2 control-label">Telefone</label>
+        <label for="phone_number" class="col-lg-2 control-label">Telefone</label>
         <div class="col-lg-10">
           <input type="number" class="form-control" id="phone_number" name="phone_number"
           placeholder="(Opcional)">

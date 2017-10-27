@@ -1,24 +1,41 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="marging-padding">
-    <div>
-      <h3>Entrar</h3>
-      <hr>
-    </div>
-    <form method="post" action="/login">
-      {{ csrf_field() }}
+
+  <h1>Login</h1>
+  <hr>
+
+  <form method="post" action="/login">
+    {{ csrf_field() }}
+
+    <fieldset>
+
       <div class="form-group">
-        <label for="username">Nome de Usuário</label>
-        <input type="text" class="form-control" id="username" name="username">
+        <label for="username" class="col-lg-2 control-label">Nome de usuário</label>
+        <div class="col-lg-10">
+          <input type="text" class="form-control" id="userame"
+          name="username" required>
+          <br>
+        </div>
       </div>
+
       <div class="form-group">
-        <label for="password">Senha</label>
-        <input type="password" class="form-control" id="password" name="password">
+        <label for="password" class="col-lg-2 control-label">Senha</label>
+        <div class="col-lg-10">
+          <input type="password" class="form-control" id="password"
+          name="password" minlength="8" required>
+          <br>
+        </div>
       </div>
+
       <div class="form-group">
-        <button type="submit" class="btn btn-primary">Login</button>
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
       </div>
-    </form>
-  </div>
+
+    </fieldset>
+  </form>
+
 @endsection

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Edição de Produtos: {{$product->name}}</h1>
+<h1>Produto: {{$product->name}} - Editar</h1>
 <hr>
 <form method="post" action="/produto/{{$product->id}}" class="form-horizontal">
   <fieldset>

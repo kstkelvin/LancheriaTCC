@@ -2,14 +2,15 @@
 
 @section('content')
   <div class="marging-padding">
-    <h2>Lista de Produtos</h2>
-    <br>
-    <table class="table table-striped">
+    <h1>Lista de Produtos</h1>
+    <hr>
+    <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Preço</th>
           <th>Estoque</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -20,17 +21,21 @@
             <td>{{'R$ ' . number_format($product->value, 2, ',', '.')}}</td>
             <td>{{$product->stock}}</td>
             <td>
-              <div class="form-inline">
+              <div class="form-group">
                 <form action="/produto/{{$product->id}}/editar" method="GET">
                   {{csrf_field()}}
-                  <button type="submit" class="linkbutton">
+                  <button type="submit" class="linkbutton" target="blank" title="Editar">
                     <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>
                   </button>
                 </form>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
                 <form action="/produto/{{$product->id}}/excluir" method="POST">
                   {{csrf_field()}}
-                  <input type="hidden" name="id" value="{{$product->id}}" />
-                  <button type="submit" class="linkbutton">
+                  <input type="hidden" name="id" value="{{$product->id}}"  />
+                  <button type="submit" class="linkbutton" target="blank" title="Excluir">
                     <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
                   </button>
                 </form>

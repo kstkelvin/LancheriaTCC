@@ -2,11 +2,9 @@
 
 @section('content')
   <div class="marging-padding">
-    <div>
-      <h2>Lista de Clientes</h2>
-    </div>
-    <hr>
 
+    <h1>Lista de Clientes</h1>
+    <hr>
 
     <div class="container">
       <div class="row">
@@ -22,12 +20,13 @@
       </div>
     </div>
     <br>
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Setor</th>
           <th>Telefone</th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
@@ -39,22 +38,25 @@
               <td>{{ $client->setor }}</td>
               <td>{{ $client->phone_number }}</td>
               <td>
-                <div class="form-inline">
+                <div class="form-group">
                   <form action="/cliente/{{$client->id}}/editar" method="GET">
                     {{csrf_field()}}
-                    <button type="submit" class="linkbutton">
+                    <button type="submit" class="linkbutton" target="blank" title="Editar">
                       <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>
                     </button>
                   </form>
+                </div>
+              </td>
+              <td>
+                <div class="form-group">
                   <form action="/cliente/{{$client->id}}/excluir" method="POST">
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$client->id}}" />
-                    <button type="submit" class="linkbutton">
+                    <button type="submit" class="linkbutton" target="blank" title="Excluir">
                       <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
                     </button>
                   </form>
                 </div>
-
               </td>
             </tr>
           @endforeach
@@ -62,7 +64,7 @@
       </table>
       <hr>
       <div class="d-flex justify-content-end">
-        <a href="/clientes/adicionar" class="btn btn-success">Novo Cliente</a>
+        <a href="/clientes/adicionar" class="btn btn-success">Adicionar Cliente</a>
       </div>
     </div>
   @endsection

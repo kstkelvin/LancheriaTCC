@@ -1,35 +1,56 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="heftymargins">
-    <h2>Nova Venda</h2>
-  </div>
+
+  <h1>Nova Venda</h1>
+  <hr>
+
   <form method="post" action="/venda">
     {{ csrf_field() }}
 
-    <div class="form-group">
-      <label for="setor">Cliente</label>
-      <select name="client_id" class="form-control" id="client_id" required>
-        @foreach ($clients as $client)
-          <option value="{{$client->id}}">{{$client->name}}</option>
-        @endforeach
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="setor">Produto</label>
-      <select name="product_id" class="form-control" id="product_id" required>
-        @foreach ($products as $product)
-          <option value="{{$product->id}}">{{$product->name}}</option>
-        @endforeach
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="amount">Quantia</label>
-      <input class="form-control" type="number" id="amount" name="amount">
-    </div>
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary" name="button">Finalizar</button>
-    </div>
+    <fieldset>
+
+      <div class="form-group">
+        <label for="client_id" class="col-lg-2 control-label">Cliente</label>
+        <div class="col-lg-10">
+          <select name="client_id" class="form-control" id="client_id" required>
+            <option disabled selected value>Selecione o cliente</option>
+            @foreach ($clients as $client)
+              <option value="{{$client->id}}">{{$client->name}}</option>
+            @endforeach
+          </select>
+          <br>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="product_id" class="col-lg-2 control-label">Produto</label>
+        <div class="col-lg-10">
+          <select name="product_id" class="form-control" id="product_id" required>
+            <option disabled selected value>Selecione o produto</option>
+            @foreach ($products as $product)
+              <option value="{{$product->id}}">{{$product->name}}</option>
+            @endforeach
+          </select>
+          <br>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount" class="col-lg-2 control-label">Quantia</label>
+        <div class="col-lg-10">
+          <input class="form-control" type="number" id="amount" name="amount">
+          <br>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="reset" class="btn btn-default">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </div>
+    </fieldset>
   </form>
 
 @endsection
