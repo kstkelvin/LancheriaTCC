@@ -1,20 +1,27 @@
 @extends('layouts.master')
-
 @section('content')
-
-  <div class="marging-padding">
-    <h2>{{$product->name . ': '}}Estoque</h2>
-    <br>
-    <form method="post" action="/produto/{{$product->id}}/armazem">
+    <h1>Produto: {{$product->name}} - Adicionar ao estoque</h1>
+    <hr>
+    <form method="post" action="/produto/{{$product->id}}/armazem" class="form-horizontal">
       {{csrf_field()}}
-      <div class="form-group">
-        <label for="stock">Estoque</label>
-        <input type="number" class="form-control" id="stock"
-        placeholder="{{$product->stock}}" name="stock" required>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Adicionar Estoque</button>
-      </div>
+
+      <fieldset>
+        <div class="form-group">
+          <label for="stock" class="col-lg-2 control-label">Quantia</label>
+          <div class="col-lg-10">
+            <input type="number" class="form-control" id="stock"
+            name="stock" required>
+            <br>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-lg-10 col-lg-offset-2">
+            <button type="reset" class="btn btn-default">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </div>
+      </fieldset>
     </form>
   </div>
 @endsection

@@ -4,7 +4,7 @@
 @section('content')
 
   <div class="marging-padding">
-    <h3>Produto: {{$product->name}}</h3>
+    <h2>Produto: {{$product->name}}</h2>
     {{'Preço: R$ ' . number_format($product->value, 2, ',', '.')}}
     <p>Estoque: {{$product->stock}}</p>
     <hr>

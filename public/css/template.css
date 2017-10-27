@@ -1,7 +1,4 @@
-.navbar {
-  margin-bottom: 0;
-  width: 100%;
-}
+
 
 .linkbutton {
   background:none!important;
@@ -10,48 +7,6 @@
   padding:0!important;
   font: inherit;
   cursor: pointer;
-}
-
-.jumbotron {
-  padding-top: 8rem;
-  margin-bottom: 0;
-  background: white;
-  width: 100%;
-}
-
-.pad {
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-}
-
-.left-padding {
-  padding-left: 1rem;
-}
-
-.right-padding {
-  padding-right: 0.5rem;
-}
-
-.marging-padding {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin: 1%;
-  padding: 1%;
-  margin-bottom: 2%;
-  background: white;
-  width: 100%;
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
 }
 
 
@@ -81,17 +36,4 @@ body {
 
 .whitecolor{
   color: #ffffff;
-}
-
-.nbc{
-  font-size: 14px;
-}
-
-.smfp{
-  font-size: 10px;
-}
-
-.search-tab-padding{
-  padding-bottom: 1rem;
-  padding-top: 1rem;
 }

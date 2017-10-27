@@ -4,10 +4,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-nav mr-auto">
-      <a href="/" class="navbar-brand">LHManager</a>
+      <a href="/" class="navbar-brand ml-2">LHManager</a>
     </div>
     <div class="navbar-nav ml-auto navbar-right">
-
+      <a class="nav-link active" href="/">{{Auth::user()->username}}</a>
     </div>
     <div class="navbar-nav">
       <div class="nav-item">
@@ -16,32 +16,25 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active d-flex justify-content-center">
-          <a class="nav-link" href="/">{{Auth::user()->username}}<span class="sr-only">(current)</span></a>
-          <li class="dropdown nav-item d-flex justify-content-center">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-            </ul>
-          </li>
-        </li>
-        <li class="nav-item d-flex justify-content-center">
+        <li class="nav-item">
           <a class="nav-link" href="/clientes">Clientes</a>
         </li>
-        <li class="nav-item d-flex justify-content-center">
+        <li class="nav-item">
           <a class="nav-link" href="/produtos">Produtos</a>
         </li>
-        <li class="nav-item d-flex justify-content-center">
+        <li class="nav-item">
           <a class="nav-link" href="/venda">Nova Venda</a>
         </li>
-        <li class="nav-item d-flex justify-content-center">
+        <li class="nav-item">
           <a class="nav-link" href="#">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <span class="nav-link"></span>
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item d-flex justify-content-center">
-          <span class="nav-link mr-1"></span>
-          <a class="nav-link" href="/logout">Sair</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
         </li>
       </ul>
     </div>
@@ -51,12 +44,12 @@
     </div>
     <div class="navbar-nav ml-auto">
       <div class="nav-item">
-        <a href="/login" class="nav-link smfp">Login</a>
+        <a href="/login" class="nav-link">Login</a>
       </div>
     </div>
     <div class="navbar-nav">
       <div class="nav-item">
-        <a href="/registrar" class="nav-link ml-2 smfp">Cadastre-se</a>
+        <a href="/registrar" class="nav-link ml-2">Cadastre-se</a>
       </div>
     </div>
   @endif

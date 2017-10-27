@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
+use App\Client;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -13,11 +19,22 @@ class HomeController extends Controller
   */
   public function index()
   {
-
     return view('index.greetings');
 
     //
   }
+
+  //public function debts()
+  //{
+  //  $debts = Item::join('clients', 'clients.id', '=', 'items.client_id')
+  //  ->select('clients.name as name')
+  //  ->where('client_id', '=', 'items.client_id')
+  //  ->where('is_paid', '=', '0')
+  //  ->getQuery()
+  //  ->get();
+
+  //  return $debts;
+  //}
 
   /**
   * Show the form for creating a new resource.

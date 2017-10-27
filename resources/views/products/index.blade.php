@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="marging-padding">
-    <h3>Lista de Produtos</h3>
+    <h2>Lista de Produtos</h2>
     <br>
     <table class="table table-striped">
       <thead>
