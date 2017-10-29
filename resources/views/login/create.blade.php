@@ -5,9 +5,8 @@
   <h1>Login</h1>
   <hr>
 
-  <form method="post" action="/login">
+  <form method="post" action="/login"  class="form-horizontal">
     {{ csrf_field() }}
-
     <fieldset>
 
       <div class="form-group">
@@ -34,7 +33,6 @@
           <button type="submit" class="btn btn-primary">Entrar</button>
         </div>
       </div>
-
     </fieldset>
   </form>
 

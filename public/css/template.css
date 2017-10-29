@@ -9,6 +9,16 @@
   cursor: pointer;
 }
 
+.linkbutton:hover {
+  color:gray;
+
+}
+
+.linkmargin {
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
 
 html {
   position: relative;
@@ -29,11 +39,15 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
-  background-color: #202323;
+  background-color: #222222;
   font-size: 10px;
   text-align: center;
 }
 
 .whitecolor{
   color: #ffffff;
+}
+
+.button-panel {
+  float:left; /* right */
 }

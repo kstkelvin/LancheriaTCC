@@ -24,6 +24,8 @@ Route::post('/registrar', 'RegisterController@store');//direciona os dados para 
 Route::get('/login', 'LoginController@create')->name('login');//redireciona para a tela de login
 Route::post('/login', 'LoginController@store');//autentica e loga o usuário
 Route::get('/logout', 'LoginController@destroy');//logout sem confirmação(sujeito a modificações)
+Route::get('/editar', 'UserController@edit');//tela de edição - nome e sobrenome apenas
+Route::post('/editar', 'UserController@update');//edita nome e sobrenome do cliente (sujeito a modificações)
 
 //----------------------------Produtos-----------------------------//
 

@@ -3,7 +3,7 @@
 
 @section('content')
 
-  <div class="marging-padding">
+  <div>
     <h1>Cliente: {{ $client->name . ' ' . $client->surname }}</h1>
     <hr>
     {{ 'Setor: ' . $client->setor }}
@@ -11,20 +11,29 @@
     {{ 'Telefone: ' . $client->phone_number}}
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-    <form action="/cliente/{{$client->id}}/excluir" method="POST">
-      {{csrf_field()}}
-      <a href="/cliente/{{$client->id}}/editar" class="btn linkbutton">
-        <i class="fa fa-fw fa-pencil"></i></a>
-      <a href="/cliente/{{$client->id}}/pagamento" class="btn linkbutton">
-        <i class="fa fa-fw fa-money"></i></a>
-      <input type="hidden" name="id" value="{{$client->id}}" />
-      <button type="submit" class="btn linkbutton">
-        <i class="fa fa-fw fa-trash"></i>
-      </button>
-    </form>
-    <hr>
+
+    <div class="form-group">
+      <a href="/cliente/{{$client->id}}/editar" class="btn btn-success linkbutton linkmargin button-panel" title="Editar">
+        <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>Editar
+      </a>
+
+      <form action="/cliente/{{$client->id}}/excluir" method="POST">
+        {{csrf_field()}}
+        <input type="hidden" name="id" value="{{$client->id}}" />
+        <button type="submit" class="btn btn-success linkbutton linkmargin button-panel" title="Excluir">
+          <span class="fa fa-trash fa-fw" aria-hidden="true"></span>Excluir
+        </button>
+      </form>
+      <a href="/cliente/{{$client->id}}/pagamento" class="btn btn-success linkbutton linkmargin button-panel" title="Pagamento">
+        <span class="fa fa-money fa-fw" aria-hidden="true"></span>Pagamento
+      </a>
+    </div>
+
+
 
   </div>
+  <br>
+  <hr>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -47,12 +56,13 @@
               {{csrf_field()}}
               <input type="hidden" name="id" value="{{$item->id}}" />
               <button type="submit" class="linkbutton">
-                <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
+                <span class="fa fa-trash fa-fw" aria-hidden="true" target="blank"
+                title="Excluir"></span>
               </button>
             </form>
           </td>
-          </tr>
-        @endforeach
-      </tbody>
-    </table>
-  @endsection
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
+@endsection

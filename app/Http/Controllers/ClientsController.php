@@ -65,7 +65,7 @@ class ClientsController extends Controller
     else{
       $numero_formatado = $this->formatar_telefone_br(request()->get('phone_number'));
       if($numero_formatado == "0"){
-        $numero_formatado = "Não Consta";
+        $numero_formatado = "-";
       }
       $client = Client::create([
         'name' => request('name'),

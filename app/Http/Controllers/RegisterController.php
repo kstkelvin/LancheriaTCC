@@ -33,15 +33,20 @@ class RegisterController extends Controller
 
     $rules = [
       'username' => 'required|string|min:6|max:40|unique:users',
+      'name' => 'required|string|max:20',
+      'surname' => 'nullable|string|max:50',
       'password' => 'required|min:8|confirmed',
     ];
 
     $messages = [
       'username.required'    => 'O nome de usuário é necessário.',
       'password.required'    => 'A senha é necessária.',
+      'name.required'    => 'Especifique o seu nome',
+      'name.max' => 'O nome não pode ter mais de trinta dígitos.',
+      'surname.max' => 'O sobrenome ultrapassou a quantia tolerada de dígitos.',
       'username.min' => 'O nome de usuário requer no mínimo seis dígitos.',
       'password.min' => 'A senha requer no mínimo oito dígitos.',
-      'max' => 'O nome de usuário não pode ter mais de quarenta dígitos.',
+      'username.max' => 'O nome de usuário não pode ter mais de quarenta dígitos.',
       'confirmed' => 'Você deve confirmar a sua senha.',
       'unique' => 'O nome de usuário já foi utilizado.'
     ];
@@ -50,6 +55,8 @@ class RegisterController extends Controller
 
     $user = User::create([
       'username' => request('username'),
+      'name' => request('name'),
+      'surname' => request('surname'),
       'password' => bcrypt(request('password'))
     ]);
 

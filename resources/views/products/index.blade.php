@@ -1,9 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="marging-padding">
+  <div>
     <h1>Lista de Produtos</h1>
     <hr>
+    <div>
+      <a href="/produtos/adicionar" class="btn btn-success linkbutton" title="Adicionar Produto">
+        <span class="fa fa-plus fa-fw" aria-hidden="true"></span>Adicionar Produto</a>
+    </div>
+    <br>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -21,14 +26,8 @@
             <td>{{'R$ ' . number_format($product->value, 2, ',', '.')}}</td>
             <td>{{$product->stock}}</td>
             <td>
-              <div class="form-group">
-                <form action="/produto/{{$product->id}}/editar" method="GET">
-                  {{csrf_field()}}
-                  <button type="submit" class="linkbutton" target="blank" title="Editar">
-                    <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>
-                  </button>
-                </form>
-              </div>
+              <a href="/produto/{{$product->id}}/editar" class="btn btn-success linkbutton" title="Editar">
+                <span class="fa fa-pencil fa-fw" aria-hidden="true"></span></a>
             </td>
             <td>
               <div class="form-group">
@@ -45,9 +44,5 @@
         @endforeach
       </tbody>
     </table>
-    <hr>
-    <div class="d-flex justify-content-end">
-      <a href="/produtos/adicionar" class="btn btn-success">Adicionar Produto</a>
-    </div>
   </div>
 @endsection
