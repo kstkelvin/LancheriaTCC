@@ -17,11 +17,18 @@ class HomeController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  public function index()
+  public function homepage()
   {
-    return view('index.greetings');
+    return view('main.homepage');
 
     //
+  }
+
+  public function about()
+
+  {
+    return view('main.about');
+
   }
 
   //public function debts()

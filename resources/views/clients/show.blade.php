@@ -5,6 +5,12 @@
 
   <div>
     <h1>Cliente: {{ $client->name . ' ' . $client->surname }}</h1>
+    <div>
+      <a href="/clientes" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
+        <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Lista de Clientes
+      </a>
+    </div>
+    <br>
     <hr>
     {{ 'Setor: ' . $client->setor }}
     <br>

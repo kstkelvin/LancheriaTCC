@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <span class="navbar-brand">LHManager</span>
+      <a href="/"class="navbar-brand">LHManager</a>
     </div>
 
     <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
@@ -16,9 +16,9 @@
           <li class="active"><a href="/"><i class="fa fa-fw fa-home"></i> Home <span class="sr-only">(current)</span></a></li>
           <li><a href="/clientes"><i class="fa fa-fw fa-users"></i> Clientes</a></li>
           <li><a href="/produtos"><i class="fa fa-fw fa-cutlery"></i> Produtos</a></li>
-          <li><a href="/venda"><i class="fa fa-fw fa-plus"></i> Nova Venda</a></li>
+          <li><a href="/venda"><i class="fa fa-fw fa-shopping-cart"></i> Nova Venda</a></li>
           <li class="disabled"><a href="#"><i class="fa fa-fw fa-line-chart"></i> Estatísticas</a></li>
-          <li class="disabled"><a href="#"><i class="fa fa-fw fa-info-circle"></i> Sobre</a></li>
+          <li><a href="/sobre"><i class="fa fa-fw fa-info-circle"></i> Sobre</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li class="dropdown">

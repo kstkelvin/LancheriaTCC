@@ -2,7 +2,15 @@
 
 @section('content')
   <h1>Cliente: {{$client->name . " " . $client->surname}} - Editar</h1>
-  <hr>
+  <div>
+    <a href="/cliente/{{$client->id}}" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
+      <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Cliente: {{ $client->name . " " .
+        $client->surname }}
+    </a>
+    <br>
+    <hr>
+    <br>
+  </div>
   <form method="post" action="/cliente/{{$client->id}}">
     {{csrf_field()}}
     <fieldset>

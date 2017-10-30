@@ -14,7 +14,8 @@
 
 //-----------------------------Welcome-Page--------------------------//
 
-Route::get('/', 'homeController@index'); //sujeito a modificações
+Route::get('/', 'homeController@homepage'); //sujeito a modificações
+Route::get('/sobre', 'homeController@about'); //sobre a lancheria
 
 //----------------------------Authentication-----------------------//
 
