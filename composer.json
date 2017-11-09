@@ -46,19 +46,17 @@
     "post-autoload-dump": [
       "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
       "@php artisan package:discover"
+    ],
+    "post-install-cmd": [
+      "php artisan clear-compiled"
+    ],
+    "post-update-cmd": [
+      "php artisan clear-compiled"
     ]
   },
   "config": {
     "preferred-install": "dist",
     "sort-packages": true,
     "optimize-autoloader": true
-  }
-  "scripts": {
-    "post-install-cmd": [
-      "php artisan clear-compiled"
-    ],
-    "post-update-cmd": [
-      "php artisan clear-compiled"
-    ],
   }
 }
