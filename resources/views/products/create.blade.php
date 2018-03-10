@@ -23,10 +23,10 @@
       </div>
 
       <div class="form-group">
-        <label for="value" class="col-lg-2 control-label">Preço</label>
+        <label for="price" class="col-lg-2 control-label">Preço</label>
         <div class="col-lg-10">
-          <input type="number" class="form-control" id="value" size="99" step="0.01"
-          placeholder="0,00" name="value" required>
+          <input type="number" class="form-control" id="price" size="99" step="0.01"
+          placeholder="0,00" name="price" required>
           <br>
         </div>
       </div>

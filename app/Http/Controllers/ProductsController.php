@@ -28,14 +28,12 @@ class ProductsController extends Controller
 
   }
 
-  public function showName($id)
+  public function search()
   {
-    return Product::findOrFail($id)->get('name');
-  }
+    $products = Product::where('name', 'like', '%'. request()->search .'%')
+    ->orderBy('name')->get();
 
-  public function showValue($id)
-  {
-    return Product::findOrFail($id)->get('value');
+    return view('products.index', compact('products'));
   }
 
   public function create()
@@ -52,12 +50,12 @@ class ProductsController extends Controller
 
     $rules = array(
       'name'       => 'required',
-      'value' => 'required|numeric'
+      'price' => 'required|numeric'
     );
 
     $messages = [
       'name.required'    => 'O nome é necessário.',
-      'value.required'    => 'O preço é necessário.',
+      'price.required'    => 'O preço é necessário.',
       'numeric'    => 'O preço só aceita digitos numerais.'
     ];
 
@@ -71,7 +69,7 @@ class ProductsController extends Controller
 
       Product::create([
         'name' => request('name'),
-        'value' => request('value'),
+        'price' => request('price'),
         'stock' => '0'
       ]);
 
@@ -89,12 +87,12 @@ class ProductsController extends Controller
   {
     $rules = array(
       'name'       => 'required',
-      'value' => 'required|numeric'
+      'price' => 'required|numeric'
     );
 
     $messages = [
       'name.required'    => 'O nome é necessário.',
-      'value.required'    => 'O preço é necessário.',
+      'price.required'    => 'O preço é necessário.',
       'numeric'    => 'O preço só aceita digitos numerais.'
     ];
 
@@ -108,7 +106,7 @@ class ProductsController extends Controller
       // store
       $product = Product::find($id);
       $product->name       = request()->get('name');
-      $product->value      = request()->get('value');
+      $product->price      = request()->get('price');
       $product->save();
 
       return redirect('produtos');

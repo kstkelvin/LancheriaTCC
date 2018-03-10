@@ -11,10 +11,16 @@ class Client extends Model
   //preenchidos nos formulários e encaminhados para o banco de dados. o id
   //não consta pois ele é automaticamente incrementado pelo Eloquent do Laravel.
   public $timestamps = false;
-  protected $fillable = ['name', 'surname', 'setor', 'phone_number', 'total'];
+  protected $fillable = ['name', 'surname', 'setor', 'phone_number', 'email'];
 
   public function item(){
     return $this->hasMany(Item::class);
+  }
+
+
+  public function user()
+  {
+    return $this->belongsTo(User::class);
   }
 
 }

@@ -12,7 +12,7 @@ class Product extends Model
   //preenchidos nos formulários e encaminhados para o banco de dados. o id
   //não consta pois ele é automaticamente incrementado pelo Eloquent do Laravel.
      public $timestamps = false;
-     protected $fillable = ['name', 'value'];
+     protected $fillable = ['name', 'price'];
 
      public function item(){
        return $this->hasMany(Item::class);

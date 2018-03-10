@@ -12,7 +12,7 @@
     </div>
     <br>
     <hr>
-    {{'Preço: R$ ' . number_format($product->value, 2, ',', '.')}}
+    {{'Preço: R$ ' . number_format($product->price, 2, ',', '.')}}
     <p>Quantia no estoque: {{$product->stock}}</p>
     <div class="form-group">
       <a href="/produto/{{$product->id}}/editar" class="btn btn-success linkbutton linkmargin button-panel" title="Editar">
@@ -21,7 +21,7 @@
 
       <form action="/produto/{{$product->id}}/excluir" method="POST">
         {{csrf_field()}}
-        <input type="hidden" name="id" value="{{$product->id}}" />
+        <input type="hidden" name="id" price="{{$product->id}}" />
         <button type="submit" class="btn btn-success linkbutton linkmargin button-panel" title="Excluir">
           <span class="fa fa-trash fa-fw" aria-hidden="true"></span>Excluir
         </button>

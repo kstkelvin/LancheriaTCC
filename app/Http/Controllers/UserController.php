@@ -18,10 +18,10 @@ class UserController extends Controller
     $this->middleware('auth');
   }
 
+  public function bind_account()
+  {
 
-
-
-
+  }
 
   public function edit()
   {

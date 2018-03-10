@@ -2,7 +2,6 @@
 
 @section('content')
   <div>
-
     <h1>Lista de Clientes</h1>
     <div>
       <a href="/clientes/adicionar" class="btn btn-success linkbutton" title="Adicionar Cliente">
@@ -16,7 +15,7 @@
           <input type="text" id="search" name="search" class="form-control"
           placeholder="Digite o nome do cliente" />
           <span class="input-group-btn">
-            <button class="btn btn-success" type="button">
+            <button type="submit" class="btn btn-success" type="button">
               <span class="fa fa-search fa-fw" aria-hidden="true"></span>
             </button>
           </span>
@@ -29,7 +28,6 @@
         <tr>
           <th>Nome</th>
           <th>Setor</th>
-          <th>Telefone</th>
           <th></th>
           <th></th>
         </tr>
@@ -40,7 +38,7 @@
             <td><a href="/cliente/{{$client->id}}" class="btn btn-success linkbutton button-panel">{{ $client->name . " " .
               $client->surname }}</a></td>
               <td>{{ $client->setor }}</td>
-              <td>{{ $client->phone_number }}</td>
+
               <td>
                 <a href="/cliente/{{$client->id}}/editar" class="btn btn-success linkbutton button-panel" title="Editar">
                   <span class="fa fa-pencil fa-fw" aria-hidden="true"></span></a>

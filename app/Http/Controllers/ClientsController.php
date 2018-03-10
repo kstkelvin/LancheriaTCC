@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Client;
 use App\Item;
+use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
@@ -19,10 +20,17 @@ class ClientsController extends Controller
 
   public function index()
   {
+
     $clients = Client::orderBy('name')->get();
     return view('clients.index', compact('clients'));
+
   }
 
+  public function bind()
+  {
+    $client = Client::findOrFail($id);
+    return view('users.index')->with('client', $client);
+  }
 
 
   public function search()
@@ -46,7 +54,8 @@ class ClientsController extends Controller
       'name'       => 'required',
       'surname'    => 'nullable',
       'setor'      => 'required',
-      'phone_number' => 'nullable|numeric'
+      'phone_number' => 'nullable|numeric',
+      'email' => 'nullable'
     );
 
     $messages = [
@@ -72,6 +81,7 @@ class ClientsController extends Controller
         'surname' => request('surname'),
         'setor' => request('setor'),
         'phone_number' => $numero_formatado,
+        'email' => request('email'),
         'total' => '0.0'
       ]);
       return redirect('clientes');
@@ -82,10 +92,12 @@ class ClientsController extends Controller
 
   {
     $client = Client::findOrFail($id);
-
+    if($client->user_id != 0){
+      $user = User::findOrFail($client->user_id);
+    }
     $items = Item::join('products', 'products.id', '=', 'items.product_id')
     ->select('products.name as name',
-    'products.value as value',
+    'products.price as price',
     'items.amount as amount',
     'items.created_at',
     'items.id as id')
@@ -95,8 +107,10 @@ class ClientsController extends Controller
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
     ->get();
     $total = $this->total($client->id);
+    if($client->user_id != 0){
+      return view('clients.show', compact('client', 'items', 'total', 'user'));
+    }else
     return view('clients.show', compact('client', 'items', 'total'));
-
   }
 
   /**
@@ -124,7 +138,8 @@ class ClientsController extends Controller
       'name'       => 'required',
       'surname'    => 'nullable',
       'setor'      => 'required',
-      'phone_number' => 'nullable|numeric'
+      'phone_number' => 'nullable|numeric',
+      'email'     => 'nullable',
     );
 
     $messages = [
@@ -150,6 +165,7 @@ class ClientsController extends Controller
         $numero_formatado = "-";
       }
       $client->phone_number = $numero_formatado;
+      $client->email = request()->get('email');
       $client->save();
 
       return redirect('clientes');
@@ -169,7 +185,7 @@ class ClientsController extends Controller
 
   function total($id){
     $total = Item::join('products', 'products.id', '=', 'items.product_id')
-    ->select(DB::raw('sum(products.value * items.amount) AS total'))
+    ->select(DB::raw('sum(products.price * items.amount) AS total'))
     ->where('items.client_id', '=', $id)
     ->where('items.is_paid', '=', '0')
     ->getQuery()

@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -28,37 +28,48 @@ Route::get('/logout', 'LoginController@destroy');//logout sem confirmação(suje
 Route::get('/editar', 'UserController@edit');//tela de edição - nome e sobrenome apenas
 Route::post('/editar', 'UserController@update');//edita nome e sobrenome do cliente (sujeito a modificações)
 
-//----------------------------Produtos-----------------------------//
+Route::group(array('middleware' => ['auth', 'admin']), function ()
+{
 
-Route::get('/produtos', 'ProductsController@index');//Search -- todos os produtos
-Route::get('/produtos/adicionar', 'ProductsController@create');//Create -- tela de cadastro
-Route::post('/produtos', 'ProductsController@store');//Create -- novo produto
-Route::get('/produto/{product}/editar','ProductsController@edit');//editing -- produto selecionado
-Route::get('/produto/{product}', 'ProductsController@show');//Search -- produto selecionado
-Route::post('/produto/{product}', 'ProductsController@update');//Update -- produto selecionado
-Route::post('produto/{product}/excluir', 'ProductsController@destroy');//Delete -- produto selecionado
+  //----------------------------Produtos-----------------------------//
 
+  Route::get('/produtos', 'ProductsController@index');//Search -- todos os produtos
+  Route::get('/produtos/adicionar', 'ProductsController@create');//Create -- tela de cadastro
+  Route::post('/produtos', 'ProductsController@store');//Create -- novo produto
+  Route::get('/produto/{product}/editar','ProductsController@edit');//editing -- produto selecionado
+  Route::get('/produto/{product}', 'ProductsController@show');//Search -- produto selecionado
+  Route::post('/produto/{product}', 'ProductsController@update');//Update -- produto selecionado
+  Route::post('produto/{product}/excluir', 'ProductsController@destroy');//Delete -- produto selecionado
 
-//--------------------------Clientes-(Será modificada após a primeira sprint)-//
+  //--------------------------Clientes-(Será modificada após a primeira sprint)-//
 
-Route::get('/clientes', 'ClientsController@index');
-Route::get('/clientes/adicionar', 'ClientsController@create');
-Route::post('/clientes', 'ClientsController@store');
-Route::get('/cliente/{client}/editar', 'ClientsController@edit');
-Route::get('/cliente/{client}', 'ClientsController@show');//Wildcard/Joker
-Route::post('/cliente/{client}', 'ClientsController@update');
-Route::post('/cliente/{client}/excluir', 'ClientsController@destroy');
+  Route::get('/clientes/adicionar', 'ClientsController@create');
+  Route::post('/clientes', 'ClientsController@store');
+  Route::get('/cliente/{client}/editar', 'ClientsController@edit');
+  Route::get('/cliente/{client}', 'ClientsController@show');//Wildcard/Joker
+  Route::post('/cliente/{client}', 'ClientsController@update');
+  Route::post('/cliente/{client}/excluir', 'ClientsController@destroy');
+  Route::get('/clientes', 'ClientsController@index');
 
+  //--------------------------Operação de Venda-(fase de testes)-------------//
 
-//--------------------------Operação de Venda-(fase de testes)-------------//
+  Route::get('/venda', 'ItemsController@create');
+  Route::post('/venda', 'ItemsController@store');
+  Route::get('/cliente/{client}/pagamento', 'ItemsController@edit');
+  Route::post('/venda/{client}/excluir', 'ItemsController@destroy');
 
-Route::get('/venda', 'ItemsController@create');
-Route::post('/venda', 'ItemsController@store');
-Route::get('/cliente/{client}/pagamento', 'ItemsController@edit');
-Route::post('/venda/{client}/excluir', 'ItemsController@destroy');
+  //-------------------------Regras de Negócio-------------------------------//
 
-//-------------------------Regras de Negócio-------------------------------//
+  Route::get('/produto/{product}/estoque', 'StockController@edit');//tela de estoque
+  Route::post('/produto/{product}/armazem', 'StockController@update');//adiciona a quantia no estoque
+  Route::get('/clientes/pesquisar', 'ClientsController@search');
+  Route::get('/produtos/pesquisar', 'ProductsController@search');
 
-Route::get('/produto/{product}/estoque', 'StockController@edit');//tela de estoque
-Route::post('/produto/{product}/armazem', 'StockController@update');//adiciona a quantia no estoque
-Route::get('/clientes/pesquisar', 'ClientsController@search');
+  //----------------Regra de Negócio (Vínculo entre contas)-----------------//
+
+  Route::get('/cliente/{client}/bind', 'BindController@index');
+  Route::post('/cliente/{client}/bind', 'BindController@update');
+
+});
+
+  Route::get('/cliente/{client}/account', 'BindController@show');//Wildcard/Joker
