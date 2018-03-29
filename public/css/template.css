@@ -1,5 +1,10 @@
 
-
+.anti-container{
+  margin-left: -15px;
+  margin-right: -15px;
+  padding-right: -60px;
+  padding-left: -60px;
+}
 .linkbutton {
   background:none!important;
   color:inherit;
@@ -19,7 +24,6 @@
   margin-right: 10px;
 }
 
-
 html {
   position: relative;
   min-height: 100%;
@@ -33,12 +37,12 @@ body {
 
 
 .footer {
-  position:absolute;
+  position:fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+  height: 8%;
+  line-height: 50px; /* Vertically center the text there */
   background-color: #222222;
   font-size: 10px;
   text-align: center;
@@ -59,4 +63,138 @@ body {
   padding-bottom: 10px;
   color: #686868;
   background-color: white;
+}
+
+.sidebar{
+  height:83.7%; /* Full-height: remove this if you want "auto" height * /* Set the width of the sidebar */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 8.2%; /* Stay at the top */
+  right: 0;
+  background-color: #000; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#main {
+  transition: 0.5s;
+}
+
+.content-homepage{
+  width: 90%;
+}
+
+.sidebar-icon{
+  width: 10%;
+  top: 0;
+  font-size: 13px;
+  vertical-align: top;
+  display: inline-block;
+  background:none!important;
+  color:inherit;
+  border:none;
+  padding:0!important;
+  cursor: pointer;
+  margin-left: 107%;
+  margin-top: -6%;
+}
+
+.sidebar a:hover{
+  color: white;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0%;
+  font-size: 13px;
+  padding: 8px 8px 8px 8px;
+}
+
+.sidebar h4{
+  margin-top: 10px;
+}
+
+.sidebar h3, .sidebar h4{
+  margin-bottom: 10px;
+  text-align: left;
+  margin-left: -10px;
+  color: white;
+}
+
+.sidebar h3,
+.sidebar a{
+  margin-left: 15px;
+  text-align: left;
+}
+.sidebar a,
+.a2{
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  transition: 0.3s;
+  width: 100%;
+  color: gray;
+}
+
+
+.table-doh > tbody > tr:nth-of-type(odd) {
+  background-color: inherit;
+  color:inherit;
+}
+
+.tabled {
+  width: 100%;
+  max-width: 100%;
+}
+.tabled > thead > tr > th,
+.tabled > tbody > tr > th,
+.tabled > tfoot > tr > th,
+.tabled > thead > tr > td,
+.tabled > tbody > tr > td,
+.tabled > tfoot > tr > td {
+  line-height: 1.42857143;
+  vertical-align: middle;
+}
+.tabled > thead > tr > th {
+  vertical-align: bottom;
+}
+
+.tabled th {
+  width: 50%;
+}
+
+
+.a2{
+  margin-bottom: 30px;
+}
+
+.a2 button:hover{
+  color: white;
+}
+
+@media only screen and (max-width: 768px)  {
+  .sidebar-icon {margin-left: 84%;   margin-top: -10%; margin-right: 1%}
+.sidebar {height: 83.5%;  top: 8.5%;   background-color: #a33333; /* Stay in place */ /* Stay on top */}
+.sidebar h3,
+.sidebar a {color: white;
+}
+
+.sidebar a:hover {
+  color: black;
+}
+
+.a2{
+  text-align: right;
+  padding-left: 40%;
+}
+
+.a2 button{
+  color: white;
+}
+
+.a2 button:hover{
+  color: black;
+}
+
 }

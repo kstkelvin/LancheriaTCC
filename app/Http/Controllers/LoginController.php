@@ -52,9 +52,8 @@ class LoginController extends Controller
         'message' => 'O nome de usuário e/ou senha foram digitados incorretamente.'
       ]);
 
-    }
+    } 
     return redirect('/');
-
   }
 
   public function destroy()

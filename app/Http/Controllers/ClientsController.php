@@ -55,7 +55,6 @@ class ClientsController extends Controller
       'surname'    => 'nullable',
       'setor'      => 'required',
       'phone_number' => 'nullable|numeric',
-      'email' => 'nullable'
     );
 
     $messages = [
@@ -80,9 +79,7 @@ class ClientsController extends Controller
         'name' => request('name'),
         'surname' => request('surname'),
         'setor' => request('setor'),
-        'phone_number' => $numero_formatado,
-        'email' => request('email'),
-        'total' => '0.0'
+        'phone_number' => $numero_formatado
       ]);
       return redirect('clientes');
     }
@@ -139,7 +136,7 @@ class ClientsController extends Controller
       'surname'    => 'nullable',
       'setor'      => 'required',
       'phone_number' => 'nullable|numeric',
-      'email'     => 'nullable',
+
     );
 
     $messages = [
@@ -165,7 +162,6 @@ class ClientsController extends Controller
         $numero_formatado = "-";
       }
       $client->phone_number = $numero_formatado;
-      $client->email = request()->get('email');
       $client->save();
 
       return redirect('clientes');

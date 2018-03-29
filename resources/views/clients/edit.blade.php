@@ -64,15 +64,6 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="email" class="col-lg-2 control-label">E-mail</label>
-        <div class="col-lg-10">
-          <input type="email" class="form-control" id="email" name="email"
-          placeholder="(Opcional)">
-          <br>
-        </div>
-      </div>
-
 
       <div class="form-group">
         <div class="col-lg-10 col-lg-offset-2">

@@ -19,17 +19,20 @@
   <link href="/css/template.css" rel="stylesheet">
 
 </head>
-
 <body>
 
   <div class="nav">
     @include('layouts.nav')
   </div>
 
+
+
   <div class="container">
     @yield('content')
     @include('layouts.errors')
   </div>
+
+
 
   <div class="footer">
     @include('layouts.footer')
@@ -39,6 +42,7 @@
   <script>window.jQuery || document.write('<script src="/js/vendor/jquery.min.js"><\/script>')</script>
   <script src="/js/popper.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/sidebar.js"></script>
 
 </body>
 </html>

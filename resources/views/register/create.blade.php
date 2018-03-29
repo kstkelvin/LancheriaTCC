@@ -35,6 +35,15 @@
       </div>
 
       <div class="form-group">
+        <label for="email" class="col-lg-2 control-label">E-mail</label>
+        <div class="col-lg-10">
+          <input type="email" class="form-control" id="email" name="email"
+          required>
+          <br>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label for="password" class="col-lg-2 control-label">Senha</label>
         <div class="col-lg-10">
           <input type="password" class="form-control" id="password"

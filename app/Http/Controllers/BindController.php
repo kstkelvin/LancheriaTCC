@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\DB;
 class BindController extends Controller
 {
 
-
   public function index($id)
   {
     $client = Client::findOrFail($id);
@@ -52,7 +51,7 @@ class BindController extends Controller
       $total = $this->total($client->id);
       return view('users.show', compact('client', 'items', 'total'));
     }else{
-      return redirect('/');
+      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada. Aguarde ou contate a administradora da lancheria.');
     }
   }
 

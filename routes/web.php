@@ -14,7 +14,7 @@
 
 //-----------------------------Welcome-Page--------------------------//
 
-Route::get('/', 'HomeController@homepage'); //sujeito a modificações
+//sujeito a modificações
 Route::get('/sobre', 'HomeController@about'); //sobre a lancheria
 
 //----------------------------Authentication-----------------------//
@@ -27,12 +27,11 @@ Route::post('/login', 'LoginController@store');//autentica e loga o usuário
 Route::get('/logout', 'LoginController@destroy');//logout sem confirmação(sujeito a modificações)
 Route::get('/editar', 'UserController@edit');//tela de edição - nome e sobrenome apenas
 Route::post('/editar', 'UserController@update');//edita nome e sobrenome do cliente (sujeito a modificações)
+Route::get('/home', 'HomeController@index');
 
 Route::group(array('middleware' => ['auth', 'admin']), function ()
 {
-
   //----------------------------Produtos-----------------------------//
-
   Route::get('/produtos', 'ProductsController@index');//Search -- todos os produtos
   Route::get('/produtos/adicionar', 'ProductsController@create');//Create -- tela de cadastro
   Route::post('/produtos', 'ProductsController@store');//Create -- novo produto
@@ -69,7 +68,9 @@ Route::group(array('middleware' => ['auth', 'admin']), function ()
 
   Route::get('/cliente/{client}/bind', 'BindController@index');
   Route::post('/cliente/{client}/bind', 'BindController@update');
-
+  Route::post('/mail/{client}', 'LateController@send');
+  Route::get('/', 'HomeController@homepage');
+  Route::any('/', array('uses' => 'LateController@index'));
 });
 
-  Route::get('/cliente/{client}/account', 'BindController@show');//Wildcard/Joker
+Route::get('/cliente/{client}/account', 'BindController@show');//Wildcard/Joker

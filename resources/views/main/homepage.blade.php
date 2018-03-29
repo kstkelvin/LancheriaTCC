@@ -1,17 +1,17 @@
 @extends('layouts.master')
 
 @section('content')
-  <section class="jumbotron text-center">
-    <div class="container">
+
+  <div class="jumbotron">
+    <div class="text-center sidebar-icon">
+      <span onclick="openNav()">Débitos({{$count->counter}})</span>
+    </div>
+    <div id='main' class="text-center">
+      <div class="sidebar">
+        @include('layouts.sidebar')
+      </div>
       <h1>LH Manager</h1>
       <p class="lead text-muted">Gerenciamento da Lancheria do Hospital São Jerônimo</p>
-      @if(Auth::check())
-        @if(Auth::user()->access_level == 1)
-          <p>
-            <a href="/venda/create" class="btn btn-primary">Nova Venda</a>
-          </p>
-        @endif
-      @endif
     </div>
-  </section>
+  </div>
 @endsection

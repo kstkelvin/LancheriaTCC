@@ -1,8 +1,5 @@
 @extends('layouts.master')
-
-
 @section('content')
-
   <div>
     <h1>Cliente: {{ $client->name . ' ' . $client->surname }}</h1>
     <div>
@@ -15,12 +12,12 @@
     @if($client->user_id != 0)
       {{ 'Nome de Usuário: ' . $user->username }}
       <br>
+      {{ 'E-mail: ' . $user->email}}
+      <br>
     @endif
     {{ 'Setor: ' . $client->setor }}
     <br>
     {{ 'Telefone: ' . $client->phone_number}}
-    <br>
-    {{ 'E-mail: ' . $client->email}}
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
 
@@ -44,9 +41,6 @@
         </a>
       @endif
     </div>
-
-
-
   </div>
   <br>
   <hr>
