@@ -51,49 +51,8 @@ class MailSender extends Command
   public function handle()
   {
     // calculate new statistics
-    $posts = Client::join('items', 'clients.id', '=', 'items.client_id')
-    ->join('products', 'products.id', '=', 'items.product_id')
-    ->select('clients.id as id',
-    'clients.name as nome',
-    'clients.surname as sobrenome',
-    'clients.user_id as usuario'
-    )
-    ->where('items.created_at', '<', Carbon::now()->startOfMonth())
-    ->where('is_paid', '=', '0')
-    ->where('clients.user_id', '!=', 'NULL')
-    ->groupBy('clients.id')
-    ->orderBy('nome')
-    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-    ->get();
 
-    // update statistics table
-    foreach($posts as $post)
-    {
 
-      if($post->usuario != null){
-        $total = Item::join('products', 'products.id', '=', 'items.product_id')
-        ->select(DB::raw('sum(products.price * items.amount) AS total'))
-        ->where('items.client_id', '=', $id)
-        ->where('items.is_paid', '=', '0')
-        ->getQuery()
-        ->get()
-        ->first();
-
-        $user = User::findOrFail($post->user_id);
-
-        $text = $user->name.', estamos enviando este e-mail para lhe alertar de que'
-        .'você possui um débito de '.$total->total.'R$ na sua conta da lancheria.'
-        .'É de vital importância que compareça para efetuar o pagamento do mesmo o mais rápido possível.';
-
-        Mail::raw($text ,function ($message) use ($user, $text)
-        {
-          $message->to($user->email)->subject('Cobrança');
-          $message->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital');
-          //
-        });
-      }
-    }
-    
   }
 
 }

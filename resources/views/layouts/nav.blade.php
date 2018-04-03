@@ -18,7 +18,7 @@
             <li><a href="/clientes"><i class="fa fa-fw fa-users"></i> Clientes</a></li>
             <li><a href="/produtos"><i class="fa fa-fw fa-cutlery"></i> Produtos</a></li>
             <li><a href="/venda"><i class="fa fa-fw fa-shopping-cart"></i> Nova Venda</a></li>
-            <li class="disabled"><a href="#"><i class="fa fa-fw fa-line-chart"></i> Estatísticas</a></li>
+            <li><a href="/stats"><i class="fa fa-fw fa-line-chart"></i> Estatísticas</a></li>
             <li><a href="/sobre"><i class="fa fa-fw fa-info-circle"></i> Sobre</a></li>
           </ul>
           @else
