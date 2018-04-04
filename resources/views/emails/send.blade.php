@@ -1,4 +1,3 @@
-<p>Hello {{ $user->name }},</p>
-<p>We just want to wish you a happy birthday!</p>
-<p>Here is a 20% off promo code for you: <strong>{{ $user->promo->code }}</strong>.</p>
-<p>Hope you have a good one!</p>
+<p>{{$user->name}}, estamos enviando este e-mail para lhe alertar de que
+você possui um débito de {{number_format($total->total, 2, ',', '.')}} R$ na sua conta da lancheria.</p>
+<p>É de vital importância que compareça para efetuar o pagamento do mesmo o mais rápido possível.</p>

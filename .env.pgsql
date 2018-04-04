@@ -1,7 +1,7 @@
 APP_NAME=Laravel
-APP_ENV=production
-APP_KEY=base64:v5BxGhyQOLSR5uMOwckL3/z0PkR4ig3Q6CQV7Z9jGCg=
-APP_DEBUG=false
+APP_ENV=local
+APP_KEY=base64:KP3OLNUQQL0q/7qG9/+tIgPvi7QQnj7OxvzV9Di3gLg=
+APP_DEBUG=true
 APP_LOG_LEVEL=debug
 APP_URL=http://localhost
 
@@ -23,12 +23,11 @@ REDIS_HOST=127.0.0.1
 REDIS_PASSWORD=null
 REDIS_PORT=6379
 
-MAIL_DRIVER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=null
-MAIL_PASSWORD=null
-MAIL_ENCRYPTION=null
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=lancheriahospitalsj.cobrancas@gmail.com
+MAIL_PASSWORD=considerthefollowing
+MAIL_ENCRYPTION=tls
 
 PUSHER_APP_ID=
 PUSHER_APP_KEY=

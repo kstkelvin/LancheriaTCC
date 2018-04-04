@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
   * @var array
   */
   protected $commands = [
-    'App\Console\Commands\MailSender'
+    Commands\SendEmail::class,
   ];
 
   /**
@@ -25,9 +25,9 @@ class Kernel extends ConsoleKernel
   */
   protected function schedule(Schedule $schedule)
   {
-    $schedule->command('php artisan send:mail')
+    $schedule->command('email:debt')
     ->timezone('America/Sao_Paulo')
-    ->dailyAt('18:50');
+    ->dailyAt('17:00');
   }
 
   /**
