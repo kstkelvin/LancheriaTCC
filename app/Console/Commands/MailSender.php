@@ -24,7 +24,7 @@ class MailSender extends Command
   *
   * @var string
   */
-  protected $signature = 'send:mail';
+  protected $signature = 'email:test';
 
   /**
   * The console command description.
@@ -50,7 +50,11 @@ class MailSender extends Command
   */
   public function handle()
   {
-    // calculate new statistics
+    Mail::send(['text'=>'emails.test'],['name', 'Kelvin'],function ($message)
+    {
+    $message->to('kstkelvin2@gmail.com')->subject('Teste');
+    $message->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital São Jerônimo');
+    });
 
 
   }

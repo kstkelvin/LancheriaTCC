@@ -64,21 +64,16 @@ class LateController extends Controller
       ->get()
       ->first();
       $user = $this->user($cliente->user_id);
-      
-      $text = $user->name.', estamos enviando este e-mail para lhe alertar de que'
-      .'você possui um débito de '.$total->total.'R$ na sua conta da lancheria.'
-      .'É de vital importância que compareça para efetuar o pagamento do mesmo o mais rápido possível.';
 
       if($user != null){
-        Mail::raw($text ,function ($message) use ($user, $text)
-        {
-          $message->to($user->email)->subject('Cobrança');
-          $message->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital');
-          //
+        Mail::send('emails.send', ['user' => $user, 'total' => $total], function ($mail) use ($user) {
+          $mail->to($user['email'])
+          ->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital')
+          ->subject('Cobrança');
         });
         return redirect('/');
       }return redirect('/')->withErrors('Esta conta não foi vinculada ainda.');
-    }return redirect('/')->withErrors('Deu problema grave');
+    }return redirect('/')->withErrors('Ocorreu um problema grave que escapou das grades lógicas estabelecidas previamente. Teehee.');
 
     //Mail::send(['text'=>'emails.send'],['name', 'Kelvin'],function ($message)
     //{

@@ -3,6 +3,27 @@
 @section('content')
   <h1>Estatísticas</h1>
   <hr>
+  <canvas id="myChart">  <script type="text/javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+
+      // The data for our dataset
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [{
+              label: "My First dataset",
+              backgroundColor: 'rgb(255, 99, 132)',
+              borderColor: 'rgb(255, 99, 132)',
+              data: [0, 10, 5, 2, 20, 30, 45],
+          }]
+      },
+
+      // Configuration options go here
+      options: {}
+    });
+    </script></canvas>
   <h3>5 Melhores produtos de todos os tempos</h3>
   @foreach($alltimehigh as $high)
     {{$high->name}}: {{$high->counter}}
@@ -27,7 +48,6 @@
   @foreach($dopeflow as $d_p)
     {{$d_p->name}}: {{$d_p->total}}
     <br>
-
-    <canvas id="myChart"></canvas>
   @endforeach
+
 @endsection

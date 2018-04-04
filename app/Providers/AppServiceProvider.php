@@ -17,9 +17,13 @@ class AppServiceProvider extends ServiceProvider
     // and please add a \ in front of your classes in the global namespace
     \Event::listen('cron.collectJobs', function() {
 
-      \Cron::add('send-the-effing-mail', '* * * * *', function() {
-        echo "Running Task";
-            Artisan::call('email:debt');
+      //\Cron::add('send-the-effing-mail', '* * * * *', function() {
+        //echo "Running Task";
+          //  Artisan::call('email:debt');
+      //}, true);
+
+      \Cron::add('send-this', '* * * * *', function() {
+Artisan::call('email:test');
       }, true);
 
     });
