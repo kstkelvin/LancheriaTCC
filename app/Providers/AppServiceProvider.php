@@ -18,12 +18,12 @@ class AppServiceProvider extends ServiceProvider
     \Event::listen('cron.collectJobs', function() {
 
       //\Cron::add('send-the-effing-mail', '* * * * *', function() {
-        //echo "Running Task";
-          //  Artisan::call('email:debt');
+      //echo "Running Task";
+      //  Artisan::call('email:debt');
       //}, true);
 
       \Cron::add('send-this', '* * * * *', function() {
-Artisan::call('email:test');
+        echo "testing";
       }, true);
 
     });
