@@ -58,9 +58,9 @@ class RunScheduler extends Command
     protected function runScheduler()
     {
         $fn = $this->option('queue') ? 'queue' : 'call';
-        $this->info('Running Scheduled Routine:');
+        $this->info('Starting loop.');
         Artisan::$fn('schedule:run');
-        $this->info('Routine completed successfully. Entering sleeping mode.');
+        $this->info('Entering sleeping mode.');
         sleep($this->nextMinute());
         $this->runScheduler();
     }
