@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
   */
   protected $commands = [
     Commands\SendEmail::class,
+    Commands\RunScheduler::class,
   ];
 
   /**
@@ -27,7 +28,7 @@ class Kernel extends ConsoleKernel
   {
     $schedule->command('email:debt')
     ->timezone('America/Sao_Paulo')
-    ->dailyAt('17:00');
+    ->monthlyOn(5, '10:00');
   }
 
   /**

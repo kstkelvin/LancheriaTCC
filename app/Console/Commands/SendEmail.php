@@ -29,7 +29,7 @@ class SendEmail extends Command
   *
   * @var string
   */
-  protected $description = 'Teste bro';
+  protected $description = 'It send emails to all the clients with remaining debts.';
 
   /**
   * Create a new command instance.
@@ -85,8 +85,6 @@ class SendEmail extends Command
         });
       }
     }
-
-    $this->info('Essa porra funcionou, caralho!');
     // Send the email to user
 
   }

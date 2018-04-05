@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
       \Cron::setDisablePreventOverlapping();
       \Cron::add('send-the-effing-mail', '* * * * *', function() {
         echo "Running Task";
-        Artisan::call('email:debt');
+        Artisan::call('schedule:run');
       }, true);
       \Cron::setLogger(new \Monolog\Logger('cronLogger'));
       // One job will be called
