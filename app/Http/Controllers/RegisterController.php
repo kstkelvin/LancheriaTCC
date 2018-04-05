@@ -61,8 +61,7 @@ class RegisterController extends Controller
       'name' => request('name'),
       'surname' => request('surname'),
       'email' => request('email'),
-      'password' => bcrypt(request('password')),
-      'is_admin' => true
+      'password' => bcrypt(request('password'))
     ]);
 
     auth()->login($user);
