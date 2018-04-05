@@ -72,6 +72,8 @@ Route::group(array('middleware' => ['auth', 'admin']), function ()
   Route::get('/', 'HomeController@homepage');
   Route::any('/', array('uses' => 'LateController@index'));
   Route::get('/stats', 'ProductStatsController@stats');
+  Route::post('/cron.php?key=wtSlBIHIOs65CMU2pyklUvG9MzlaA53M', 'SendEmail@handle');
+  
 });
 
 Route::get('/cliente/{client}/account', 'BindController@show');//Wildcard/Joker
