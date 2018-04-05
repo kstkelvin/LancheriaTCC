@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Artisan;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,15 +17,19 @@ class AppServiceProvider extends ServiceProvider
     // Please note the different namespace
     // and please add a \ in front of your classes in the global namespace
     \Event::listen('cron.collectJobs', function() {
-
-      //\Cron::add('send-the-effing-mail', '* * * * *', function() {
-      //echo "Running Task";
-      //  Artisan::call('email:debt');
-      //}, true);
-
-      \Cron::add('send-this', '* * * * *', function() {
-        echo "testing";
+      \Cron::setDisablePreventOverlapping();
+      \Cron::add('send-the-effing-mail', '* * * * *', function() {
+        echo "Running Task";
+        Artisan::call('email:debt');
       }, true);
+      \Cron::setLogger(new \Monolog\Logger('cronLogger'));
+      // One job will be called
+      $report = \Cron::run();
+
+
+      //\Cron::add('send-this', '* * * * *', function() {
+      //echo "testing";
+      //}, true);
 
     });
 
