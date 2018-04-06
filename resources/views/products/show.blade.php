@@ -33,6 +33,11 @@
   </div>
   <br>
   <hr>
+  <center>
+    {!! $chart_products->html() !!}
+  </center>
 </div>
 
 @endsection
+{!! Charts::scripts() !!}
+{!! $chart_products->script() !!}

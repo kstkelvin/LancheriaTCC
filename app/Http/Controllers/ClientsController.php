@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 use App\Client;
 use App\Item;
 use App\User;
+use App\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Charts;
 
 class ClientsController extends Controller
 {
@@ -104,10 +106,30 @@ class ClientsController extends Controller
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
     ->get();
     $total = $this->total($client->id);
+
+    $products = Product::join('items', 'products.id', '=', 'items.product_id', 'left outer')
+    ->select('products.name as name',
+    DB::raw('coalesce(sum(items.amount), 0) as counter'))
+    ->where('items.client_id','=', $id)
+    ->groupBy('products.id')
+    ->orderBy('counter', 'desc')
+    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+    ->take(10)
+    ->get();
+
+    $chart_clients = Charts::create('bar', 'highcharts')
+    ->title('Estatísticas: Top 10 Produtos Comprados') // Título do gráfico
+    ->labels($products->pluck('name'))
+    ->values($products->pluck('counter'))
+    ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
+    ->responsive(true) // É utilizado para se adaptar ao tamanho do box que se encontra
+    ->template("material")
+    ->elementLabel("Top 10 Produtos comprados pelo cliente ".$client->name); // Legenda para o gráfico
+
     if($client->user_id != 0){
-      return view('clients.show', compact('client', 'items', 'total', 'user'));
+      return view('clients.show', compact('client', 'items', 'total', 'user', 'chart_clients'));
     }else
-    return view('clients.show', compact('client', 'items', 'total'));
+    return view('clients.show', compact('client', 'items', 'total', 'chart_clients'));
   }
 
   /**

@@ -71,8 +71,7 @@ Route::group(array('middleware' => ['auth', 'admin']), function ()
   Route::post('/mail/{client}', 'LateController@send');
   Route::get('/', 'HomeController@homepage');
   Route::any('/', array('uses' => 'LateController@index'));
-  Route::get('/stats', 'ProductStatsController@stats');
-  Route::get('/stats2', 'ProductStatsController@empty');
+  Route::get('/stats', 'StatsController@stats');
 
 
 });

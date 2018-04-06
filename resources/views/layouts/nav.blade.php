@@ -19,7 +19,6 @@
             <li><a href="/produtos"><i class="fa fa-fw fa-cutlery"></i> Produtos</a></li>
             <li><a href="/venda"><i class="fa fa-fw fa-shopping-cart"></i> Nova Venda</a></li>
             <li><a href="/stats"><i class="fa fa-fw fa-line-chart"></i> Estatísticas</a></li>
-            <li><a href="/stats2"><i class="fa fa-fw fa-line-chart"></i> Estatísticas</a></li>
             <li><a href="/sobre"><i class="fa fa-fw fa-info-circle"></i> Sobre</a></li>
           </ul>
         @else

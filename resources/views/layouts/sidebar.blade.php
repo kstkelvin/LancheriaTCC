@@ -26,7 +26,7 @@
                 {{csrf_field()}}
                 <input type="hidden" name="id" value="{{$cliente->id}}" />
                 <button type="submit" class="btn btn-success linkbutton linkmargin button-panel" title="Enviar">
-                  <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>Excluir
+                  <span class="fa fa-envelope fa-fw" aria-hidden="true"></span>
                 </button>
               </form>
             @endif

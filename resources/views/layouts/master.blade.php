@@ -17,7 +17,7 @@
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/bootstrap.css" rel="stylesheet">
   <link href="/css/template.css" rel="stylesheet">
-  {!! Charts::assets() !!}
+  {!! Charts::styles() !!}
 
 
 </head>
@@ -46,6 +46,7 @@
   <script src="/js/popper.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
   <script src="/js/sidebar.js"></script>
+  {!! Charts::scripts() !!}
 
 </body>
 </html>

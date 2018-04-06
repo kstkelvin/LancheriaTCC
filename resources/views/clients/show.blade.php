@@ -20,7 +20,6 @@
     {{ 'Telefone: ' . $client->phone_number}}
     <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-
     <div class="form-group">
       <a href="/cliente/{{$client->id}}/editar" class="btn btn-success linkbutton linkmargin button-panel" title="Editar">
         <span class="fa fa-pencil fa-fw" aria-hidden="true"></span>Editar
@@ -44,6 +43,9 @@
   </div>
   <br>
   <hr>
+  <center>
+    {!! $chart_clients->html() !!}
+  </center>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -76,3 +78,5 @@
     </tbody>
   </table>
 @endsection
+{!! Charts::scripts() !!}
+{!! $chart_clients->script() !!}

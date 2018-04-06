@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Product;
+use App\Client;
+use App\Item;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Charts;
 
 class ProductsController extends Controller
 {
@@ -16,6 +22,8 @@ class ProductsController extends Controller
 
   {
     $products = Product::orderBy('name')->get();
+
+
     return view('products.index', compact('products'));
 
   }
@@ -24,7 +32,27 @@ class ProductsController extends Controller
 
   {
     $product = Product::findOrFail($id);
-    return view('products.show', compact('product'));
+
+    $clients = Client::join('items', 'clients.id', '=', 'items.client_id', 'left outer')
+    ->select('clients.name as name',
+    DB::raw('coalesce(sum(items.amount), 0) as counter'))
+    ->where('items.product_id','=', $id)
+    ->groupBy('clients.id')
+    ->orderBy('counter', 'desc')
+    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+    ->take(10)
+    ->get();
+
+    $chart_products = Charts::create('bar', 'highcharts')
+    ->title('Estatísticas: Top 10 Compradores') // Título do gráfico
+    ->labels($clients->pluck('name'))
+    ->values($clients->pluck('counter'))
+    ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
+    ->responsive(true) // É utilizado para se adaptar ao tamanho do box que se encontra
+    ->template("material")
+    ->elementLabel("Top 10 Compradores do produto ".$product->name); // Legenda para o gráfico
+
+    return view('products.show', compact('product', 'chart_products'));
 
   }
 
