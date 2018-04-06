@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Charts;
 
 class ProductStatsController extends Controller
 {
@@ -17,6 +18,7 @@ class ProductStatsController extends Controller
   {
     # code...
   }
+
   public function stats()
   {
     $alltimehigh = Product::join('items', 'products.id', '=', 'items.product_id', 'left outer')
@@ -68,7 +70,16 @@ class ProductStatsController extends Controller
     ->take(5)
     ->get();
 
-    return view('stats.demo', compact('alltimehigh', 'alltimelow', 'monthhigh', 'highkers', 'dopeflow'));
+
+    $chart = Charts::create('bar', 'highcharts')
+    ->title('Produtos mais vendidos') // Título do gráfico
+    ->labels(['Smartphone', 'Notebook', 'TV']) // Propriedades que vão ser adicionadas
+    ->values([100, 20, 30]) // Valores das propriedades
+    ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
+    ->responsive(false) // É utilizado para se adaptar ao tamanho do box que se encontra
+    ->elementLabel("Total de vendas"); // Legenda para o gráfico
+
+    return view('stats.demo', compact('alltimehigh', 'alltimelow', 'monthhigh', 'highkers', 'dopeflow', 'chart'));
   }
 
 }
