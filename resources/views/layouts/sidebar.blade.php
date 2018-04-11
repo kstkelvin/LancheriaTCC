@@ -2,7 +2,7 @@
 <div id="mySidenav" class="sidebar">
   <h4><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Fechar [&times;]</a></h4>
   <br>
-  <h3>Débitos ({{$count->counter}})</h3>
+  <h3>Débitos ({{$count}})</h3>
   <hr>
   @foreach ($clientes as $cliente)
     <table class="tabled table-doh">
@@ -37,5 +37,5 @@
     @endforeach
   </div>
   <div class="sidebar-icon btn btn-success">
-    <span onclick="openNav()">Débitos ({{$count->counter}})</span>
+    <span onclick="openNav()">Débitos ({{$count}})</span>
   </div>

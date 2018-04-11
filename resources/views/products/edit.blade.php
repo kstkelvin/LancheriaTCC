@@ -2,13 +2,7 @@
 
 @section('content')
 
-  <h1>Produto: {{$product->name}} - Editar</h1>
-  <div>
-    <a href="/produto/{{$product->id}}" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
-      <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Produto: {{$product->name}}
-    </a>
-  </div>
-  <br>
+  <h1>{{$product->name}} - Editar</h1>
   <hr>
   <br>
   <form method="post" action="/produto/{{$product->id}}" class="form-horizontal">

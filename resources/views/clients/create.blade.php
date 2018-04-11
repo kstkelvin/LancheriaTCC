@@ -3,12 +3,6 @@
 @section('content')
 
   <h1>Cadastro de Clientes</h1>
-  <div>
-    <a href="/clientes" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
-      <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Lista de Clientes
-    </a>
-  </div>
-  <br>
   <hr>
   <br>
   <form method="POST" action="/clientes" class="form-horizontal">

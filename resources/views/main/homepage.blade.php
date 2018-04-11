@@ -4,7 +4,7 @@
 
   <div class="jumbotron">
     <div class="text-center sidebar-icon">
-      <span onclick="openNav()">Débitos({{$count->counter}})</span>
+      <span onclick="openNav()">Débitos({{$count}})</span>
     </div>
     <div id='main' class="text-center">
       <div class="sidebar">

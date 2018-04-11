@@ -1,13 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <h1>Cliente: {{$client->name . " " . $client->surname}} - Editar</h1>
-  <div>
-    <a href="/cliente/{{$client->id}}" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
-      <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Cliente: {{ $client->name . " " .
-        $client->surname }}
-    </a>
-    <br>
+  <h1>{{$client->name . " " . $client->surname}} - Editar</h1>
     <hr>
     <br>
   </div>

@@ -5,12 +5,6 @@
 
   <div>
     <h1>Produto: {{$product->name}}</h1>
-    <div>
-      <a href="/produtos" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
-        <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Lista de Produtos
-      </a>
-    </div>
-    <br>
     <hr>
     {{'Preço: R$ ' . number_format($product->price, 2, ',', '.')}}
     <p>Quantia no estoque: {{$product->stock}}</p>

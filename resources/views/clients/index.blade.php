@@ -3,11 +3,6 @@
 @section('content')
   <div>
     <h1>Lista de Clientes</h1>
-    <div>
-      <a href="/clientes/adicionar" class="btn btn-success linkbutton" title="Adicionar Cliente">
-        <span class="fa fa-plus fa-fw" aria-hidden="true"></span>Adicionar Cliente
-      </a>
-    </div>
     <hr>
     <div class="container">
       <div class="row">
@@ -22,7 +17,14 @@
         </form>
       </div>
     </div>
-    <br>
+    <hr>
+    <div>
+      <a href="/clientes/adicionar" class="btn btn-success linkbutton" title="Adicionar Cliente">
+        <span class="fa fa-plus fa-fw" aria-hidden="true"></span>Adicionar Cliente
+      </a>
+
+    </div>
+    <hr>
     <table class="table table-striped table-hover">
       <thead>
         <tr>

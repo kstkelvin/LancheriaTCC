@@ -23,16 +23,7 @@ class LateController extends Controller
 
   public function index()
   {
-
-    $count = Client::join('items', 'clients.id', '=', 'items.client_id')
-    ->join('products', 'products.id', '=', 'items.product_id')
-    ->select(DB::raw('count(clients) as counter'))
-    ->where('items.created_at', '<', Carbon::now()->startOfMonth())
-    ->where('is_paid', '=', '0')
-    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-    ->get()
-    ->first();
-
+    
     $clientes = Client::join('items', 'clients.id', '=', 'items.client_id')
     ->join('products', 'products.id', '=', 'items.product_id')
     ->select('clients.id as id',
@@ -46,6 +37,9 @@ class LateController extends Controller
     ->orderBy('nome')
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
     ->get();
+
+    $count = count($clientes);
+
 
     return view('main.homepage', compact('clientes', 'count'));
 
