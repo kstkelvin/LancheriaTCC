@@ -169,6 +169,11 @@ body {
   width: 50%;
 }
 
+.thrifty{
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: -1000px;
+}
 
 .a2{
   margin-bottom: 30px;
@@ -199,7 +204,8 @@ body {
 
 h1{
   text-align: center;
-  font-size: 28px;
+  font-size: 36px;
+  font-weight: lighter;
 }
 
 .a2 button{
@@ -217,4 +223,12 @@ h1{
   font-size: 10px;
 }
 
+label {font-size: 12px;}
+
+.thrifty{
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 0px;
+}
 }

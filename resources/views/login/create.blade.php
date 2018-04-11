@@ -36,4 +36,5 @@
     </fieldset>
   </form>
 
+  <p class="thrifty">Não possui uma conta? <a href="/registrar">Cadastre-se</a>.</p>
 @endsection
