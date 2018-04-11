@@ -34,43 +34,43 @@
         </a>
       @endif
     </div>
-  </div>
-  <br>
-  <hr>
-  <center>
-    {!! $chart_clients->html() !!}
-  </center>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Produto</th>
-        <th>Valor</th>
-        <th>Quantidade</th>
-        <th>Data</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($items as $item)
+    <br>
+    <hr>
+    <center>
+      {!! $chart_clients->html() !!}
+    </center>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td>{{ $item->name }}</td>
-          <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
-          <td>{{ $item->amount }}</td>
-          <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
-          <td>
-            <form action="/venda/{{$item->id}}/excluir" method="POST">
-              {{csrf_field()}}
-              <input type="hidden" name="id" value="{{$item->id}}" />
-              <button type="submit" class="linkbutton">
-                <span class="fa fa-trash fa-fw" aria-hidden="true" target="blank"
-                title="Excluir"></span>
-              </button>
-            </form>
-          </td>
+          <th>Produto</th>
+          <th>Valor</th>
+          <th>Quantidade</th>
+          <th>Data</th>
+          <th></th>
         </tr>
-      @endforeach
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        @foreach ($items as $item)
+          <tr>
+            <td>{{ $item->name }}</td>
+            <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
+            <td>{{ $item->amount }}</td>
+            <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
+            <td>
+              <form action="/venda/{{$item->id}}/excluir" method="POST">
+                {{csrf_field()}}
+                <input type="hidden" name="id" value="{{$item->id}}" />
+                <button type="submit" class="linkbutton">
+                  <span class="fa fa-trash fa-fw" aria-hidden="true" target="blank"
+                  title="Excluir"></span>
+                </button>
+              </form>
+            </td>
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+  </div>
 @endsection
 {!! Charts::scripts() !!}
 {!! $chart_clients->script() !!}

@@ -5,21 +5,12 @@
 
   <div>
     <h1>{{ $client->name . ' ' . $client->surname }}: Conta</h1>
-    <div>
-      <a href="/" class="btn btn-success linkbutton linkmargin button-panel" title="Voltar">
-        <span class="fa fa-long-arrow-left fa-fw" aria-hidden="true"></span> Voltar à Página Principal
-      </a>
-    </div>
-    <br>
     <hr>
     {{ 'Setor: ' . $client->setor }}
     <br>
     {{ 'Telefone: ' . $client->phone_number}}
     <br>
-    {{ 'E-mail: ' . $client->email}}
-    <br>
     {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-
   </div>
   <br>
   <hr>
@@ -28,9 +19,9 @@
       <tr>
         <th>Produto</th>
         <th>Valor</th>
-        <th>Quantidade</th>
-        <th>Data da Compra</th>
-        <th>Total da Compra</th>
+        <th>Qt.</th>
+        <th>Data</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
