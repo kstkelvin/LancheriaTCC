@@ -30,7 +30,7 @@
         <th>Valor</th>
         <th>Quantidade</th>
         <th>Data da Compra</th>
-        <th></th>
+        <th>Total da Compra</th>
       </tr>
     </thead>
     <tbody>
