@@ -29,7 +29,6 @@
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Setor</th>
           <th></th>
           <th></th>
         </tr>
@@ -39,8 +38,6 @@
           <tr>
             <td><a href="/cliente/{{$client->id}}" class="btn btn-success linkbutton button-panel">{{ $client->name . " " .
               $client->surname }}</a></td>
-              <td>{{ $client->setor }}</td>
-
               <td>
                 <a href="/cliente/{{$client->id}}/editar" class="btn btn-success linkbutton button-panel" title="Editar">
                   <span class="fa fa-pencil fa-fw" aria-hidden="true"></span></a>
