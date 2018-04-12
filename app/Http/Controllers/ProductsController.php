@@ -40,17 +40,17 @@ class ProductsController extends Controller
     ->groupBy('clients.id')
     ->orderBy('counter', 'desc')
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-    ->take(10)
+    ->take(5)
     ->get();
 
     $chart_products = Charts::create('bar', 'highcharts')
-    ->title('Estatísticas: Top 10 Compradores') // Título do gráfico
+    ->title('Estatísticas: Top 5 Compradores') // Título do gráfico
     ->labels($clients->pluck('name'))
     ->values($clients->pluck('counter'))
     ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
     ->responsive(true) // É utilizado para se adaptar ao tamanho do box que se encontra
     ->template("material")
-    ->elementLabel("Top 10 Compradores do produto ".$product->name); // Legenda para o gráfico
+    ->elementLabel("Top 5 Compradores:".$product->name); // Legenda para o gráfico
 
     return view('products.show', compact('product', 'chart_products'));
 

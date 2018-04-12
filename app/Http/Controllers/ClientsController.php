@@ -114,17 +114,17 @@ class ClientsController extends Controller
     ->groupBy('products.id')
     ->orderBy('counter', 'desc')
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-    ->take(10)
+    ->take(5)
     ->get();
 
     $chart_clients = Charts::create('bar', 'highcharts')
-    ->title('Estatísticas: Top 10 Produtos Comprados') // Título do gráfico
+    ->title('Estatísticas: Top 5 Produtos Comprados pelo cliente '.$client->name) // Título do gráfico
     ->labels($products->pluck('name'))
     ->values($products->pluck('counter'))
     ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
     ->responsive(true) // É utilizado para se adaptar ao tamanho do box que se encontra
     ->template("material")
-    ->elementLabel("Top 10 Produtos comprados pelo cliente ".$client->name); // Legenda para o gráfico
+    ->elementLabel("Top 5 Produtos: ".$client->name); // Legenda para o gráfico
 
     if($client->user_id != 0){
       return view('clients.show', compact('client', 'items', 'total', 'user', 'chart_clients'));
