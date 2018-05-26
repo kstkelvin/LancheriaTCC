@@ -93,7 +93,7 @@ class VisitorController extends Controller
         $product->stock -= request('amount');
         $product->save();
 
-        return redirect('/visitantes');
+        return redirect('/visitantes')->with('success','Item adicionado!');
 
       }
 
@@ -112,19 +112,19 @@ class VisitorController extends Controller
     Item::where('is_paid', '=', '0')
     ->where('client_id', '=', null)
     ->update(['is_paid' => '1']);
-    return redirect('pagamento');
+    return redirect('pagamento')->with('success','Pagamento realizado com sucesso.');
   }
 
   public function destroy($id){
     Item::destroy($id);
-    return redirect('visitantes');
+    return redirect('visitantes')->with('success','Item removido com sucesso.');
   }
 
   public function delete(){
     Item::where('is_paid', '=', '0')
     ->where('client_id', '=', null)
     ->delete();
-    return redirect('visitantes');
+    return redirect('visitantes')->with('success','A lista de items foi apagada com sucesso.');
   }
 
 }
