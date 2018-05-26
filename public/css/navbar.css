@@ -1,6 +1,6 @@
 nav {
   height: 50px;
-  position: relative;
+  position: fixed;
 }
 
 header {
@@ -14,7 +14,7 @@ header {
 @media screen and (max-width: 768px) {
   .side-collapse-container{
     width:100%;
-    position:relative;
+    position:fixed;
     overflow:hidden;
     right:0;
     transition:left .3s;
