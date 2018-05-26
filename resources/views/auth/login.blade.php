@@ -6,7 +6,7 @@
     <div class="row form-body">
       <div class="col-lg-4">
         <div class="card-body card mb-4 box-shadow">
-          <form method="post" action="/login" class="form-signin">
+          <form method="post" action="/login" class="form-horizontal form-signin">
             {{ csrf_field() }}
 
             <div class="text-center mb-4 ">
