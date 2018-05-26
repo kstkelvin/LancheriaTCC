@@ -7,7 +7,7 @@
       <div class="row form-body">
         <div class="col-md-4">
           <div class="card-body card mb-4 box-shadow">
-            <form class="form-signin" method="POST" action="{{ route('password.email') }}">
+            <form class="form-horizontal form-signin" method="POST" action="{{ route('password.email') }}">
               <div class="text-center mb-4">
                 <h1 class="h3 mb-3 font-weight-normal">Recuperação de Senha</h1>
               </div>
