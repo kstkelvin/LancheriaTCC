@@ -1,9 +1,11 @@
 .sidenav {
-  padding: 8px 8px 8px 12px;
-  border-top: .02px solid gray;
+  padding-left: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-top: 1px solid #0f0f0f;
   height: inherit;
   position: fixed;
-  width: 120px;
+  width: 150px;
   z-index: 1;
   top: 50px;
   right: 0;
@@ -17,6 +19,11 @@
   font-size: 25px;
   color: #818181;
   transition: 0.3s;
+}
+
+.sidenav .nav-link {
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .sidenav a:hover {

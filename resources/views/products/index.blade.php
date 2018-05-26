@@ -36,6 +36,7 @@
     </div>
   </div>
   <br>
+
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -45,7 +46,6 @@
               <th><p class="table-header-wordwrap">NOME</p></th>
               <th><p class="table-header-wordwrap">PREÇO</p></th>
               <th><p class="table-header-wordwrap">ESTOQUE</p></th>
-              <th><p class="table-header-wordwrap"></p></th>
               <th><p class="table-header-wordwrap"></p></th>
               <th><p class="table-header-wordwrap"></p></th>
             </tr>
@@ -60,22 +60,26 @@
                 <td>
                   <a href="/produto/{{$product->id}}" class="btn btn-secondary button-link word-breaker button-panel">{{ $product->name }}</a>
                 </td>
-                <td>{{'R$ ' . number_format($product->price, 2, ',', '.')}}</td>
-                <td>{{$product->stock}}</td>
+                <td>
+                  {{'R$ ' . number_format($product->price, 2, ',', '.')}}
+                </td>
+                <td>
+                  <p>
+                    <a href="/produto/{{$product->id}}/estoque" class="btn btn-secondary button-link button-panel" title="Estoque">
+                      {{$product->stock}}
+                    </a>
+                  </p>
+                </td>
                 <td>
                   <a href="/produto/{{$product->id}}/editar" class="btn btn-secondary button-link button-panel" title="Editar">
                     <span class="fa fa-pencil fa-fw" aria-hidden="true"></span></a>
                   </td>
                   <td>
-
                     <button type="submit" form="product_arma{{$product->id}}" formmethod="post" onclick="return delete_confirm_product()" class="btn btn-secondary button-link button-panel" target="blank" title="Excluir">
                       <span class="fa fa-trash fa-fw" aria-hidden="true"></span>
                     </button>
                   </td>
                   <td>
-                    <a href="/produto/{{$product->id}}/estoque" class="btn btn-secondary button-link button-panel" title="Estoque">
-                      <span class="fa fa-plus fa-fw" aria-hidden="true"></span>
-                    </a>
                   </td>
                 </tr>
               @endforeach

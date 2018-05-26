@@ -65,8 +65,6 @@
           </div>
         </ul>
       @else
-        <ul class="navbar-nav mr-auto">
-        </ul>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" href="/login"><i class="fa fa-fw fa-sign-in"></i> Login</a>

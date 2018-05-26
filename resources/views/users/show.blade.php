@@ -35,23 +35,20 @@
           <table class="table table-hover table-striped">
             <thead>
               <tr>
-                  <th><p class="table-header-wordwrap">PRODUTO</p></th>
-                  <th><p class="table-header-wordwrap">PREÇO</p></th>
-                  <th><p class="table-header-wordwrap">QUANTIA</p></th>
-                  <th><p class="table-header-wordwrap">DATA DA COMPRA</p></th>
-                  <th><p class="table-header-wordwrap">TOTAL</p></th>
+                <th><p class="table-header-wordwrap">PRODUTO</p></th>
+                <th><p class="table-header-wordwrap">QUANTIA</p></th>
+                <th><p class="table-header-wordwrap">TOTAL</p></th>
+                <th><p class="table-header-wordwrap">DATA DA COMPRA</p></th>
+
               </tr>
             </thead>
             <tbody>
               @foreach ($items as $item)
                 <tr>
-                  <td>{{ $item->name }}</td>
-                  <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
+                  <td>{{ $item->name . ' (R$' . number_format($item->price, 2, ',', '.').')' }}</td>
                   <td>{{ $item->amount }}</td>
-                  <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
                   <td>{{ 'R$ ' . number_format($item->price * $item->amount, 2, ',', '.') }}</td>
-                  <td>
-                  </td>
+                  <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
                 </tr>
               @endforeach
             </tbody>
