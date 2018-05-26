@@ -1,0 +1,81 @@
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: inherit;
+}
+
+.topnav .search-container {
+  float: left;
+  width: 100%;
+}
+
+.topnav .search-container #search:hover {
+  border: 0.1px solid #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+.topnav .search-container #search:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+
+
+.topnav input[type=text] {
+  margin-top: 8px;
+  padding: 10px 10px;
+  font-size: 17px;
+  width: 95%;
+  border: none;
+  border: 0.1px solid #ccc;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 10px 10px 10px 10px;
+  width: 5%;
+  margin-top: 8px;
+  background: #4CAF50;
+  font-size: 17px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #449D48;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+
+  .topnav input[type=text]{
+    text-align: left;
+    float: left;
+    display: block;
+    width: 80%;
+    margin: 0;
+  }
+
+
+  .topnav .search-container button {
+    float: right;
+    display: block;
+    text-align: center;
+    width: 20%;
+    margin: 0;
+  }
+  .topnav input[type=text] {
+    border: 0.1px solid #ccc;
+  }
+}

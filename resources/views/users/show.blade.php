@@ -2,40 +2,61 @@
 
 
 @section('content')
-
-  <div>
-    <h1>{{ $client->name . ' ' . $client->surname }}: Conta</h1>
-    <hr>
-    {{ 'Setor: ' . $client->setor }}
-    <br>
-    {{ 'Telefone: ' . $client->phone_number}}
-    <br>
-    {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
-  </div>
   <br>
-  <hr>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Produto</th>
-        <th>Valor</th>
-        <th>Qt.</th>
-        <th>Data</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($items as $item)
-        <tr>
-          <td>{{ $item->name }}</td>
-          <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
-          <td>{{ $item->amount }}</td>
-          <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
-          <td>{{ 'R$ ' . number_format($item->price * $item->amount, 2, ',', '.') }}</td>
-          <td>
-          </td>
-        </tr>
-      @endforeach
-    </tbody>
-  </table>
-@endsection
+  <div class="album">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card-body card box-shadow">
+            @if($client->surname != null)
+              <h1>{{ $client->name . ' ' . $client->surname }}: Conta</h1>
+            @else
+              <h1>{{ $client->name }}: Conta</h1>
+            @endif
+            <p>{{ 'Setor: ' . $client->setor }}<br>
+              {{ 'Telefone: ' . $client->phone_number}}<br>
+              {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}</p>
+              <div class="form-group d-flex justify-content-start align-items-start flex-column flex-md-row form-inline">
+                <a href="/historico" class="d-md-inline-block btn btn-sm btn-secondary mr-1" title="Histórico">
+                  <span class="fa fa-history fa-fw" aria-hidden="true"></span>Histórico
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-hover table-striped">
+            <thead>
+              <tr>
+                  <th><p class="table-header-wordwrap">PRODUTO</p></th>
+                  <th><p class="table-header-wordwrap">PREÇO</p></th>
+                  <th><p class="table-header-wordwrap">QUANTIA</p></th>
+                  <th><p class="table-header-wordwrap">DATA DA COMPRA</p></th>
+                  <th><p class="table-header-wordwrap">TOTAL</p></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($items as $item)
+                <tr>
+                  <td>{{ $item->name }}</td>
+                  <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
+                  <td>{{ $item->amount }}</td>
+                  <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
+                  <td>{{ 'R$ ' . number_format($item->price * $item->amount, 2, ',', '.') }}</td>
+                  <td>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  @endsection

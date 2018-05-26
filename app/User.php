@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\changePassword;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
   * @var array
   */
   protected $fillable = [
-    'username', 'name', 'surname', 'password', 'email', 'is_admin', 'has_account'
+    'name', 'surname', 'password', 'email', 'is_admin', 'has_account'
   ];
 
   /**
@@ -36,4 +37,10 @@ class User extends Authenticatable
   {
     return $this->is_admin;
   }
+
+  public function sendPasswordResetNotification($token)
+  {
+    $this->notify(new changePassword($token));
+  }
+
 }

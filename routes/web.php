@@ -28,6 +28,10 @@ Route::get('/logout', 'LoginController@destroy');//logout sem confirmação(suje
 Route::get('/editar', 'UserController@edit');//tela de edição - nome e sobrenome apenas
 Route::post('/editar', 'UserController@update');//edita nome e sobrenome do cliente (sujeito a modificações)
 Route::get('/home', 'HomeController@index');
+Route::get('/conta', 'BindController@show');//Wildcard/Joker
+Route::get('/historico', 'BindController@history');
+Route::get('/senha', 'UserController@password');
+Route::post('/senha', 'UserController@change');
 
 Route::group(array('middleware' => ['auth', 'admin']), function ()
 {
@@ -39,6 +43,9 @@ Route::group(array('middleware' => ['auth', 'admin']), function ()
   Route::get('/produto/{product}', 'ProductsController@show');//Search -- produto selecionado
   Route::post('/produto/{product}', 'ProductsController@update');//Update -- produto selecionado
   Route::post('produto/{product}/excluir', 'ProductsController@destroy');//Delete -- produto selecionado
+  Route::get('/produto/{product}/estoque', 'StockController@edit');//tela de estoque
+  Route::post('/produto/{product}/armazem', 'StockController@update');//adiciona a quantia no estoque
+  Route::get('/produtos/pesquisar', 'ProductsController@search');
 
   //--------------------------Clientes-(Será modificada após a primeira sprint)-//
 
@@ -49,31 +56,36 @@ Route::group(array('middleware' => ['auth', 'admin']), function ()
   Route::post('/cliente/{client}', 'ClientsController@update');
   Route::post('/cliente/{client}/excluir', 'ClientsController@destroy');
   Route::get('/clientes', 'ClientsController@index');
+  Route::get('/cliente/{client}/historico', 'HistoryController@show');
+  Route::get('/clientes/pesquisar', 'ClientsController@search');
+  Route::post('/cliente/{client}/pagamento', 'ItemsController@edit');
 
   //--------------------------Operação de Venda-(fase de testes)-------------//
 
   Route::get('/venda', 'ItemsController@create');
   Route::post('/venda', 'ItemsController@store');
-  Route::get('/cliente/{client}/pagamento', 'ItemsController@edit');
-  Route::post('/venda/{client}/excluir', 'ItemsController@destroy');
+  Route::post('/venda/{item}/excluir', 'ItemsController@destroy');
+  Route::get('/pagamento', 'ItemsController@payment');
+  Route::get('/pagamento/abrir', 'ItemsController@open');
 
-  //-------------------------Regras de Negócio-------------------------------//
+  //--------------------------Operação de Venda-(Visitantes)-------------//
 
-  Route::get('/produto/{product}/estoque', 'StockController@edit');//tela de estoque
-  Route::post('/produto/{product}/armazem', 'StockController@update');//adiciona a quantia no estoque
-  Route::get('/clientes/pesquisar', 'ClientsController@search');
-  Route::get('/produtos/pesquisar', 'ProductsController@search');
+  Route::get('/visitantes', 'VisitorController@show');
+  Route::get('/visitantes/adicionar', 'VisitorController@create');
+  Route::post('/visitantes', 'VisitorController@store');
+  Route::post('/visitantes/pagamento', 'VisitorController@edit');
+  Route::post('/visitantes/cancelar', 'VisitorController@delete');
+  Route::post('/visitantes/{item}/excluir', 'VisitorController@destroy');
+
 
   //----------------Regra de Negócio (Vínculo entre contas)-----------------//
 
   Route::get('/cliente/{client}/bind', 'BindController@index');
   Route::post('/cliente/{client}/bind', 'BindController@update');
-  Route::post('/mail/{client}', 'LateController@send');
+  Route::post('/mail/{usuario}', 'LateController@send');
   Route::get('/', 'HomeController@homepage');
   Route::any('/', array('uses' => 'LateController@index'));
   Route::get('/stats', 'StatsController@stats');
 
 
 });
-
-Route::get('/cliente/{client}/account', 'BindController@show');//Wildcard/Joker

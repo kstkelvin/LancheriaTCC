@@ -1,0 +1,38 @@
+.sidenav {
+  padding: 8px 8px 8px 12px;
+  border-top: .02px solid gray;
+  height: inherit;
+  position: fixed;
+  width: 120px;
+  z-index: 1;
+  top: 50px;
+  right: 0;
+  display: none;
+  background-color: #111;
+  overflow-x: hidden;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidetitle{
+  text-align: center;
+  justify-content: center;
+}
+
+.sidebar-switch{
+  display:block;
+}
+
+@media screen and (max-height: 768px) {
+  .sidenav a {font-size: 18px;}
+
+}

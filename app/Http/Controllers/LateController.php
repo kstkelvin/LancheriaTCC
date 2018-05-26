@@ -23,13 +23,14 @@ class LateController extends Controller
 
   public function index()
   {
-    
+
     $clientes = Client::join('items', 'clients.id', '=', 'items.client_id')
     ->join('products', 'products.id', '=', 'items.product_id')
     ->select('clients.id as id',
     'clients.name as nome',
     'clients.surname as sobrenome',
-    'clients.user_id as usuario'
+    'clients.user_id as usuario',
+    'clients.total as total'
     )
     ->where('items.created_at', '<', Carbon::now()->startOfMonth())
     ->where('is_paid', '=', '0')
@@ -47,39 +48,31 @@ class LateController extends Controller
 
   public function send($id)
   {
-
-    $cliente = Client::findOrFail($id);
-    if($cliente->user_id != null){
+    $usuario = User::findOrFail($id);
+    $cliente = Client::where('user_id', '=', $id)->get()->first();
+    if($cliente != null){
       $total = Item::join('products', 'products.id', '=', 'items.product_id')
       ->select(DB::raw('sum(products.price * items.amount) AS total'))
-      ->where('items.client_id', '=', $id)
+      ->where('items.client_id', '=', $cliente->id)
       ->where('items.is_paid', '=', '0')
       ->getQuery()
       ->get()
       ->first();
-      $user = $this->user($cliente->user_id);
-
-      if($user != null){
-        Mail::send('emails.send', ['user' => $user, 'total' => $total], function ($mail) use ($user) {
-          $mail->to($user['email'])
+      if($usuario != null){
+        Mail::send('emails.send', ['user' => $usuario, 'total' => $total], function ($mail) use ($usuario) {
+          $mail->to($usuario['email'])
           ->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital')
           ->subject('Cobrança');
         });
-        return redirect('/');
-      }return redirect('/')->withErrors('Esta conta não foi vinculada ainda.');
-    }return redirect('/')->withErrors('Ocorreu um problema grave que escapou das grades lógicas estabelecidas previamente. Teehee.');
+        return redirect('/')->with('success','O e-mail foi enviado para '.$usuario->email. ' com sucesso.');
+      }return redirect('/')->withErrors('Ocorreu um problema no envio do e-mail. Tente novamente mais tarde.');
+    }return redirect('/')->withErrors('Esta conta ainda não possui vínculos com o sistema. Contate o administrador ou a dona da lancheria caso você seja um funcionário do hospital.');
 
     //Mail::send(['text'=>'emails.send'],['name', 'Kelvin'],function ($message)
     //{
     //$message->to('kstkelvin2@gmail.com')->subject('Cobrança');
     //$message->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital São Jerônimo');
     //});
-  }
-
-  public function user($user)
-  {
-    $feedback = User::findOrFail($user);
-    return $feedback;
   }
 
 }

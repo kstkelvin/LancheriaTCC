@@ -32,7 +32,6 @@ class RegisterController extends Controller
     //o feedback dos erros. (em inglês, sujeito a alteração).
 
     $rules = [
-      'username' => 'required|string|min:6|max:40|unique:users',
       'name' => 'required|string|max:20',
       'surname' => 'nullable|string|max:50',
       'password' => 'required|min:8|confirmed',
@@ -40,28 +39,25 @@ class RegisterController extends Controller
     ];
 
     $messages = [
-      'username.required'    => 'O nome de usuário é necessário.',
       'password.required'    => 'A senha é necessária.',
       'email.required' => 'É necessária a inclusão de um endereço de e-mail.',
       'name.required'    => 'Especifique o seu nome',
       'name.max' => 'O nome não pode ter mais de trinta dígitos.',
       'surname.max' => 'O sobrenome ultrapassou a quantia tolerada de dígitos.',
-      'username.min' => 'O nome de usuário requer no mínimo seis dígitos.',
       'password.min' => 'A senha requer no mínimo oito dígitos.',
       'username.max' => 'O nome de usuário não pode ter mais de quarenta dígitos.',
       'confirmed' => 'Você deve confirmar a sua senha.',
-      'username.unique' => 'O nome de usuário já foi utilizado.',
       'username.email' => 'Este endereço de e-mail já foi utilizado.'
     ];
 
     $this->validate(request(), $rules, $messages);
 
     $user = User::create([
-      'username' => request('username'),
       'name' => request('name'),
       'surname' => request('surname'),
       'email' => request('email'),
-      'password' => bcrypt(request('password'))
+      'password' => bcrypt(request('password')),
+      'is_admin' => 1,
     ]);
 
     auth()->login($user);
@@ -71,6 +67,6 @@ class RegisterController extends Controller
   protected function create()
   {
     //encaminha o usuário para a tela de cadastro.
-    return view('register.create');
+    return view('auth.register');
   }
 }

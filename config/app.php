@@ -13,7 +13,7 @@ return [
   |
   */
 
-  'name' => env('APP_NAME', 'Laravel'),
+  'name' => env('APP_NAME', 'LHManager'),
 
   /*
   |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
   |
   */
 
-  'url' => env('APP_URL', 'http://localhost'),
+  'url' => env('APP_URL', 'http://localhost:8000/'),
 
   /*
   |--------------------------------------------------------------------------
@@ -175,8 +175,8 @@ return [
     // App\Providers\BroadcastServiceProvider::class,
     App\Providers\EventServiceProvider::class,
     App\Providers\RouteServiceProvider::class,
-    Liebig\Cron\Laravel5ServiceProvider::class,
     ConsoleTVs\Charts\ChartsServiceProvider::class,
+
   ],
 
   /*

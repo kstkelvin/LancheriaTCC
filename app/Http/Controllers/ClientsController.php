@@ -83,7 +83,7 @@ class ClientsController extends Controller
         'setor' => request('setor'),
         'phone_number' => $numero_formatado
       ]);
-      return redirect('clientes');
+      return redirect('clientes')->with('success','Cliente cadastrado com sucesso!');
     }
   }
 
@@ -105,7 +105,6 @@ class ClientsController extends Controller
     ->orderBy('updated_at')
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
     ->get();
-    $total = $this->total($client->id);
 
     $products = Product::join('items', 'products.id', '=', 'items.product_id', 'left outer')
     ->select('products.name as name',
@@ -127,9 +126,9 @@ class ClientsController extends Controller
     ->elementLabel("Top 5 Produtos: ".$client->name); // Legenda para o gráfico
 
     if($client->user_id != 0){
-      return view('clients.show', compact('client', 'items', 'total', 'user', 'chart_clients'));
+      return view('clients.show', compact('client', 'items', 'user', 'chart_clients'));
     }else
-    return view('clients.show', compact('client', 'items', 'total', 'chart_clients'));
+    return view('clients.show', compact('client', 'items', 'chart_clients'));
   }
 
   /**
@@ -186,7 +185,8 @@ class ClientsController extends Controller
       $client->phone_number = $numero_formatado;
       $client->save();
 
-      return redirect('clientes');
+      return redirect('clientes')->with('success','As informações do cliente foram atualizadas com sucesso.');
+
     }
 
     /**
@@ -199,17 +199,6 @@ class ClientsController extends Controller
     //{
 
     //}
-  }
-
-  function total($id){
-    $total = Item::join('products', 'products.id', '=', 'items.product_id')
-    ->select(DB::raw('sum(products.price * items.amount) AS total'))
-    ->where('items.client_id', '=', $id)
-    ->where('items.is_paid', '=', '0')
-    ->getQuery()
-    ->get()
-    ->first();
-    return $total;
   }
 
   function formatar_telefone_br($phone_number) {
@@ -279,7 +268,7 @@ class ClientsController extends Controller
   public function destroy($id)
   {
     Client::destroy($id);
-    return redirect('/clientes');
+    return redirect('/clientes')->with('success','As informações do cliente foram excluídas com sucesso.');;
   }
 
 }

@@ -21,33 +21,6 @@ class MailController extends Controller
     $this->middleware('auth');
   }
 
-  //*public function debt_makers()
-  //  {
-  //    $debt_makers = Client::join('items', 'clients.id', '=', 'items.client_id')
-  //    ->join('products', 'products.id', '=', 'items.product_id')
-  //    ->select('client.name as nome',
-  //    'client.email as email',
-  //    'sum(products.price * items.amount) as total',
-  //    'items.id as id')
-  //    ->where('items.created_at', '>', NOW()-30)
-  //    ->where('is_paid', '=', '0')
-  //    ->groupBy('client.id')
-  //    ->orderBy('updated_at')
-  //    ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-  //    ->get();
-
-  //  foreach($debt_makers as $debt_maker){
-  //  if($debt_maker->email != null){
-  //    $subject = 'Táis devendo dinero, sabias?';
-  //      $mailmessage = $debt_maker->nome.' , Desculpas infortuná-lo em este momento, mas você deves um caralho
-  //      de dinheiro. O total é de '.$debt_maker->total.'R$. Sugiro que pagues o mais rápido possível para evitar juros adicionais.
-  //      got suckas.';
-  //    mail($debt_maker->email,$subject,$mailmessage);
-  //    }
-  //    }
-
-  //  }
-
   public function send(Request $request)
   {
     $total = Item::join('products', 'products.id', '=', 'items.product_id')

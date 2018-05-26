@@ -101,7 +101,7 @@ class ProductsController extends Controller
         'stock' => '0'
       ]);
 
-      return redirect('produtos');
+      return redirect('produtos')->with('success','Produto cadastrado com sucesso!');
     }
   }
 
@@ -137,7 +137,7 @@ class ProductsController extends Controller
       $product->price      = request()->get('price');
       $product->save();
 
-      return redirect('produtos');
+      return redirect('produtos')->with('success','As informações do produto foram atualizadas com sucesso.');
     }
 
   }
@@ -145,7 +145,7 @@ class ProductsController extends Controller
 
   public function destroy($id){
     Product::destroy($id);
-    return redirect('/produtos');
+    return redirect('/produtos')->with('success','As informações do produto foram excluídas com sucesso.');
   }
 
 

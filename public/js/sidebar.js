@@ -1,17 +1,18 @@
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-  document.getElementById("main").style.marginRight = "0";
+function myFunction() {
+    document.getElementById("mySidenav").classList.toggle("sidebar-switch");
 }
 
-function openNav() {
-  if ($(window).width() < 768) {
-    document.getElementById("mySidenav").style.width = "100%";
-    document.getElementById("main").style.marginRight = "30%";
-  }
-  else {
-    document.getElementById("mySidenav").style.width = "20%";
-    document.getElementById("main").style.marginRight = "20%";
-  }
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
 
-
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('sidebar-switch')) {
+        openDropdown.classList.remove('sidebar-switch');
+      }
+    }
+  }
 }

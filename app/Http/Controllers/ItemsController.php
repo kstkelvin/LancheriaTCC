@@ -7,6 +7,8 @@ use App\Client;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\NFeController;
+use Illuminate\Support\Facades\File;
 
 class ItemsController extends Controller
 {
@@ -58,13 +60,18 @@ class ItemsController extends Controller
           'client_id' => request('client_id'),
           'product_id' => request('product_id'),
           'amount' => request('amount'),
-          'is_paid' => 0
+          'is_paid' => 0,
+          'total' => request('amount') * $product->price
         ]);
 
         $product->stock -= request('amount');
         $product->save();
 
-        return redirect('/');
+        $client = Client::findOrFail(request('client_id'));
+        $client->total += (request('amount') * $product->price);
+        $client->save();
+
+        return redirect('/')->with('success','A operação de venda foi realizada com sucesso.');
 
       }
 
@@ -72,17 +79,41 @@ class ItemsController extends Controller
 
   }
 
-  function edit($id){
-    Item::where('client_id', '=', $id)
-    ->where('is_paid', '=', '0')
-    ->update(['is_paid' => '1']);
+  function edit(){
+    $client = Client::findOrFail(request('id'));
+    if(request('payment_option') == 2){
+      NFeController::create(request('payment'));
+      $client->total -= request('payment');
+      $client->save();
+      return redirect('pagamento')->with('success','O(a) cliente '. $client->name . 'pagou uma quantia parcial de ' . request('payment'). 'R$ com sucesso.');
+    }else{
+      NFeController::create($client->total);
+      $client->total = 0.00;
+      $client->save();
+      Item::where('client_id', '=', request('id'))
+      ->where('is_paid', '=', '0')
+      ->update(['is_paid' => '1']);
+      return redirect('pagamento')->with('success','O pagamento do(a) cliente '. $client->name . 'foi realizado com sucesso.');
+    }
+  }
 
-    return redirect('cliente/' . $id);
+  public function payment(){
+    return view('vendas.payment');
+  }
+
+  public function open(){
+    header('Content-Type: application/pdf');
+    echo File::get(storage_path('nota.pdf'));
   }
 
   public function destroy($id){
+    $item = Item::findOrFail($id);
+    if($item->is_paid == 0){
+      $client->total -= $item->total;
+    }
+    $client->save();
     Item::destroy($id);
-    return redirect('clientes');
+    return redirect('clientes')->with('success','O item foi excluído da lista com sucesso.');
   }
 
 }

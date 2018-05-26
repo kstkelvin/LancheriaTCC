@@ -7,6 +7,7 @@ use App\Item;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BindController extends Controller
 {
@@ -34,8 +35,8 @@ class BindController extends Controller
     return redirect('/');
   }
 
-  public function show($id){
-    $client = Client::where('user_id', '=', $id)->get()->first();
+  public function show(){
+    $client = Client::where('user_id', '=', Auth::user()->id)->get()->first();
     if($client){
       $items = Item::join('products', 'products.id', '=', 'items.product_id')
       ->select('products.name as name',
@@ -64,6 +65,26 @@ class BindController extends Controller
     ->get()
     ->first();
     return $total;
+  }
+
+  public function history()
+  {
+    $client = Client::where('user_id', '=', Auth::user()->id)->get()->first();
+    if($client){
+      $items = Item::join('products', 'products.id', '=', 'items.product_id')
+      ->select('products.name as name',
+      'items.amount as amount',
+      'items.created_at',
+      'items.is_paid as pago',
+      'items.id as id')
+      ->where('client_id', '=', $client->id)
+      ->orderBy('updated_at')
+      ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
+      ->get();
+      return view('users.history', compact('client', 'items'));
+    }else{
+      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada. Aguarde ou contate a administradora da lancheria.');
+    }
   }
 
   public function destroy($id)

@@ -10,42 +10,59 @@
 
   <title>Lancheria do Hospital</title>
 
-  <!-- Bootstrap min CSS -->
-  <!--link href="/css/bootstrap.min.css" rel="stylesheet"-->
+  <!--link href="/css/navbar.css" rel="stylesheet"-->
 
+
+
+  <!-- CSS FONTS FROM OUTSIDE PROJECT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+
+  <!-- CSS FONTS FROM THE PROJECT -->
   <link href="/css/template.css" rel="stylesheet">
+  <link href="/css/layout.css" rel="stylesheet"> <!--to jogando o que eu achar utilizável aqui-->
+  <link href="/css/popup.css" rel="stylesheet">   <!--popup de pagamento-->
+  <link href="/css/searchbar.css" rel="stylesheet"> <!--barra de pesquisas-->
+  <link href="/css/sidebar.css" rel="stylesheet">
+  <link href="/css/navbar.css" rel="stylesheet">
+  <link href="/css/footer.css" rel="stylesheet">
+  <link href="/css/components.css" rel="stylesheet">
+
   {!! Charts::styles() !!}
 
+  <!-- GOOGLE SIGN-IN META -->
+  <meta name="google-signin-client_id" content="495111472213-2102ip6l0rrqj9s7urmvgfprfi10s7u9.apps.googleusercontent.com">
 
 </head>
-<body>
-
+<body id="main">
   <div class="nav">
     @include('layouts.nav')
   </div>
-
-
-
-  <div class="container">
-    @yield('content')
-    @include('layouts.errors')
+  <div id="main_container">
+    <div class="container">
+      @include('layouts.dialog')
+      @yield('content')
+    </div>
   </div>
-
-
-
-  <div class="footer">
+  <div>
     @include('layouts.footer')
   </div>
 
+  <!-- JS SCRIPTS FROM OUTSIDE PROJECT -->
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="/js/vendor/jquery.min.js"><\/script>')</script>
-  <script src="/js/script.js"></script>
-  <script src="/js/popper.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+
+  <!-- JS SCRIPTS FROM THE PROJECT -->
+  <script src="/js/popup.js"></script>
+  <script src="/js/popup_venda.js"></script>
+  <script src="/js/popup_visitor.js"></script>
+  <script src="/js/confirm_action.js"></script>
   <script src="/js/sidebar.js"></script>
+  <script src="/js/navbar.js"></script>
+
   {!! Charts::scripts() !!}
 
 </body>

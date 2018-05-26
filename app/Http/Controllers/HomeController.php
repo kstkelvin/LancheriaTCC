@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Item;
 use App\Client;
 use App\Product;
@@ -9,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
-
 class HomeController extends Controller
 {
   /**
@@ -17,28 +14,20 @@ class HomeController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-
   public function homepage()
   {
     return view('main.homepage');
-
     //
   }
-
   public function index()
   {
     return view('main.home');
-
     //
   }
-
   public function about()
-
   {
     return view('main.about');
-
   }
-
   //public function debts()
   //{
   //  $debts = Item::join('clients', 'clients.id', '=', 'items.client_id')
@@ -47,10 +36,8 @@ class HomeController extends Controller
   //  ->where('is_paid', '=', '0')
   //  ->getQuery()
   //  ->get();
-
   //  return $debts;
   //}
-
   /**
   * Show the form for creating a new resource.
   *
@@ -60,7 +47,6 @@ class HomeController extends Controller
   {
     //
   }
-
   /**
   * Store a newly created resource in storage.
   *
@@ -71,7 +57,6 @@ class HomeController extends Controller
   {
     //
   }
-
   /**
   * Display the specified resource.
   *
@@ -82,7 +67,6 @@ class HomeController extends Controller
   {
     //
   }
-
   /**
   * Show the form for editing the specified resource.
   *
@@ -93,7 +77,6 @@ class HomeController extends Controller
   {
     //
   }
-
   /**
   * Update the specified resource in storage.
   *
@@ -105,7 +88,6 @@ class HomeController extends Controller
   {
     //
   }
-
   /**
   * Remove the specified resource from storage.
   *
