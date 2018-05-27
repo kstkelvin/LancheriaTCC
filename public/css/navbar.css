@@ -16,7 +16,7 @@ header {
   .side-collapse-container{
     backface-visibility: hidden;
     height: 100%;
-    -webkit-transform: translateZ(0);
+
   }
 
   .side-collapse-container.out{
@@ -31,12 +31,11 @@ header {
     height: 100%;
     right:0;
     width:100%;
-    position:fixed;
+    position:fixed!important;
     overflow:hidden;
     transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
   }
 
   .text-muted{
