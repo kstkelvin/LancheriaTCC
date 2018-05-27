@@ -1,7 +1,6 @@
 nav {
   height: 50px;
   backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
 }
 
 header {
@@ -16,11 +15,13 @@ header {
 @media screen and (max-width: 768px) {
   .side-collapse-container{
     backface-visibility: hidden;
+    height: 100%;
     -webkit-transform: translateZ(0);
   }
 
   .side-collapse-container.out{
     right:100%;
+
   }
 
   .side-collapse {
@@ -62,6 +63,5 @@ header {
     position: fixed;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
-    -webkit-transform: translateZ(0);
   }
 }
