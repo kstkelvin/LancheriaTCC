@@ -5,12 +5,12 @@ nav {
 }
 
 header {
-  /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top */
+  /* Fixed Sidebar (stay in place on scroll) */ /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
   background-color: #111;
   position: absolute;
+  z-index: 1;
 }
 
 @media screen and (max-width: 768px) {
@@ -18,7 +18,7 @@ header {
     backface-visibility: hidden;
     overflow:hidden;
     height: 100%;
-    position:absolute;
+    position:fixed;
 
   }
 
@@ -28,7 +28,6 @@ header {
 
   .side-collapse {
     border-top: .1px solid #888888;
-    margin-top: 50px;
     top: 0;
     bottom:0;
     height: 100%;
@@ -39,7 +38,6 @@ header {
     transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
-    z-index: 2;
     -webkit-transform: translateZ(0);
   }
 
