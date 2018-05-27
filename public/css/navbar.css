@@ -36,6 +36,7 @@ header {
     transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
   }
 
   .text-muted{
