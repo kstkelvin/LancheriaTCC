@@ -1,6 +1,7 @@
 nav {
   height: 50px;
   backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
 
 }
 
@@ -12,11 +13,13 @@ header {
   background-color: #111;
   position: absolute;
   backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 @media screen and (max-width: 768px) {
   .side-collapse-container{
     backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   .side-collapse-container.out{
