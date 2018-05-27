@@ -28,8 +28,9 @@ header {
 
   .side-collapse {
     border-top: .1px solid #888888;
-    top: 50px;
+    margin-top: 50px;
     right:0;
+    top: 0;
     bottom: 0;
     width:100%;
     position:fixed;
