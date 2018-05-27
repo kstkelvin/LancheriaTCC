@@ -15,6 +15,7 @@ header {
 @media screen and (max-width: 768px) {
   .side-collapse-container{
     backface-visibility: hidden;
+    overflow:hidden;
     height: 100%;
 
   }
@@ -26,7 +27,8 @@ header {
 
   .side-collapse {
     border-top: .1px solid #888888;
-    top: 50px;
+    margin-top: 50px;
+    top: 0;
     bottom:0;
     height: 100%;
     right:0;
@@ -36,6 +38,7 @@ header {
     transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
   }
 
   .text-muted{
