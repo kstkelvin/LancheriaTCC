@@ -2,7 +2,6 @@ nav {
   height: 50px;
   backface-visibility: hidden;
   top: 0;
-  z-index: 1; /* Stay on top */
 }
 
 header {
@@ -19,12 +18,12 @@ header {
     backface-visibility: hidden;
     overflow:hidden;
     height: 100%;
-    z-index: 1; /* Stay on top */
+
   }
 
   .side-collapse-container.out{
     right:100%;
-
+    position: absolute;
   }
 
   .side-collapse {
@@ -40,6 +39,7 @@ header {
     transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
+    z-index: 2;
     -webkit-transform: translateZ(0);
   }
 
