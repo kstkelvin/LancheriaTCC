@@ -18,12 +18,12 @@ header {
     backface-visibility: hidden;
     overflow:hidden;
     height: 100%;
+    position:absolute;
 
   }
 
   .side-collapse-container.out{
     right:100%;
-    position: absolute;
   }
 
   .side-collapse {
@@ -34,7 +34,7 @@ header {
     height: 100%;
     right:0;
     width:100%;
-    position:fixed!important;
+    position:fixed;
     overflow:hidden;
     transition:width .6s;
     background-color: #111;
