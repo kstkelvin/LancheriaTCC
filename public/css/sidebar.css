@@ -4,7 +4,7 @@
   padding-bottom: 8px;
   border-top: 1px solid #0f0f0f;
   height: inherit;
-  position: fixed;
+  position: absolute;
   width: 150px;
   z-index: 1;
   top: 50px;

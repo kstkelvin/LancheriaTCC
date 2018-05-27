@@ -36,29 +36,28 @@ class UserController extends Controller
 
   public function change()
   {
-    $rules = [
-      'current-password' => 'required|min:8',
-      'password' => 'required|min:8|confirmed',
-    ];
-    $messages = [
-      'required' => 'Você deve preencher todos os campos.',
-      'min' => 'A senha requer no mínimo oito dígitos.',
-      'confirmed' => 'Você deve confirmar a sua senha.',
-    ];
-    $this->validate(request(), $rules, $messages);
-
     if (!(Hash::check(request('current-password'), Auth::user()->password))) {
-      // The passwords doesnt match
-      return view('users.password')->with(
-        'error', 'A sua senha atual está incorreta. Tente novamente.'
-      );
-    }
-    if(strcmp(request('current-password'), request('password')) == 0){
+      return view('users.password')->withErrors([
+        'message' => 'A sua senha atual está incorreta. Tente novamente.'
+      ]);
+    } else if(strcmp(request('current-password'), request('password')) == 0){
       //Current password and new password are same
       return view('users.password')->withErrors([
         'message' => 'A sua nova senha não pode ser a mesma que a antiga.'
       ]);
+    } else {
+      $rules = [
+        'current-password' => 'required|min:8',
+        'password' => 'required|min:8|confirmed',
+      ];
+      $messages = [
+        'required' => 'Você deve preencher todos os campos.',
+        'min' => 'A senha requer no mínimo oito dígitos.',
+        'confirmed' => 'Você deve confirmar a sua senha.',
+      ];
+      $this->validate(request(), $rules, $messages);
     }
+    
     //Change Password
     $user = Auth::user();
     $user->password = bcrypt(request('password'));
