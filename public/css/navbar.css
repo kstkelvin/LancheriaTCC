@@ -35,7 +35,6 @@ header {
     width:100%;
     position:fixed;
     overflow:hidden;
-    transition:width .6s;
     background-color: #111;
     backface-visibility: hidden;
     -webkit-transform: translateZ(0);
