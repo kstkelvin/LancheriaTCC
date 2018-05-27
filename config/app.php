@@ -26,7 +26,7 @@ return [
   |
   */
 
-//  'env' => env('APP_ENV', 'production'),
+  'env' => env('APP_ENV', 'production'),
 
   /*
   |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
   |
   */
 
-  'url' => env('APP_URL', 'http://lancheria-hospital.herokuapp.com/'),
+  'url' => env('APP_URL', 'http://lancheria-hospital.herokuapp.com'),
 
   /*
   |--------------------------------------------------------------------------
