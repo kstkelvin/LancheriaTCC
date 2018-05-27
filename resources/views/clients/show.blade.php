@@ -8,7 +8,7 @@
   @if($client->user_id != 0)
     <form action="/mail/{{$client->user_id}}" id="mailsend_dorkadory" method="POST">
       {{csrf_field()}}
-      <input type="hidden" name="id" value="{{$client->usuario}}"></input>                           
+      <input type="hidden" name="id" value="{{$client->usuario}}"></input>
     </form>
   @endif
   <div class="album">
@@ -48,13 +48,16 @@
                   @if($client->total > 0.00)
                     <button class="d-md-inline-block btn btn-sm mr-1 btn-secondary" id="myBtn"><span class="fa fa-money fa-fw" aria-hidden="true"></span>Pagamento</button>
                   @endif
+
+                  @if($client->user_id != null)
+                    <button type="submit" form="mailsend_dorkadory" formmethod="post" class="d-md-inline-block btn btn-sm btn-secondary" title="Enviar">
+                      Enviar E-mail
+                    </button>
+                  @endif
                   @if($client->user_id == null)
                     <a href="/cliente/{{$client->id}}/bind" class="d-md-inline-block btn btn-sm btn-secondary" title="Vincular a Conta">
                       <span class="fa fa-plus fa-fw" aria-hidden="true"></span>Conta
                     </a>
-                    <button type="submit" form="mailsend_dorkadory" formmethod="post" class="d-md-inline-block btn btn-sm btn-secondary" title="Enviar">
-                      Enviar E-mail
-                    </button>
                   @endif
                 </div>
               </div>
