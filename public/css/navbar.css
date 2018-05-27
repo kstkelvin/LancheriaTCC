@@ -30,6 +30,7 @@ header {
     border-top: .1px solid #888888;
     top: 50px;
     bottom:0;
+    height: 100%;
     right:0;
     width:100%;
     position:fixed;
@@ -60,7 +61,6 @@ header {
   .nav-screen{
     display: none;
   }
-
   header{
     position: fixed;
   }
