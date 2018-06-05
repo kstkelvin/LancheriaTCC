@@ -16,7 +16,7 @@
                 <div class="panel-body">
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input type="text" class="form-control " id="name" placeholder="Nome"
+                      <input type="text" class="form-control" id="name" placeholder="Nome"
                       name="name" required autofocus>
                     </div>
                   </div>
@@ -28,7 +28,7 @@
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
-                      <select name="setor" class="form-control " id="setor" required autofocus>
+                      <select name="setor" class="form-control" id="setor" required autofocus>
                         <option disabled selected value>Setor</option>
                         <option value="Cozinha">Cozinha</option>
                         <option value="Copa">Copa</option>

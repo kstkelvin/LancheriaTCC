@@ -41,10 +41,9 @@ class LateController extends Controller
 
     $count = count($clientes);
 
-
     return view('main.homepage', compact('clientes', 'count'));
-
   }
+
 
   public function send($id)
   {

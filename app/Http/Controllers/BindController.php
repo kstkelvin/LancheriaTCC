@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BindController extends Controller
 {
@@ -52,9 +53,31 @@ class BindController extends Controller
       $total = $this->total($client->id);
       return view('users.show', compact('client', 'items', 'total'));
     }else{
-      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada. Aguarde ou contate a administradora da lancheria.');
+      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada.
+      Se você for um funcionário do hospital, contate o administrador do sistema ou a dona da lancheria.');
     }
   }
+
+  public function home()
+  {
+    $client = Client::where('user_id', '=', Auth::user()->id)->get()->first();
+    $counter = 0;
+    $total = 0;
+    if($client != null){
+      $counter = Item::join('products', 'products.id', '=', 'items.product_id')
+      ->select(DB::raw('items.client_id AS itens'))
+      ->where('items.client_id', '=', $client->id)
+      ->where('items.is_paid', '=', '0')
+      ->where('items.created_at', '<', Carbon::now()->startOfMonth())
+      ->getQuery()
+      ->get()
+      ->first();
+      $counter = count('itens');
+      $total = $this->total($client->id);
+    }
+    return view('main.home', compact('total', 'counter'));
+  }
+
 
   function total($id){
     $total = Item::join('products', 'products.id', '=', 'items.product_id')
@@ -83,7 +106,8 @@ class BindController extends Controller
       ->get();
       return view('users.history', compact('client', 'items'));
     }else{
-      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada. Aguarde ou contate a administradora da lancheria.');
+      return redirect('/home')->withErrors('Sentimos muito, mas esta conta ainda não foi vinculada.
+      Se você for um funcionário do hospital, contate o administrador do sistema ou a dona da lancheria.');
     }
   }
 

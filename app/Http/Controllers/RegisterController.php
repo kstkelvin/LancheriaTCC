@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -60,7 +61,10 @@ class RegisterController extends Controller
     ]);
 
     auth()->login($user);
-    return redirect('/');
+    if(Auth::user()->is_admin == true){
+      return redirect('/');
+    }
+    return redirect('/home');
   }
 
   protected function create()

@@ -42,7 +42,7 @@ class StockController extends Controller
         $product->stock += request()->get('stock');
         $product->save();
 
-        return redirect('produtos')->with('success','Estoque atualizado com sucesso!');
+        return redirect('produto/' . $id)->with('success','Estoque atualizado com sucesso!');
       }
 
       //return redirect('products', compact('products'));

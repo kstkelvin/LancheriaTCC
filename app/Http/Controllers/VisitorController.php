@@ -19,12 +19,6 @@ class VisitorController extends Controller
     $this->middleware('auth');
   }
 
-  public function create()
-  {
-    $products = Product::orderBy('name')->get();
-    return view('vendas.visitor', compact('products'));
-  }
-
   public function show()
   {
 

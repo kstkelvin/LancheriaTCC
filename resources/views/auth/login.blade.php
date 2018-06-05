@@ -38,14 +38,12 @@
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
               </script>
-              <p class="intro_remember">Esqueceu a sua senha? <a href="{{ route('password.request') }}">Recupere a sua senha aqui</a>.</p>
-            </div>
-            <p class="intro-login">Não possui uma conta? <a href="/registrar">Cadastre-se</a>.</p>
+              <p class="intro-login">Não possui uma conta? <a href="/registrar">Cadastre-se</a>.</p>
 
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-@endsection
+  @endsection

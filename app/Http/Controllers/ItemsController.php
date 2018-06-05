@@ -108,12 +108,13 @@ class ItemsController extends Controller
 
   public function destroy($id){
     $item = Item::findOrFail($id);
+    $client = Client::findOrFail($item->client_id);
     if($item->is_paid == 0){
       $client->total -= $item->total;
+      $client->save();
     }
-    $client->save();
     Item::destroy($id);
-    return redirect('clientes')->with('success','O item foi excluído da lista com sucesso.');
+    return redirect('/cliente/'.$client->id)->with('success','O item foi excluído da lista com sucesso.');
   }
 
 }

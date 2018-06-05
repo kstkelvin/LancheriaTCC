@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -58,7 +59,10 @@ class LoginController extends Controller
       ]);
 
     }
-    return redirect('/');
+    if(Auth::user()->is_admin == true){
+      return redirect('/');
+    }
+      return redirect('/home');
   }
 
   public function destroy()
@@ -67,28 +71,7 @@ class LoginController extends Controller
     auth()->logout();
     session()->flush();
     session()->regenerate();
-    return redirect('/');
+    return redirect('/login');
   }
-
-  //public function show()
-  //{
-  //  return view('login.recover');
-  //}
-
-  //public function search()
-  //{
-  //  $user = User::where('email', '=', request('email'))->get()->first();
-  //  if($user != null){
-  //    Mail::send('emails.remind', ['user' => $user], function ($mail) use ($user) {
-  //      $mail->to($user['email'])
-  //      ->from('lancheriahospitalsj.cobrancas@gmail.com', 'Lancheria do Hospital')
-  //      ->subject('Recuperação de Senha');
-  //    });
-  //    return redirect('/login');
-  //  }
-  //  return redirect('/login')
-  //  ->withErrors("O e-mail digitado não foi encontrado.");
-  //}
-
 
 }
