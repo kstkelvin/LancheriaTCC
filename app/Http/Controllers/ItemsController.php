@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NFeController;
 use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 
 class ItemsController extends Controller
 {
@@ -56,13 +57,19 @@ class ItemsController extends Controller
 
       } else {
 
-        Item::create([
+        $item = Item::create([
           'client_id' => request('client_id'),
           'product_id' => request('product_id'),
           'amount' => request('amount'),
           'is_paid' => 0,
           'total' => request('amount') * $product->price
         ]);
+
+        $item->created_at = Carbon::now()
+        ->subMonth(1)
+        ->setTime(23,59,59)
+        ->format('Y-m-d H:i:s');
+        $item->save(['timestamps' => false]);
 
         $product->stock -= request('amount');
         $product->save();
