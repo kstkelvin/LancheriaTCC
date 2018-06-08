@@ -37,6 +37,8 @@ class RegisterController extends Controller
       'surname' => 'nullable|string|max:50',
       'password' => 'required|min:8|confirmed',
       'email' => 'required|unique:users',
+      'custom_quest' => 'nullable|string',
+      'custom_quest_answer' => 'nullable|string',
     ];
 
     $messages = [
@@ -65,6 +67,7 @@ class RegisterController extends Controller
       return redirect('/');
     }
     return redirect('/home');
+
   }
 
   protected function create()

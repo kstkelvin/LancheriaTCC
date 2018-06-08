@@ -55,8 +55,7 @@
               </form>
               <tr>
                 <td>
-                  <a href="/cliente/{{$client->id}}" class="word-breaker btn btn-secondary button-link button-panel">{{ $client->name . " " .
-                    $client->surname }}</a>
+                  <a href="/cliente/{{$client->id}}" class="word-breaker btn btn-secondary button-link button-panel">{{ $client->name }}</a>
                   </td>
                   <td>
                     <a href="/cliente/{{$client->id}}/editar" class="btn btn-secondary button-link button-panel" title="Editar">

@@ -10,11 +10,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card-body card mb-12 box-shadow">
-            @if($client->surname != null)
-              <h1>Histórico: {{ $client->name . ' ' . $client->surname }}</h1>
-            @else
               <h1>Histórico: {{ $client->name }}</h1>
-            @endif
             @if($client->user_id != 0)
 
               <p>{{ 'E-mail: ' . $user->email}}<br>

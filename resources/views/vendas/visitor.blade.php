@@ -10,7 +10,7 @@
         <div class="col-md-12">
           <div class="card-body card mb-12 box-shadow">
             <div class="mb-4">
-              <h1 class="h2 mb-3 font-weight-normal">Operação de Venda - Visitantes</h1>
+              <h1 class="h3 mb-3 font-weight-normal">Operação de Venda - Visitantes</h1>
               {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}
             </div>
             <div class="form-group d-flex justify-content-start align-items-start flex-column flex-md-row form-inline">

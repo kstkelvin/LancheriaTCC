@@ -29,6 +29,7 @@ class UserStory01_ProdutosTest extends TestCase
     ->get('/produtos');
     $response->assertStatus(200);
     $response->assertViewHas('products');
+    $response->assertSee($product->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_a_lista_de_produtos()
@@ -98,6 +99,10 @@ class UserStory01_ProdutosTest extends TestCase
     ));
     $response->assertStatus(302);
     $response->assertRedirect('/produtos');
+    $response = $this->actingAs($user, 'web')
+    ->withSession(['foo' => 'bar'])
+    ->get('/produtos');
+    $response->assertSee('super');
   }
 
   public function test_usuário_autenticado_não_pode_cadastrar_novo_produto()
@@ -137,6 +142,7 @@ class UserStory01_ProdutosTest extends TestCase
     ->get('/produto/'.$product->id.'/editar');
     $response->assertStatus(200);
     $response->assertViewHas('product');
+    $response->assertSee($product->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_a_edição_de_produtos()
@@ -172,6 +178,10 @@ class UserStory01_ProdutosTest extends TestCase
     ));
     $response->assertStatus(302);
     $response->assertRedirect('/produtos');
+    $response = $this->actingAs($user, 'web')
+    ->withSession(['foo' => 'bar'])
+    ->get('/produtos');
+    $response->assertSee('super');
   }
 
   public function test_usuário_autenticado_não_pode_editar_produtos()
@@ -213,6 +223,7 @@ class UserStory01_ProdutosTest extends TestCase
     $response->assertStatus(200);
     $response->assertViewHas('product');
     $response->assertViewHas('chart_products');
+    $response->assertSee($product->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_um_produto_em_específico()

@@ -8,20 +8,6 @@
         <div class="col-md-12">
           <div class="card-body card box-shadow">
             <h1>Lista de Usuários</h1>
-            <br class="ph">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="topnav">
-                  <div class="search-container">
-                    <form method="GET" action="usuarios/pesquisar">
-                      <input type="text" id="search" name="search"
-                      placeholder="Digite o nome do usuário" />
-                      <button type="submit"><i class="fa fa-search"></i></button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
             <br>
             <table class="table table-hover table-striped">
               <thead>
@@ -40,7 +26,11 @@
                   </form>
                   <tr>
                     <td>
-                      {{ $user->name . " " . $user->surname }}
+                      @if($user->surname != null)
+                        {{ $user->name . " " . $user->surname }}
+                      @else
+                        {{ $user->name }}
+                      @endif
                     </td>
                     <td>
                       {{ $user->email }}

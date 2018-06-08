@@ -65,10 +65,14 @@ class UserStory09_StockTest extends TestCase
     $response = $this->actingAs($user, 'web')
     ->withSession(['foo' => 'bar'])
     ->call('POST', '/produto/'.$product->id.'/armazem', array(
-      'stock' => 1,
+      'stock' => 15,
     ));
     $response->assertStatus(302);
     $response->assertRedirect('/produto/'.$product->id);
+    $response = $this->actingAs($user, 'web')
+    ->withSession(['foo' => 'bar'])
+    ->get('/produto/'.$product->id);
+    $response->assertSee('15');
   }
 
   public function test_usuário_autenticado_não_pode_adicionar_no_estoque()

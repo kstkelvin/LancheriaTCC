@@ -30,6 +30,25 @@
   margin-bottom: 0;
 }
 
+.link-hover{
+  color: #B22222;
+}
+
+.link-hover:focus,
+.link-hover:hover {
+  color: #800000;
+}
+
+.form-group {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.form-group .fm-button {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 @media screen and (max-width: 768px)  {
 
   .button-link

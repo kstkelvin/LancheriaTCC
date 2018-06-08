@@ -6,11 +6,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card-body card box-shadow">
-            @if($client->surname != null)
-              <h1>{{ $client->name . ' ' . $client->surname }}: Histórico</h1>
-            @else
               <h1>{{ $client->name }}: Histórico</h1>
-            @endif
             <p>{{ 'Setor: ' . $client->setor }}<br>
               {{ 'Telefone: ' . $client->phone_number}}</p>
             </div>

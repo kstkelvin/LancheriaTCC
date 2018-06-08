@@ -18,7 +18,7 @@ class BindController extends Controller
     $client = Client::findOrFail($id);
     $users = User::where('is_admin', '=', false)
     ->where('has_account', '=', false)
-    ->orderBy('name', 'surname')->get();
+    ->orderBy('name')->get();
     return view('users.index', compact('users'))->with('client', $client);
   }
 

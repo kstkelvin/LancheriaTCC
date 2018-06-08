@@ -6,11 +6,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card-body card box-shadow">
-            @if($client->surname != null)
-              <h1>{{ $client->name . ' ' . $client->surname }}: Conta</h1>
-            @else
-              <h1>{{ $client->name }}: Conta</h1>
-            @endif
+            <h1>{{ $client->name }}: Conta</h1>
             <p>{{ 'Setor: ' . $client->setor }}<br>
               {{ 'Telefone: ' . $client->phone_number}}<br>
               {{ 'Total: R$ ' . number_format($total->total, 2, ',', '.') }}</p>

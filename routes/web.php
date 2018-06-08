@@ -63,6 +63,10 @@ Route::get('/login', 'LoginController@create')->name('login');//redireciona para
 Route::post('/login', 'LoginController@store');//autentica e loga o usuário
 Route::get('/logout', 'LoginController@destroy');//logout sem confirmação(sujeito a modificações)
 
+Route::get('/email', 'AuthController@email');
+Route::post('/email', 'AuthController@email_check');
+Route::post('/confirm', 'AuthController@confirm_quest');
+Route::post('/reset', 'AuthController@confirm_reset');
 
 Route::group(array('middleware' => ['auth']), function ()
 {
@@ -71,6 +75,8 @@ Route::group(array('middleware' => ['auth']), function ()
   Route::post('/senha', 'UserController@change');
   Route::get('/editar', 'UserController@edit');
   Route::post('/editar', 'UserController@update');
+  Route::get('/adicionar-pergunta', 'UserController@quest');
+  Route::post('/prosseguir', 'UserController@add');
 });
 
 Route::group(array('middleware' => ['auth', 'user']), function ()

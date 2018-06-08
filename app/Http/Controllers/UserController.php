@@ -19,11 +19,6 @@ class UserController extends Controller
     $this->middleware('auth');
   }
 
-  public function bind_account()
-  {
-
-  }
-
   public function edit()
   {
     return view('users.edit')->with('user', Auth::user());
@@ -57,12 +52,43 @@ class UserController extends Controller
       ];
       $this->validate(request(), $rules, $messages);
     }
-    
+
     //Change Password
     $user = Auth::user();
     $user->password = bcrypt(request('password'));
     $user->save();
     return redirect("/")->with('success','Senha alterada com sucesso!');
+  }
+
+  public function quest()
+  {
+    return view('users.next');
+  }
+
+  public function add(){
+    $rules = [
+      'custom_quest' => 'required|string',
+      'custom_quest_answer' => 'required|string',
+    ];
+
+    $messages = [
+      'custom_quest.required' => 'Para facilitar a recuperação da sua senha no futuro
+      , é necessária a inclusão da pergunta customizada.',
+      'custom_quest_answer.required' => 'Para facilitar a recuperação da sua senha no futuro
+      , é necessária a inclusão da resposta da pergunta customizada.',
+    ];
+
+    $this->validate(request(), $rules, $messages);
+
+    $user = Auth::user();
+    $user->custom_quest = request()->get('custom_quest');
+    $user->custom_quest_answer = request()->get('custom_quest_answer');
+    $user->save();
+
+    if(Auth::user()->is_admin == true){
+      return redirect('/')->with('success','Pergunta de recuperação de senha adicionada com sucesso!');
+    }
+    return redirect('/home')->with('success','Pergunta de recuperação de senha adicionada com sucesso!');
   }
 
   /**

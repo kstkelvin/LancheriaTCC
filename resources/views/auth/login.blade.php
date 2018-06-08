@@ -9,22 +9,24 @@
           <form method="post" action="/login" class="form-horizontal form-signin">
             {{ csrf_field() }}
 
-            <div class="text-center mb-4 ">
-              <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <div class="text-center mb-0">
+              <h1 class="h3 font-weight-normal">Login</h1>
             </div>
             <div class="panel-body">
               <div class="form-group">
                 <div class="form-label-group">
-                  <input type="email" id="email" name="email" class="form-control" placeholder="Endereço de e-mail" required autofocus>
+                  <label for="email" class="bmd-label-floating">E-mail</label>
+                  <input type="email" id="email" name="email" class="form-control" required autofocus>
                 </div>
               </div>
               <div class="form-group">
                 <div class="form-label-group">
-                  <input type="password" id="password" class="form-control " name="password" minlength="8" placeholder="Senha" required autofocus>
+                  <label for="password" class="bmd-label-floating">Senha</label>
+                  <input type="password" id="password" class="form-control " name="password" minlength="8" required autofocus>
                 </div>
               </div>
               <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block box-shadow" type="submit">Efetuar Login</button>
+                <button class="btn btn-lg btn-primary btn-block box-shadow fm-button" type="submit">Efetuar Login</button>
               </div>
               <div class="g-signin2" data-onsuccess="onSignIn" style="display:none;"></div>
               <script type="text/javascript">
@@ -38,9 +40,8 @@
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
               </script>
+              <p class="intro_remember">Não consegue lembrar a sua senha? <a href="/email">Recupere a sua senha.</a></p>
               <p class="intro-login">Não possui uma conta? <a href="/registrar">Cadastre-se</a>.</p>
-
-
             </form>
           </div>
         </div>

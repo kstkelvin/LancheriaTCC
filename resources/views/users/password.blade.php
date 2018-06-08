@@ -15,18 +15,21 @@
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input type="password" class="form-control" id="current-password" placeholder="Senha Atual"
+                      <label for="current-password" class="bmd-label-floating">Senha Atual</label>
+                      <input type="password" class="form-control" id="current-password"
                       name="current-password" minlength="8" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
+                      <label for="password" class="bmd-label-floating">Nova Senha</label>
                       <input type="password" class="form-control" id="password" placeholder="Nova senha"
                       name="password" minlength="8" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
+                      <label for="password_confirmation" class="bmd-label-floating">Confirme a nova senha</label>
                       <input type="password" class="form-control" id="password_confirmation" placeholder="Repita a nova senha"
                       name="password_confirmation" minlength="8" required autofocus>
                     </div>

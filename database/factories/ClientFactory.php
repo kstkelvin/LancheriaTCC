@@ -17,7 +17,6 @@ $factory->define(App\Client::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,
-        'surname' => $faker->name,
         'phone_number' => null,
         'setor' => $faker->name,
         'total' => $faker->randomFloat,

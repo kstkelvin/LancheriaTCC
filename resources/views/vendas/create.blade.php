@@ -12,14 +12,15 @@
             <fieldset>
               <div>
                 <div class="text-center mb-4">
-                  <h1 class="h2 mb-3 font-weight-normal">Operação de Venda - Funcionários</h1>
+                  <h1 class="h3 mb-3 font-weight-normal">Operação de Venda - Funcionários</h1>
                 </div>
                 <div>
 
                   <div class="form-group">
                     <div class="form-label-group">
+                      <label for="client_id" class="bmd-label-floating">Cliente</label>
                       <select name="client_id" class="form-control" id="client_id" required>
-                        <option disabled selected value>Cliente</option>
+                        <option disabled selected value>Selecione o cliente</option>
                         @foreach ($clients as $client)
                           <option value="{{$client->id}}">{{$client->name}}</option>
                         @endforeach
@@ -29,8 +30,9 @@
 
                   <div class="form-group">
                     <div class="form-label-group">
+                      <label for="product_id" class="bmd-label-floating">Produto</label>
                       <select name="product_id" class="form-control" id="product_id" required>
-                        <option disabled selected value>Produto</option>
+                        <option disabled selected value>Selecione o produto</option>
                         @foreach ($products as $product)
                           <option value="{{$product->id}}">{{$product->name}}</option>
                         @endforeach
@@ -40,7 +42,8 @@
 
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input class="form-control" type="number" id="amount" name="amount" placeholder="Quantia" required autofocus>
+                      <label for="amount" class="bmd-label-floating">Quantia</label>
+                      <input class="form-control" type="number" id="amount" name="amount" required autofocus>
                     </div>
                   </div>
 

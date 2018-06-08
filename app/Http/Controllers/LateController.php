@@ -23,12 +23,10 @@ class LateController extends Controller
 
   public function index()
   {
-
     $clientes = Client::join('items', 'clients.id', '=', 'items.client_id')
     ->join('products', 'products.id', '=', 'items.product_id')
     ->select('clients.id as id',
     'clients.name as nome',
-    'clients.surname as sobrenome',
     'clients.user_id as usuario',
     'clients.total as total'
     )
@@ -38,9 +36,7 @@ class LateController extends Controller
     ->orderBy('nome')
     ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
     ->get();
-
     $count = count($clientes);
-
     return view('main.homepage', compact('clientes', 'count'));
   }
 

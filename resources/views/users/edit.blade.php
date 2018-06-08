@@ -14,19 +14,21 @@
               </div>
               <div class="form-group">
                 <div class="form-label-group">
-                  <input type="text" class="form-control" id="name" placeholder="Nome"
+                  <label for="name" class="bmd-label-floating">Nome</label>
+                  <input type="text" class="form-control" id="name"
                   name="name" required autofocus>
                 </div>
               </div>
               <div class="form-group">
                 <div class="form-label-group">
+                  <label for="surname" class="bmd-label-floating">Sobrenome</label>
                   <input type="text" class="form-control" id="surname" name="surname"
-                  placeholder="Sobrenome(Opcional)" autofocus>
+                  autofocus>
                 </div>
               </div>
 
               <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Editar</button>
+                <button class="btn btn-lg btn-primary btn-block fm-button" type="submit">Editar</button>
               </div>
 
             </fieldset>

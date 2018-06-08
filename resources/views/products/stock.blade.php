@@ -11,17 +11,17 @@
               <div>
                 <div class="text-center mb-4">
                   <h1 class="h2 mb-3 font-weight-normal">{{$product->name}} - Estoque</h1>
-                  {{ 'Quantia atual: '. $product->stock}}
                 </div>
                 <div>
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input type="number" class="form-control " id="stock" placeholder="Quantia a ser adicionada"
-                      name="stock" required autofocus>
+                      <label for="stock" class="bmd-label-floating">Quantia atual</label>
+                      <input type="number" class="form-control" id="stock"
+                      name="stock" value="{{$product->stock}}" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block " type="submit">Adicionar ao Estoque</button>
+                    <button class="btn btn-lg btn-primary btn-block fm-button" type="submit">Adicionar ao Estoque</button>
                   </div>
                 </div>
               </div>

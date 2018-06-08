@@ -22,7 +22,6 @@ class ClientsController extends Controller
 
   public function index()
   {
-
     $clients = Client::orderBy('name')->get();
     return view('clients.index', compact('clients'));
 
@@ -38,7 +37,6 @@ class ClientsController extends Controller
   public function search()
   {
     $clients = Client::where('name', 'like', '%'. request()->search .'%')
-    ->orWhere('surname', 'like', '%'. request()->search .'%')
     ->orderBy('name')->get();
 
     return view('clients.index', compact('clients'));
@@ -54,7 +52,7 @@ class ClientsController extends Controller
     $rules = array
     (
       'name'       => 'required',
-      'surname'    => 'nullable',
+      'surname' => 'nullable',
       'setor'      => 'required',
       'phone_number' => 'nullable|numeric',
     );
@@ -77,12 +75,20 @@ class ClientsController extends Controller
       if($numero_formatado == "0"){
         $numero_formatado = "-";
       }
-      $client = Client::create([
-        'name' => request('name'),
-        'surname' => request('surname'),
-        'setor' => request('setor'),
-        'phone_number' => $numero_formatado
-      ]);
+      if(request('surname') != null){
+        $client = Client::create([
+          'name' => request('name') . " " . request('surname'),
+          'setor' => request('setor'),
+          'phone_number' => $numero_formatado
+        ]);
+      } else {
+        $client = Client::create([
+          'name' => request('name'),
+          'setor' => request('setor'),
+          'phone_number' => $numero_formatado
+        ]);
+      }
+
       return redirect('clientes')->with('success','Cliente cadastrado com sucesso!');
     }
   }
@@ -117,7 +123,7 @@ class ClientsController extends Controller
     ->get();
 
     $chart_clients = Charts::create('bar', 'highcharts')
-    ->title('Estatísticas: Top 5 Produtos Comprados pelo cliente '.$client->name) // Título do gráfico
+    ->title('Estatísticas: Produtos comprados pelo(a) '.$client->name) // Título do gráfico
     ->labels($products->pluck('name'))
     ->values($products->pluck('counter'))
     ->dimensions(500, 300) // Dimensão = 500 largura x 300 altura
@@ -154,7 +160,7 @@ class ClientsController extends Controller
   {
     $rules = array(
       'name'       => 'required',
-      'surname'    => 'nullable',
+      'surname' => 'nullable',
       'setor'      => 'required',
       'phone_number' => 'nullable|numeric',
 
@@ -175,9 +181,12 @@ class ClientsController extends Controller
     } else {
       // store
       $client = Client::find($id);
-      $client->name         = request()->get('name');
-      $client->surname      = request()->get('surname');
-      $client->setor        = request()->get('setor');
+      if(request()->get('surname') != null){
+        $client->name = request()->get('name') . " " . request()->get('surname');
+      }else{
+        $client->name = request()->get('name');
+      }
+      $client->setor = request()->get('setor');
       $numero_formatado = $this->formatar_telefone_br(request()->get('phone_number'));
       if($numero_formatado == "0"){
         $numero_formatado = "-";

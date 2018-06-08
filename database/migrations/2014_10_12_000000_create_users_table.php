@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
       $table->string('surname')->nullable();
       $table->string('email');
       $table->string('password');
+      $table->string('custom_quest')->nullable();
+      $table->string('custom_quest_answer')->nullable();
       $table->boolean('is_admin')->default('0');
       $table->boolean('has_account')->default('0');
       $table->rememberToken();

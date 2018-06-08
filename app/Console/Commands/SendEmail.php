@@ -53,7 +53,6 @@ class SendEmail extends Command
     ->join('products', 'products.id', '=', 'items.product_id')
     ->select('clients.id as id',
     'clients.name as nome',
-    'clients.surname as sobrenome',
     'clients.user_id as usuario'
     )
     ->where('items.created_at', '<', Carbon::now()->startOfMonth())

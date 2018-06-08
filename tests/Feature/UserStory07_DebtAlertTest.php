@@ -36,6 +36,7 @@ class UserStory07_DebtAlertTest extends TestCase
     ->get('/');
     $response->assertStatus(200);
     $response->assertSee('Débitos(1)');
+    $response->assertSee($client->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_alertas_de_usuários_em_débito()

@@ -28,6 +28,7 @@ class UserStory02_ClientesTest extends TestCase
     ->get('/clientes');
     $response->assertStatus(200);
     $response->assertViewHas('clients');
+    $response->assertSee($client->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_a_lista_de_clientes()
@@ -95,6 +96,10 @@ class UserStory02_ClientesTest extends TestCase
     ));
     $response->assertStatus(302);
     $response->assertRedirect('/clientes');
+    $response = $this->actingAs($user, 'web')
+    ->withSession(['foo' => 'bar'])
+    ->get('/clientes');
+    $response->assertSee('super duper');
   }
 
   public function test_usuário_autenticado_não_pode_cadastrar_novo_cliente()
@@ -136,6 +141,7 @@ class UserStory02_ClientesTest extends TestCase
     ->get('/cliente/'.$client->id.'/editar');
     $response->assertStatus(200);
     $response->assertViewHas('client');
+    $response->assertSee($client->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_a_edição_do_perfil_de_um_cliente_específico()
@@ -175,6 +181,10 @@ class UserStory02_ClientesTest extends TestCase
     ));
     $response->assertStatus(302);
     $response->assertRedirect('/clientes');
+    $response = $this->actingAs($user, 'web')
+    ->withSession(['foo' => 'bar'])
+    ->get('/clientes');
+    $response->assertSee('super duper');
   }
 
   public function test_usuário_autenticado_não_pode_editar_cliente()
@@ -222,6 +232,7 @@ class UserStory02_ClientesTest extends TestCase
     $response->assertViewHas('items');
     $response->assertViewHas('user');
     $response->assertViewHas('chart_clients');
+    $response->assertSee($client->name);
   }
 
   public function test_usuário_autenticado_nao_pode_visualizar_o_perfil_de_um_cliente_específico()
@@ -293,6 +304,7 @@ class UserStory02_ClientesTest extends TestCase
     $response->assertViewHas('client');
     $response->assertViewHas('items');
     $response->assertViewHas('user');
+    $response->assertSee($client->name);
   }
 
   public function test_usuário_autenticado_não_pode_visualizar_o_histórico_de_um_cliente_específico()

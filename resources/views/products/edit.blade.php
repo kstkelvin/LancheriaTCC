@@ -16,18 +16,20 @@
                 <div class="panel-body">
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input type="text" class="form-control" id="name" placeholder="Nome"
+                      <label for="name" class="bmd-label-floating">Nome</label>
+                      <input type="text" class="form-control" id="name" value="{{$product->name}}"
                       name="name" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
-                      <input type="number" class="form-control" id="price" size="99" pattern="[0-9]+([,\.][0-9]+)?"  min="0" step="any"
-                      placeholder="Preço" name="price" required autofocus>
+                      <label for="price" class="bmd-label-floating">Preço</label>
+                      <input type="number" class="form-control" id="price" size="99" min="0" step="any"
+                      name="price" value="{{ $product->price }}" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block " type="submit">Editar</button>
+                    <button class="btn btn-lg btn-primary btn-block fm-button" type="submit">Editar</button>
                   </div>
                 </div>
               </div>
