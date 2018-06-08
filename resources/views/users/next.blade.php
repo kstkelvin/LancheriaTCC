@@ -30,9 +30,11 @@
                       <input type="text" class="form-control" id="custom_quest_answer" name="custom_quest_answer" required autofocus>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-lg btn-primary btn-block fm-button" title="Adicionar Customizada">
-                    Adicionar
-                  </button>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block fm-button" title="Adicionar pergunta customizada">
+                      Adicionar
+                    </button>
+                  </div>
                 </div>
               </fieldset>
             </form>

@@ -31,7 +31,7 @@
                 @endif
                 @foreach ($clientes as $cliente)
                   <div class="col-lg-4">
-                    <div class="card-body mb-3 card box-shadow alert alert-danger">
+                    <div class="card-body mb-4 card box-shadow alert alert-danger">
                       <h6><a class="btn btn-danger btn-lg mr-4" style="padding: 2px; margin:0;" href="/cliente/{{$cliente->id}}">{{ $cliente->nome}}</a></h6>
                       <p style="padding: 0; padding-left: 2px; margin: 0;">{{"Total: " . number_format($cliente->total, 2, ',', '.') . " R$"}}</p>
                       <div class="d-flex justify-content-end align-items-center">

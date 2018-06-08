@@ -65,12 +65,6 @@ class ItemsController extends Controller
           'total' => request('amount') * $product->price
         ]);
 
-        $item->created_at = Carbon::now()
-        ->subMonth(1)
-        ->setTime(23,59,59)
-        ->format('Y-m-d H:i:s');
-        $item->save(['timestamps' => false]);
-
         $product->stock -= request('amount');
         $product->save();
 
