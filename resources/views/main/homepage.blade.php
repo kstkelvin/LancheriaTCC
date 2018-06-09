@@ -12,7 +12,7 @@
               <div class="card-body mb-4 alert alert-danger card box-shadow">
                 <p style="margin-bottom: 0;">
                   Você ainda não adicionou a pergunta para a recuperação de sua conta.
-                  <a href="/adicionar-pergunta" class="link-hover" title="Adicionar Pergunta">Adicionar pergunta customizada</a>.
+                  <a href="/pergunta" class="link-hover" title="Adicionar Pergunta">Adicionar pergunta customizada</a>.
                 </p>
               </div>
             </div>

@@ -23,24 +23,32 @@
                   <div class="form-group">
                     <div class="form-label-group">
                       <label for="password" class="bmd-label-floating">Nova Senha</label>
-                      <input type="password" class="form-control" id="password" placeholder="Nova senha"
+                      <input type="password" class="form-control" id="password"
                       name="password" minlength="8" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="form-label-group">
                       <label for="password_confirmation" class="bmd-label-floating">Confirme a nova senha</label>
-                      <input type="password" class="form-control" id="password_confirmation" placeholder="Repita a nova senha"
+                      <input type="password" class="form-control" id="password_confirmation"
                       name="password_confirmation" minlength="8" required autofocus>
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block"  type="submit">Alterar Senha</button>
+                    <button class="btn btn-lg btn-primary btn-block fm-button"  type="submit">Alterar Senha</button>
                   </div>
                 </div>
               </fieldset>
             </form>
           </div>
+          <br>
+          @if(Auth::user()->custom_quest != null)
+            <p class="text-center">
+              <a class="intro_remember" href="/pergunta">
+                Alterar a pergunta de recuperação de senha
+              </a>
+            </p>
+          @endif
         </div>
       </div>
     </div>

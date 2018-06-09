@@ -54,14 +54,16 @@
             </li>
           </ul>
         @endif
-        <ul class="navbar-nav ml-auto nav-screen">
+        <ul class="navbar-nav nav-screen">
           <li class="nav-item">
-            <span class="nav-link dropbtn" style="cursor:pointer" onclick="myFunction()"><i class="fa fa-fw fa-user-circle-o"></i> {{Auth::user()->name}}&#128317;</span>
+            <span class="nav-link dropbtn dropdown-toggle" style="cursor:pointer" onclick="myFunction()"><i class="fa fa-fw fa-user-circle-o"></i> {{Auth::user()->name}}</span>
           </li>
-          <div id="mySidenav" class="sidenav">
-            <a class="nav-link" style="font-size:11px;" href="/editar"><i class="fa fa-fw fa-pencil"></i>Editar</a>
-            <a class="nav-link" style="font-size:11px;" href="/senha">Alterar senha</a>
-            <a class="nav-link" style="font-size:11px;" href="/logout"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+          <div id="mySidenav" class="sidenav ml-auto card card-body box-shadow">
+            <a href="/editar"><i class="fa fa-fw fa-pencil"></i>EDITAR DADOS</a>
+            <br>
+            <a href="/senha">ALTERAR SENHA</a>
+            <br>
+            <a href="/logout"><i class="fa fa-fw fa-sign-out"></i>LOGOUT</a>
           </div>
         </ul>
       @else

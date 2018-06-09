@@ -46,4 +46,8 @@ footer{
   padding-bottom: 10px;
 }
 
+footer .text-muted{
+  font-size: 11px;
+}
+
 }

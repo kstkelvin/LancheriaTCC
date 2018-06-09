@@ -75,7 +75,7 @@ Route::group(array('middleware' => ['auth']), function ()
   Route::post('/senha', 'UserController@change');
   Route::get('/editar', 'UserController@edit');
   Route::post('/editar', 'UserController@update');
-  Route::get('/adicionar-pergunta', 'UserController@quest');
+  Route::get('/pergunta', 'UserController@quest');
   Route::post('/prosseguir', 'UserController@add');
 });
 

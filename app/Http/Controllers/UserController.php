@@ -69,6 +69,7 @@ class UserController extends Controller
     $rules = [
       'custom_quest' => 'required|string',
       'custom_quest_answer' => 'required|string',
+      'password' => 'required'
     ];
 
     $messages = [
@@ -76,9 +77,16 @@ class UserController extends Controller
       , é necessária a inclusão da pergunta customizada.',
       'custom_quest_answer.required' => 'Para facilitar a recuperação da sua senha no futuro
       , é necessária a inclusão da resposta da pergunta customizada.',
+      'password.required' => 'A senha é necessária.',
     ];
 
     $this->validate(request(), $rules, $messages);
+
+    if (!(Hash::check(request('password'), Auth::user()->password))) {
+      return redirect('pergunta')->withErrors([
+        'message' => 'A sua senha atual está incorreta. Tente novamente.'
+      ]);
+    }
 
     $user = Auth::user();
     $user->custom_quest = request()->get('custom_quest');

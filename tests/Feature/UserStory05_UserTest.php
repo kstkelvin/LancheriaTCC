@@ -292,13 +292,13 @@ class UserStory05_UserTest extends TestCase
     $user = factory(User::class)->create();
     $response = $this->actingAs($user, 'web')
     ->withSession(['foo' => 'bar'])
-    ->get('/adicionar-pergunta');
+    ->get('/pergunta');
     $response->assertStatus(200);
   }
 
   public function test_usuário_não_autenticado_não_pode_abrir_a_tela_de_configuração_da_pergunta_customizada_para_a_recuperação_de_senha()
   {
-    $response = $this->get('/adicionar-pergunta');
+    $response = $this->get('/pergunta');
     $response->assertStatus(302);
     $response->assertRedirect('/login');
   }
@@ -308,10 +308,13 @@ class UserStory05_UserTest extends TestCase
 
   public function test_usuário_autenticado_pode_adicionar_pergunta_customizada_para_a_recuperação_de_senha()
   {
-    $user = factory(User::class)->create();
+    $user = factory(User::class)->create([
+      'password' => bcrypt('amendoimcomamente'),
+    ]);
     $response = $this->actingAs($user, 'web')
     ->withSession(['foo' => 'bar'])
     ->call('POST', '/prosseguir', array(
+      'password' => 'amendoimcomamente',
       'custom_quest' => 'Expande?',
       'custom_quest_answer' => 'A mente!',
     ));

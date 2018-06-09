@@ -12,9 +12,10 @@
               <fieldset>
                 <div class="mb-3 text-center">
                   <h1 class="h4 font-weight-normal">Recuperação de Senha - Pergunta Customizada</h1>
-                  <p class="text-muted">
-                    Aconselhamos que adicione uma pergunta a qual você (e ninguém mais) com certeza lembrará
-                    a resposta.
+                  <p class="text-muted" style="font-size:11px;">
+                    Em caso de perca frequente de senhas, sugerimos que você realize este passo.
+                    <br>
+                    (Requerido para recuperação de senha)
                   </p>
                 </div>
                 <div class="panel-body">
@@ -31,8 +32,14 @@
                     </div>
                   </div>
                   <div class="form-group">
+                    <div class="form-label-group">
+                      <label for="password" class="bmd-label-floating">Senha</label>
+                      <input type="password" id="password" name="password" class="form-control" required autofocus>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <button type="submit" class="btn btn-lg btn-primary btn-block fm-button" title="Adicionar pergunta customizada">
-                      Adicionar
+                      Prosseguir
                     </button>
                   </div>
                 </div>
