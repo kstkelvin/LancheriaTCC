@@ -39,7 +39,7 @@
   <div class="nav">
     @include('layouts.nav')
   </div>
-  <div id="main_container">
+  <div id="main_container" class="side-collapse-container">
     <div class="container">
       @include('layouts.dialog')
       @yield('content')

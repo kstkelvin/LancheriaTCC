@@ -16,14 +16,12 @@ header {
 @media screen and (max-width: 768px) {
   .side-collapse-container{
     backface-visibility: hidden;
-    overflow:hidden;
-    position:fixed;
     top: 0;
-
   }
 
   .side-collapse-container.out{
-    right:100%;
+    overflow:hidden;
+    position:fixed;
   }
 
   .side-collapse {
