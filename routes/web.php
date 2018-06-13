@@ -67,10 +67,11 @@ Route::get('/email', 'AuthController@email');
 Route::post('/email', 'AuthController@email_check');
 Route::post('/confirm', 'AuthController@confirm_quest');
 Route::post('/reset', 'AuthController@confirm_reset');
+  Route::get('/sobre', 'HomeController@about');
 
 Route::group(array('middleware' => ['auth']), function ()
 {
-  Route::get('/sobre', 'HomeController@about');
+
   Route::get('/senha', 'UserController@password');
   Route::post('/senha', 'UserController@change');
   Route::get('/editar', 'UserController@edit');
