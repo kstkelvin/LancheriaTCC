@@ -44,7 +44,7 @@
       <tr>
         <th>Produto</th>
         <th>Valor</th>
-        <th>Quantidade</th>
+        <th>Quantia</th>
         <th>Data</th>
         <th></th>
       </tr>
@@ -84,33 +84,9 @@
       <form action="/visitantes/pagamento" method="POST">
         {{csrf_field()}}
         <fieldset>
-          <div class="form-group">
-            <br>
-            <p>Pagamento total: {{ number_format($total->total, 2, ',', '.') . " R$"}}</p>
-          </div>
-          <div class="form-group">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Produto</th>
-                  <th>Valor</th>
-                  <th>Quantidade</th>
-                  <th>Data</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($items as $item)
-                  <tr>
-                    <td>{{ $item->name }}</td>
-                    <td>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }}</td>
-                    <td>{{ $item->amount }}</td>
-                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
           <div class="form-group text-center">
+            <br>
+            <p>Total: {{ number_format($total->total, 2, ',', '.') . " R$"}}</p>
             <p>Tem certeza de que deseja continuar com o procedimento?</p>
             <div class="btn-group d-flex justify-content-center flex-column flex-md-row form-inline">
               <button type="submit" class="btn btn-md btn-primary">Sim, Confirme o Pagamento.</button>

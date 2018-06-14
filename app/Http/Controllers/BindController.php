@@ -72,7 +72,12 @@ class BindController extends Controller
       ->getQuery()
       ->get()
       ->first();
-      $counter = count('itens');
+      if($counter != null){
+        $counter = 1;
+      }
+      else {
+        $counter = 0;
+      }
       $total = $this->total($client->id);
     }
     return view('main.home', compact('total', 'counter'));
